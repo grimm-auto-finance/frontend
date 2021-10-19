@@ -1,4 +1,4 @@
-import logo from './logo.svg'
+import logo from './logo.png'
 import './App.css'
 import HelloAPI from './components/HelloAPI';
 
@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
+        <p>GRIMM AUTO FINANCE</p>
         <HelloAPI />
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.
