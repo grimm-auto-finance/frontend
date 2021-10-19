@@ -1,20 +1,13 @@
-import { useState } from 'react'
 import logo from './grimmlogo.svg'
 import './App.css'
+import HelloAPI from './components/HelloAPI';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>GRIMM AUTO FINANCE</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
+        <HelloAPI />
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
