@@ -28,9 +28,11 @@ function App() {
 
           <label> Budget : </label>
           <input type="password" placeholder="Enter Budget" name="budget" required/>
-          <label> Vehicle Model and Year : </label>
+
+            <label> Vehicle Model and Year : </label>
           <input type="text" placeholder="Enter Vehicle" name="Vehicle" required/>
-          <button type="submit">Enter</button>
+
+            <button type="submit">Enter</button>
         </form>
 
 
@@ -46,32 +48,15 @@ function App() {
         </p>
 
         <p>
-          <div class="responsive">
-            <div class="gallery">
-              <a target="_blank" href="./CarImages/Suzuki.png">
-                <img src= {Suzuki} alt="Suzuki " width="1312" height="897"/>
-              </a>
-              <div class="desc">Suzuki Pattern 2020 </div>
+            <div class="responsive">
+                <div class="gallery">
+                    <a target="_blank" href="./CarImages/Mercedes.png">
+                        <img src={Mercedes} alt="Cinque Terre" width="512" height="512"/>
+                    </a>
+                    <div class="desc"> Mercedes SUV 2017</div>
+                </div>
             </div>
-          </div>
 
-          <div class="responsive">
-            <div class="gallery">
-              <a target="_blank" href="./CarImages/Ford.png">
-                <img src= {Ford} alt="Ford Focus 2016" width="512" height="512"/>
-              </a>
-              <div class="desc">Ford Focus 2016</div>
-            </div>
-          </div>
-
-          <div class="responsive">
-            <div class="gallery">
-              <a target="_blank" href="./CarImages/Mercedes.png">
-                <img src={Mercedes} alt="Cinque Terre" width="512" height="512"/>
-              </a>
-              <div class="desc"> Mercedes SUV 2017</div>
-            </div>
-          </div>
 
           <div class="responsive">
             <div class="gallery">
@@ -81,6 +66,24 @@ function App() {
               <div class="desc"> BMW something 2019</div>
             </div>
           </div>
+
+            <div class="responsive">
+                <div class="gallery">
+                    <a target="_blank" href="./CarImages/Suzuki.png">
+                        <img src= {Honda} alt="Suzuki " width="1312" height="897"/>
+                    </a>
+                    <div class="desc">Suzuki Pattern 2020 </div>
+                </div>
+            </div>
+
+            <div class="responsive">
+                <div class="gallery">
+                    <a target="_blank" href="./CarImages/Ford.png">
+                        <img src= {Ford} alt="Ford Focus 2016" width="512" height="512"/>
+                    </a>
+                    <div class="desc">Ford Focus 2016</div>
+                </div>
+            </div>
         </p>
 
         <p>
