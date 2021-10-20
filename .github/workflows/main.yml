@@ -1,0 +1,16 @@
+name: CI with pnpm
+on:
+  push:
+    branches: ["**"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.18.0
+          run_install: true
+      - name: Build with pnpm
+        run: pnpm run build
