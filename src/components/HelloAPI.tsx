@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
+import {
+  // useEffect,
+  useState,
+} from "react";
 
 export default () => {
   const [message, setMessage] = useState("");
 
   function updateMessage() {
-    fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/")
+    fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/loan", { method: "POST" })
       .then(async (res) => setMessage(await res.text()))
       .catch((err) => console.error(err));
   }
 
-  useEffect(updateMessage, []);
+  // useEffect(updateMessage, []);
 
   return (
     <div>
