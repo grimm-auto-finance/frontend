@@ -8,10 +8,9 @@ import Car from "./CarImages/Car.png";
 import Suzuki from "./CarImages/Suzuki.png";
 
 import "./App.css";
+import HelloAPI from "./components/HelloAPI";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="App">
       <header className="App-header">
@@ -108,12 +107,7 @@ function App() {
             </div>
           </div>
         </p>
-
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
+        <HelloAPI />
       </header>
     </div>
   );
