@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+import {
+  // useEffect,
+  useState,
+} from "react";
 
 export default () => {
   const [message, setMessage] = useState("");
@@ -9,7 +12,7 @@ export default () => {
       .catch((err) => console.error(err));
   }
 
-  useEffect(updateMessage, []);
+  // useEffect(updateMessage, []);
 
   return (
     <div>
