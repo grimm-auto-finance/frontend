@@ -20,8 +20,7 @@ function App() {
           GRIMM AUTO FINANCING <br />
           AUTO-FINANCING MADE EASY
         </p>
-
-        <form>
+          <form>
           <label>Credit Score : </label>
           <input
             type="text"
