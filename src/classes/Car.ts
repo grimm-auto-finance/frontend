@@ -35,12 +35,12 @@ export class Car {
     this.addOns = addOns !== undefined ? addOns : new Map();
   }
 
-  static from(json: CarObject) {
+  static from(json: CarJSON) {
     return new Car(json.make, json.year, json.model, json.price, json.addOns);
   }
 }
 
-export type CarObject = {
+export type CarJSON = {
   price: number | undefined;
   make: string;
   year: number;

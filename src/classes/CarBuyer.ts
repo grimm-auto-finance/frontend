@@ -19,12 +19,12 @@ export class CarBuyer {
     this.creditScore = creditScore;
   }
 
-  static from(json: CarBuyerObject) {
+  static from(json: CarBuyerJSON) {
     return new CarBuyer(json.budget, json.creditScore);
   }
 }
 
-export type CarBuyerObject = {
+export type CarBuyerJSON = {
   creditScore: number;
   budget: number;
 };
