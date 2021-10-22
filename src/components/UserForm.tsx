@@ -9,7 +9,7 @@ const UserForm = () => {
     const [vehicleKms, setvehicleKms] = useState(NaN);
     const [vehiclePrice, setvehiclePrice] = useState(NaN);
 
-    const handleSubmit = (event) => {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const UserInfo = {creditScore,
             pytBudget};
