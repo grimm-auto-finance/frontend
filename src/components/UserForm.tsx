@@ -6,7 +6,7 @@ const UserForm = () => {
     const [vehicleMake, setvehicleMake] = useState('');
     const [vehicleModel, setvehicleModel] = useState('');
     const [vehicleYear, setvehicleYear] = useState(NaN);
-    const [vehicleKms, setvehicleKms] = useState('');
+    const [vehicleKms, setvehicleKms] = useState(NaN);
     const [vehiclePrice, setvehiclePrice] = useState(NaN);
 
     const handleSubmit = (event) => {
