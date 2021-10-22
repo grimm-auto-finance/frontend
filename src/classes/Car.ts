@@ -46,5 +46,4 @@ export type CarJSON = {
   year: number;
   model: string;
   addOns: Map<string, AddOn>;
-  output: JSON;
 };
