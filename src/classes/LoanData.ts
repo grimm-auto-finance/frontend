@@ -35,4 +35,24 @@ export class LoanData {
     this.termLength = termLength;
     this.interestSum = interestSum;
   }
+
+  static from(json: LoanDataJSON) {
+    return new LoanData(
+      json.interestSum,
+      json.installment,
+      json.sensoScore,
+      json.loanAmount,
+      json.termLength,
+      json.interestSum
+    );
+  }
 }
+
+export type LoanDataJSON = {
+  interestRate: number;
+  installment: number;
+  sensoScore: string;
+  loanAmount: number;
+  termLength: number;
+  interestSum: number;
+};

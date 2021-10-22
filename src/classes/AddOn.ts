@@ -21,4 +21,14 @@ export class AddOn {
     this.price = price;
     this.description = description;
   }
+
+  static from(json: AddOnJSON) {
+    return new AddOn(json.name, json.price, json.description);
+  }
 }
+
+export type AddOnJSON = {
+  name: string;
+  price: number;
+  description: string;
+};
