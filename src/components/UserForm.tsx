@@ -1,23 +1,26 @@
 import { useState} from "react";
 
 const UserForm = () => {
-    const [creditScore, setCreditScore] = useState('');
-    const [pytBudget, setpytBudget] = useState('');
+    const [creditScore, setCreditScore] = useState(undefined);
+    const [pytBudget, setpytBudget] = useState(undefined);
     const [vehicleMake, setvehicleMake] = useState('');
     const [vehicleModel, setvehicleModel] = useState('');
-    const [vehicleYear, setvehicleYear] = useState('');
+    const [vehicleYear, setvehicleYear] = useState(undefined);
     const [vehicleKms, setvehicleKms] = useState('');
+    const [vehiclePrice, setvehiclePrice] = useState(undefined);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const UserInfo = {creditScore,
-            pytBudget,
+            pytBudget};
+        const CarInfo = {
             vehicleMake,
             vehicleModel,
             vehicleYear,
-            vehicleKms};
+            vehicleKms };
+        const fullInfo = {"car buyer": UserInfo, "car": CarInfo};
 
-        fetch('/loan', {
+        fetch(import.meta.env.VITE_BACKEND_BASE_URL + '/loan', {
             method: 'POST',
             headers: {"Content-type": "application/json"},
             body: JSON.stringify(UserInfo)
@@ -32,22 +35,24 @@ const UserForm = () => {
                 <label>Credit Score : </label>
                 <input
                 id = "Credit Score"
-                type="text"
+                type="number"
                 placeholder="Credit Score"
                 name="creditScore"
                 value={creditScore}
-                onChange={(input) => setCreditScore(input.target.value)}
+                onChange={(input) =>
+                    setCreditScore(parseInt(input.target.value))}
                 required
                 />
 
                 <label> Budget : </label>
                 <input
                 id = "Budget"
-                type="text"
+                type="number"
                 placeholder="Enter Budget"
                 name="pytBudget"
                 value={pytBudget}
-                onChange={(input) => setpytBudget(input.target.value)}
+                onChange={(input) =>
+                    setpytBudget(parseFloat(input.target.value))}
                 required
                 />
 
@@ -58,7 +63,8 @@ const UserForm = () => {
                     placeholder="Enter Vehicle Make"
                     name="vehicleMake"
                     value={vehicleMake}
-                    onChange={(input) => setvehicleMake(input.target.value)}
+                    onChange={(input) =>
+                        setvehicleMake(input.target.value)}
                     required
                 />
 
@@ -69,75 +75,53 @@ const UserForm = () => {
                     placeholder="Enter Vehicle Model"
                     name="vehicleModel"
                     value={vehicleModel}
-                    onChange={(input) => setvehicleModel(input.target.value)}
+                    onChange={(input) =>
+                        setvehicleModel(input.target.value)}
                     required
                 />
 
                 <label> Vehicle Year: </label>
                 <input
                     id = "Year"
-                    type="text"
+                    type="number"
                     placeholder="Enter Vehicle Year"
                     name="vehicleYear"
                     value={vehicleYear}
-                    onChange={(input) => setvehicleYear(input.target.value)}
+                    onChange={(input) =>
+                        setvehicleYear(parseInt(input.target.value))}
                     required
                 />
 
                 <label> Vehicle Distance Driven (KMs): </label>
                 <input
                     id = "Distance Driven"
-                    type="text"
+                    type="number"
                     placeholder="Enter Distance Driven"
                     name="vehicleKms"
                     value={vehicleKms}
-                    onChange={(input) => setvehicleKms(input.target.value)}
+                    onChange={(input) =>
+                        setvehicleKms(parseFloat(input.target.value))}
                     required
                 />
+
+                <label>Vehicle Price: </label>
+                <input
+                    id = "Price"
+                    type="number"
+                    placeholder="vehiclePrice"
+                    name="vehiclePrice"
+                    value={vehiclePrice}
+                    onChange={(input) =>
+                        setvehiclePrice(parseFloat(input.target.value))}
+                    required
+                />
+
 
 
                 <button type="submit">Enter</button>
             </form>
         </div>
     );
-}
-
-
-function info() {
-    let pytBudget;
-    let creditScore;
-    let vehicleMake;
-    let vehicleModel;
-    let vehicleKms;
-    let vehicleYear;
-
-    creditScore = Number(document.getElementsByName("creditScore"));
-    pytBudget = Number(document.getElementsByName("pytBudget"));
-    vehicleMake = String(document.getElementsByName("vehicleMake"));
-    vehicleModel = String(document.getElementsByName("vehicleModel"));
-    vehicleYear = Number(document.getElementsByName("vehicleYear"));
-    vehicleKms = Number(document.getElementsByName("vehicleKms"));
-
-    let infomap = [creditScore, pytBudget, vehicleMake, vehicleModel, vehicleYear, vehicleKms];
-    return(infomap);
-
-}
-
-function jsonparser() {
-    let infomap = info();
-    let infostring = ["creditScore", "pytBudget", "vehicleMake", "vehicleModel", "vehicleYear", "vehicleKms"]
-
-    let jsonString = "{\n" +
-        "    “car”: {    “make”: "+ String(infomap[2]) +", “model”: " + String(infomap[3]) +", “year”: "+ String(infomap[4]) +"},\n" +
-        "    “car buyer”: {“budget”: "+ String(infomap[1]) +", “credit score”: "+ String(infomap[0]) +"}\n" +
-        "}";
-    const jsonObj = JSON.parse(jsonString)
-
-    console.log(infomap)
-
-    return(jsonObj)
-
-
 }
 
 export default UserForm;
