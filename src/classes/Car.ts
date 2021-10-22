@@ -10,7 +10,6 @@ export class Car {
     year: number;
     model: string;
     addOns: Map<string, AddOn>;
-    output: JSON;
 
     /**
      * Constructs a new Car with the given price, name, year
@@ -28,11 +27,20 @@ export class Car {
         this.year = year;
         this.model = model;
         this.addOns = addOns !== undefined ? addOns : new Map();
-        this.output = JSON;
+    }
+    
+    static from(json: CarObject) {
+        return(new Car(json.make, json.year, json.model, json.price, json.addOns))
     }
 
-    getCar() {
-        return {"make": this.make, "model": this.model, "year": this.year};
-    }
+}
 
+export type CarObject = {
+    price: number | undefined;
+    make: string;
+    year: number;
+    model: string;
+    addOns: Map<string, AddOn>;
+    output: JSON;
+    
 }

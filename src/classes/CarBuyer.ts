@@ -19,8 +19,14 @@ export class CarBuyer {
         this.creditScore = creditScore;
     }
 
-    getCarBuyer() {
-        return {"budget": this.budget, "credit score": this.creditScore};
+    static from(json: CarBuyerObject) {
+        return(new CarBuyer(json.budget, json.creditScore))
     }
+}
+
+export type CarBuyerObject = {
+    creditScore: number;
+    budget: number;
+
 }
 
