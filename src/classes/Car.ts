@@ -1,3 +1,5 @@
+import {AddOn} from "./AddOn";
+
 /**
  * A class to represent an individual car that is being
  * viewed and configured in the user interface.
@@ -7,8 +9,8 @@ export class Car {
     make: string;
     year: number;
     model: string;
-    addOns: Object;
-
+    addOns: Map<string, AddOn>;
+    output: JSON;
 
     /**
      * Constructs a new Car with the given price, name, year
@@ -20,11 +22,17 @@ export class Car {
      * @param price The price of the car
      * @param addOns A mapping of addon names to AddOn objects
      */
-    constructor(make: string, year: number, model: string, price?: number, addOns?: Object) {
+    constructor(make: string, year: number, model: string, price?: number, addOns?: Map<string, AddOn>) {
         this.make = make;
         this.price = price !== undefined ? price : null;
         this.year = year;
         this.model = model;
         this.addOns = addOns !== undefined ? addOns : new Map();
+        this.output = JSON;
     }
+
+    getCar() {
+        return {"make": this.make, "model": this.model, "year": this.year};
+    }
+
 }

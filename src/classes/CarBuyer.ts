@@ -18,4 +18,9 @@ export class CarBuyer {
         this.budget = budget;
         this.creditScore = creditScore;
     }
+
+    getCarBuyer() {
+        return {"budget": this.budget, "credit score": this.creditScore};
+    }
 }
+

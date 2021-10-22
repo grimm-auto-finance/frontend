@@ -2,6 +2,8 @@
  * A class to represent an individual add-on that
  * can be added to a car.
  */
+
+
 export class AddOn {
   name: string;
   price: number | null;
