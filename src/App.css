@@ -41,15 +41,11 @@
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
-
-
 }
 
 button {
   font-size: calc(10px + 2vmin);
 }
-
-
 
 button {
   background-color: #2f9ba1;
