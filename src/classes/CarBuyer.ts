@@ -5,28 +5,26 @@
  * returned loan.
  */
 export class CarBuyer {
-    creditScore: number;
-    budget: number;
+  creditScore: number;
+  budget: number;
 
-    /**
-     * Constructs a new CarBuyer with the specified
-     * budget and credit score.
-     * @param creditScore
-     * @param budget
-     */
-    constructor(budget: number, creditScore: number) {
-        this.budget = budget;
-        this.creditScore = creditScore;
-    }
+  /**
+   * Constructs a new CarBuyer with the specified
+   * budget and credit score.
+   * @param creditScore
+   * @param budget
+   */
+  constructor(budget: number, creditScore: number) {
+    this.budget = budget;
+    this.creditScore = creditScore;
+  }
 
-    static from(json: CarBuyerObject) {
-        return(new CarBuyer(json.budget, json.creditScore))
-    }
+  static from(json: CarBuyerObject) {
+    return new CarBuyer(json.budget, json.creditScore);
+  }
 }
 
 export type CarBuyerObject = {
-    creditScore: number;
-    budget: number;
-
-}
-
+  creditScore: number;
+  budget: number;
+};
