@@ -5,7 +5,7 @@ import { AddOn } from "./AddOn";
  * viewed and configured in the user interface.
  */
 export class Car {
-  price: number | null;
+  price: number;
   make: string;
   year: number;
   model: string;
@@ -25,14 +25,14 @@ export class Car {
     make: string,
     year: number,
     model: string,
-    price?: number,
-    addOns?: Map<string, AddOn>
+    price: number,
+    addOns: Map<string, AddOn>
   ) {
     this.make = make;
-    this.price = price !== undefined ? price : null;
+    this.price = price;
     this.year = year;
     this.model = model;
-    this.addOns = addOns !== undefined ? addOns : new Map();
+    this.addOns = addOns;
   }
 
   static from(json: CarJSON) {
@@ -41,7 +41,7 @@ export class Car {
 }
 
 export type CarJSON = {
-  price: number | undefined;
+  price: number;
   make: string;
   year: number;
   model: string;

@@ -5,8 +5,8 @@
 
 export class AddOn {
   name: string;
-  price: number | null;
-  description: string | null;
+  price: number;
+  description: string;
 
   /**
    * Constructs a new AddOn objects with the given name, price,
@@ -15,10 +15,10 @@ export class AddOn {
    * @param price
    * @param description
    */
-  constructor(name: string, price?: number, description?: string | undefined) {
+  constructor(name: string, price: number, description: string) {
     console.log(price);
     this.name = name;
-    this.price = price !== undefined ? price : null;
-    this.description = description !== undefined ? description : null;
+    this.price = price;
+    this.description = description;
   }
 }
