@@ -1,13 +1,13 @@
 import { useState} from "react";
 
 const UserForm = () => {
-    const [creditScore, setCreditScore] = useState(undefined);
-    const [pytBudget, setpytBudget] = useState(undefined);
+    const [creditScore, setCreditScore] = useState(NaN);
+    const [pytBudget, setpytBudget] = useState(NaN);
     const [vehicleMake, setvehicleMake] = useState('');
     const [vehicleModel, setvehicleModel] = useState('');
-    const [vehicleYear, setvehicleYear] = useState(undefined);
+    const [vehicleYear, setvehicleYear] = useState(NaN);
     const [vehicleKms, setvehicleKms] = useState('');
-    const [vehiclePrice, setvehiclePrice] = useState(undefined);
+    const [vehiclePrice, setvehiclePrice] = useState(NaN);
 
     const handleSubmit = (event) => {
         event.preventDefault();
