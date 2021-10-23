@@ -1,15 +1,15 @@
 import { useState } from "react";
 
 const UserForm = () => {
-  const [creditScore, setCreditScore] = useState(NaN);
-  const [pytBudget, setpytBudget] = useState(NaN);
+  const [creditScore, setCreditScore] = useState(0);
+  const [pytBudget, setpytBudget] = useState(0);
   const [vehicleMake, setvehicleMake] = useState("");
   const [vehicleModel, setvehicleModel] = useState("");
-  const [vehicleYear, setvehicleYear] = useState(NaN);
-  const [vehicleKms, setvehicleKms] = useState(NaN);
-  const [vehiclePrice, setvehiclePrice] = useState(NaN);
+  const [vehicleYear, setvehicleYear] = useState(0);
+  const [vehicleKms, setvehicleKms] = useState(0);
+  const [vehiclePrice, setvehiclePrice] = useState(0);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const UserInfo = { creditScore, pytBudget };
     const CarInfo = {
@@ -17,16 +17,21 @@ const UserForm = () => {
       vehicleModel,
       vehicleYear,
       vehicleKms,
+      vehiclePrice,
     };
     const fullInfo = { "car buyer": UserInfo, car: CarInfo };
 
-    fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/loan", {
+    const res = await fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/loan", {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify(UserInfo),
-    }).then(() => {
-      console.log(UserInfo);
+      body: JSON.stringify(fullInfo),
     });
+
+    if (res.ok) {
+      console.log(await res.json());
+    } else {
+      console.error(await res.text());
+    }
   }
 
   return (
@@ -38,7 +43,6 @@ const UserForm = () => {
           type="number"
           placeholder="Credit Score"
           name="creditScore"
-          value={creditScore}
           onChange={(input) => setCreditScore(parseInt(input.target.value))}
           required
         />
@@ -49,7 +53,6 @@ const UserForm = () => {
           type="number"
           placeholder="Enter Budget"
           name="pytBudget"
-          value={pytBudget}
           onChange={(input) => setpytBudget(parseFloat(input.target.value))}
           required
         />
@@ -60,7 +63,6 @@ const UserForm = () => {
           type="text"
           placeholder="Enter Vehicle Make"
           name="vehicleMake"
-          value={vehicleMake}
           onChange={(input) => setvehicleMake(input.target.value)}
           required
         />
@@ -71,7 +73,6 @@ const UserForm = () => {
           type="text"
           placeholder="Enter Vehicle Model"
           name="vehicleModel"
-          value={vehicleModel}
           onChange={(input) => setvehicleModel(input.target.value)}
           required
         />
@@ -82,7 +83,6 @@ const UserForm = () => {
           type="number"
           placeholder="Enter Vehicle Year"
           name="vehicleYear"
-          value={vehicleYear}
           onChange={(input) => setvehicleYear(parseInt(input.target.value))}
           required
         />
@@ -93,7 +93,6 @@ const UserForm = () => {
           type="number"
           placeholder="Enter Distance Driven"
           name="vehicleKms"
-          value={vehicleKms}
           onChange={(input) => setvehicleKms(parseFloat(input.target.value))}
           required
         />
@@ -104,7 +103,6 @@ const UserForm = () => {
           type="number"
           placeholder="vehiclePrice"
           name="vehiclePrice"
-          value={vehiclePrice}
           onChange={(input) => setvehiclePrice(parseFloat(input.target.value))}
           required
         />
