@@ -10,6 +10,7 @@ import Suzuki from "./CarImages/Suzuki.png";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import UserForm from "./components/UserForm";
+import "tailwindcss/tailwind.css";
 import HelloAPI from "./components/HelloAPI";
 
 function App() {
