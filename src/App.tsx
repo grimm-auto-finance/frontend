@@ -8,6 +8,7 @@ import Car from "./CarImages/Car.png";
 import Suzuki from "./CarImages/Suzuki.png";
 
 import "./App.css";
+import "tailwindcss/tailwind.css";
 import HelloAPI from "./components/HelloAPI";
 
 function App() {
