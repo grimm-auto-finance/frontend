@@ -1,4 +1,3 @@
-import { useState } from "react";
 import logo from "./logo-new.png";
 import Honda from "./CarImages/Honda.png";
 import Mercedes from "./CarImages/Mercedes.png";
