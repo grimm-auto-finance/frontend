@@ -1,4 +1,4 @@
-name: CI with pnpm
+name: Build with pnpm
 on:
   push:
     branches: ["**"]
