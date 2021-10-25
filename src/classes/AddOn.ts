@@ -16,7 +16,6 @@ export class AddOn {
    * @param description
    */
   constructor(name: string, price: number, description: string) {
-    console.log(price);
     this.name = name;
     this.price = price;
     this.description = description;
