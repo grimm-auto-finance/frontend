@@ -7,8 +7,8 @@ import { AddOn } from "./AddOn";
 export class Car {
   price: number;
   make: string;
-  year: number;
   model: string;
+  year: number;
   addOns: Map<string, AddOn>;
 
   /**
@@ -22,10 +22,10 @@ export class Car {
    * @param addOns A mapping of addon names to AddOn objects
    */
   constructor(
-    make: string,
-    year: number,
-    model: string,
     price: number,
+    make: string,
+    model: string,
+    year: number,
     addOns: Map<string, AddOn>
   ) {
     this.make = make;
@@ -43,7 +43,7 @@ export class Car {
 export type CarJSON = {
   price: number;
   make: string;
-  year: number;
   model: string;
+  year: number;
   addOns: Map<string, AddOn>;
 };
