@@ -1,4 +1,4 @@
-import { AddOn } from "./AddOn";
+import { AddOn, AddOnJSON } from "./AddOn";
 
 /**
  * A class to represent an individual car that is being
@@ -36,7 +36,28 @@ export class Car {
   }
 
   static from(json: CarJSON) {
-    return new Car(json.make, json.year, json.model, json.price, json.addOns);
+    return new Car(
+      json.price,
+      json.make,
+      json.model,
+      json.year,
+      new Map(
+        Object.keys(json.addOns).map((k) => {
+          return [k, json.addOns[k]];
+        })
+      )
+    );
+  }
+
+  toJSON() {
+    let addOnObject: { [key: string]: AddOn } = {};
+    return {
+      ...this,
+      addOns: [...this.addOns.values()].reduce((obj, v) => {
+        obj[v.name] = v;
+        return obj;
+      }, addOnObject),
+    };
   }
 }
 
@@ -45,5 +66,5 @@ export type CarJSON = {
   make: string;
   model: string;
   year: number;
-  addOns: Map<string, AddOn>;
+  addOns: { [key: string]: AddOnJSON };
 };
