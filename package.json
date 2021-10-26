@@ -4,13 +4,17 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test": "jest",
+    "test-dev": "jest --watchAll --verbose --coverage"
   },
   "dependencies": {
+    "jest": "^27.3.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^27.0.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react": "^1.0.0",
@@ -18,6 +22,7 @@
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "tailwindcss": "^2.2.17",
+    "ts-jest": "^27.0.7",
     "typescript": "^4.3.2",
     "vite": "^2.6.4"
   }

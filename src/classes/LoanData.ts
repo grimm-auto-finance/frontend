@@ -38,7 +38,7 @@ export class LoanData {
 
   static from(json: LoanDataJSON) {
     return new LoanData(
-      json.interestSum,
+      json.interestRate,
       json.installment,
       json.sensoScore,
       json.loanAmount,
