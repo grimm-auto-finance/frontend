@@ -51,6 +51,7 @@ const UserForm = () => {
         <input
           id="Budget"
           type="number"
+          step={0.01}
           placeholder="Enter Budget"
           name="pytBudget"
           onChange={(input) => setpytBudget(parseFloat(input.target.value))}
@@ -91,6 +92,7 @@ const UserForm = () => {
         <input
           id="Distance Driven"
           type="number"
+          step={0.01}
           placeholder="Enter Distance Driven"
           name="vehicleKms"
           onChange={(input) => setvehicleKms(parseFloat(input.target.value))}
@@ -101,6 +103,7 @@ const UserForm = () => {
         <input
           id="Price"
           type="number"
+          step={0.01}
           placeholder="vehiclePrice"
           name="vehiclePrice"
           onChange={(input) => setvehiclePrice(parseFloat(input.target.value))}
