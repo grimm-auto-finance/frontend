@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Search from "./Search";
 
 const UserForm = () => {
   const [creditScore, setCreditScore] = useState(0);
@@ -36,6 +37,7 @@ const UserForm = () => {
 
   return (
     <div className="UserForm">
+      <Search />
       <form onSubmit={handleSubmit}>
         <label>Credit Score : </label>
         <input
