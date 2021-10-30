@@ -4,21 +4,21 @@ import Search from "./Search";
 const UserForm = () => {
   const [creditScore, setCreditScore] = useState(0);
   const [pytBudget, setpytBudget] = useState(0);
-  const [vehicleMake, setvehicleMake] = useState("");
-  const [vehicleModel, setvehicleModel] = useState("");
-  const [vehicleYear, setvehicleYear] = useState(0);
-  const [vehicleKms, setvehicleKms] = useState(0);
-  const [vehiclePrice, setvehiclePrice] = useState(0);
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [year, setYear] = useState(0);
+  const [kms, setKms] = useState(0);
+  const [price, setPrice] = useState(0);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const UserInfo = { creditScore, pytBudget };
     const CarInfo = {
-      vehicleMake,
-      vehicleModel,
-      vehicleYear,
-      vehicleKms,
-      vehiclePrice,
+      make,
+      model,
+      year,
+      kms,
+      price,
     };
     const fullInfo = { "car buyer": UserInfo, car: CarInfo };
 
@@ -66,7 +66,7 @@ const UserForm = () => {
           type="text"
           placeholder="Enter Vehicle Make"
           name="vehicleMake"
-          onChange={(input) => setvehicleMake(input.target.value)}
+          onChange={(input) => setMake(input.target.value)}
           required
         />
 
@@ -76,7 +76,7 @@ const UserForm = () => {
           type="text"
           placeholder="Enter Vehicle Model"
           name="vehicleModel"
-          onChange={(input) => setvehicleModel(input.target.value)}
+          onChange={(input) => setModel(input.target.value)}
           required
         />
 
@@ -86,7 +86,7 @@ const UserForm = () => {
           type="number"
           placeholder="Enter Vehicle Year"
           name="vehicleYear"
-          onChange={(input) => setvehicleYear(parseInt(input.target.value))}
+          onChange={(input) => setYear(parseInt(input.target.value))}
           required
         />
 
@@ -97,7 +97,7 @@ const UserForm = () => {
           step={0.01}
           placeholder="Enter Distance Driven"
           name="vehicleKms"
-          onChange={(input) => setvehicleKms(parseFloat(input.target.value))}
+          onChange={(input) => setKms(parseFloat(input.target.value))}
           required
         />
 
@@ -106,9 +106,9 @@ const UserForm = () => {
           id="Price"
           type="number"
           step={0.01}
-          placeholder="vehiclePrice"
+          placeholder="Price"
           name="vehiclePrice"
-          onChange={(input) => setvehiclePrice(parseFloat(input.target.value))}
+          onChange={(input) => setPrice(parseFloat(input.target.value))}
           required
         />
 
