@@ -44,6 +44,7 @@ export class Car {
       json.make,
       json.model,
       json.year,
+      json.kms,
       new Map(
         Object.keys(json.addOns).map((k) => {
           return [k, json.addOns[k]];
@@ -69,5 +70,6 @@ export type CarJSON = {
   make: string;
   model: string;
   year: number;
+  kms: number;
   addOns: { [key: string]: AddOnJSON };
 };

@@ -1,4 +1,4 @@
-import { AddOn, Car, CarBuyer, LoanData } from "../src/classes";
+import { AddOn, Car, CarBuyer, LoanData } from "../src/entities";
 
 describe("Add On", () => {
   let addOn: AddOn;
@@ -29,6 +29,7 @@ describe("Car", () => {
       "Honda",
       "Civic",
       2002,
+      0,
       new Map([[addOn.name, addOn]])
     );
   });
