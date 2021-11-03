@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Car, CarBuyer } from "../entities";
+import fetchLoanData from "../use-cases/fetchLoanData";
 import Search from "./Search";
 
 const UserForm = () => {
@@ -12,27 +14,12 @@ const UserForm = () => {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const UserInfo = { creditScore, pytBudget };
-    const CarInfo = {
-      make,
-      model,
-      year,
-      kms,
-      price,
-    };
-    const fullInfo = { "car buyer": UserInfo, car: CarInfo };
-
-    const res = await fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/loan", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(fullInfo),
-    });
-
-    if (res.ok) {
-      console.log(await res.json());
-    } else {
-      console.error(await res.text());
-    }
+    console.log(
+      fetchLoanData(
+        new CarBuyer(pytBudget, creditScore),
+        new Car(price, make, model, year, kms)
+      )
+    );
   }
 
   return (
