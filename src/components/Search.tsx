@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Car } from "../classes/Car";
+import { Car } from "../entities/Car";
 
 const Search = () => {
   const [searchResults, setSearchResults] = useState<Car[]>([]);
