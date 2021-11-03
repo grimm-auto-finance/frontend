@@ -1,22 +1,9 @@
 import { useState } from "react";
-import { Car } from "../classes/Car";
+import { Car } from "../entities/Car";
+import fetchSearchResults from "../use-cases/fetchSearchResults";
 
 const Search = () => {
   const [searchResults, setSearchResults] = useState<Car[]>([]);
-
-  async function getSearchResults(searchString: string) {
-    const res = await fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/search", {
-      method: "POST",
-      body: searchString,
-    });
-    if (res.ok) {
-      const json = await res.json();
-      // @ts-ignore
-      setSearchResults(json.map((c) => Car.from(c)));
-    } else {
-      // TODO: Handle errors here
-    }
-  }
 
   return (
     <div className="m-4 mb-8">
@@ -25,7 +12,9 @@ const Search = () => {
         id="Budget"
         type="search"
         placeholder="Search"
-        onChange={(input) => getSearchResults(input.target.value)}
+        onChange={async (input) =>
+          setSearchResults(await fetchSearchResults(input.target.value))
+        }
         required
       />
       {searchResults.map((car, i) => (

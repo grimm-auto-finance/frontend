@@ -9,6 +9,7 @@ export class Car {
   make: string;
   model: string;
   year: number;
+  kms: number;
   addOns: Map<string, AddOn>;
 
   /**
@@ -26,12 +27,14 @@ export class Car {
     make: string,
     model: string,
     year: number,
-    addOns: Map<string, AddOn>
+    kms: number,
+    addOns: Map<string, AddOn> = new Map()
   ) {
     this.make = make;
     this.price = price;
     this.year = year;
     this.model = model;
+    this.kms = kms;
     this.addOns = addOns;
   }
 
@@ -41,6 +44,7 @@ export class Car {
       json.make,
       json.model,
       json.year,
+      json.kms,
       new Map(
         Object.keys(json.addOns).map((k) => {
           return [k, json.addOns[k]];
@@ -66,5 +70,6 @@ export type CarJSON = {
   make: string;
   model: string;
   year: number;
+  kms: number;
   addOns: { [key: string]: AddOnJSON };
 };
