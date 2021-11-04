@@ -1,14 +1,15 @@
 import React from "react";
 
 import AbstractLights from "../CarImages/AbstractLights.png";
+import cars3 from "../CarImages/cars3.png";
 
 const LandingPage = () => {
     return (
-    <div class="bg-cover bg-center md:bg-contain h-auto">
-        <div class="bg-cover bg-center ">
+    <div class="h-40">
+        <div class="h-full">
              <a target="_blank" href="./CarImages/AbstractLights.png">
         <img width="100%" height="30%"
-            src={AbstractLights}
+            src={cars3}
 
         />
     </a>
