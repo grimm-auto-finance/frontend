@@ -39,7 +39,7 @@ const UserForm = () => {
       <div>
         <form onSubmit={handleSubmit}>
           <div className="flex items-center mb-5 inline-block">
-            <label class="inline-block w-auto mr-6 text-start">
+            <label className="inline-block w-auto mr-6 text-start">
               {" "}
               Credit Score:{" "}
             </label>
@@ -58,7 +58,7 @@ const UserForm = () => {
           </div>
 
           <div className="flex items-center mb-5 inline-block ">
-            <label class="inline-block w-auto mr-6 text-start"> Budget: </label>
+            <label className="inline-block w-auto mr-6 text-start"> Budget: </label>
             <div className="flex-1 py-2 border-b-2 border-red-300 text-end">
               <input
                 id="Budget"
@@ -74,7 +74,7 @@ const UserForm = () => {
           </div>
 
           <div className="flex items-center mb-5 inline-block text-right">
-            <label class="inline-block w-auto mr-6 text-start">
+            <label className="inline-block w-auto mr-6 text-start">
               {" "}
               Vehicle Make:{" "}
             </label>
@@ -92,7 +92,7 @@ const UserForm = () => {
           </div>
 
           <div className="flex items-center mb-5 inline-block">
-            <label class="inline-block w-auto mr-6 text-start">
+            <label className="inline-block w-auto mr-6 text-start">
               {" "}
               Vehicle Model:{" "}
             </label>
@@ -109,7 +109,7 @@ const UserForm = () => {
           </div>
 
           <div className="flex items-center mb-5 inline-block">
-            <label class="inline-block w-auto mr-6 text-start">
+            <label className="inline-block w-auto mr-6 text-start">
               {" "}
               Vehicle Year:{" "}
             </label>
@@ -128,7 +128,7 @@ const UserForm = () => {
           </div>
 
           <div className="flex items-center mb-5 inline-block">
-            <label class="inline-block w-auto mr-6 text-start">
+            <label className="inline-block w-auto mr-6 text-start">
               {" "}
               Vehicle Distance Driven (KMs):{" "}
             </label>
@@ -147,7 +147,7 @@ const UserForm = () => {
           </div>
 
           <div className="flex items-center mb-5 inline-block pb-8">
-            <label class="inline-block w-auto mr-6 text-start">
+            <label className="inline-block w-auto mr-6 text-start">
               Vehicle Price:{" "}
             </label>
             <div className="flex-1 py-2 border-b-2 border-red-300">
@@ -166,7 +166,7 @@ const UserForm = () => {
 
           <button
             type="submit"
-            class="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"
+            className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"
           >
             Enter
           </button>
