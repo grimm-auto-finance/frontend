@@ -1,9 +1,9 @@
-name: CI with pnpm
+name: Build and test with pnpm and Jest
 on:
   push:
     branches: ["**"]
 jobs:
-  build:
+  build_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,3 +14,5 @@ jobs:
           run_install: true
       - name: Build with pnpm
         run: pnpm run build
+      - name: Test with Jest
+        run: pnpm run test

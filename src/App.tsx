@@ -1,5 +1,4 @@
 import logo from "./logo-new.png";
-
 import "./App.css";
 import Navbar from "./components/Navbar";
 import UserForm from "./components/UserForm";
@@ -12,11 +11,11 @@ function App() {
   return (
     <div className="App">
       <div>
-          <Navbar />
+        <Navbar />
       </div>
-        <div>
-            <LandingPage />
-        </div>
+      <div>
+        <LandingPage />
+      </div>
       <div className="content">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

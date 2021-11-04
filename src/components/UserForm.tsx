@@ -1,43 +1,32 @@
 import { useState } from "react";
+import { Car, CarBuyer } from "../entities";
+import fetchLoanData from "../use-cases/fetchLoanData";
+import Search from "./Search";
 
 const UserForm = () => {
   const [creditScore, setCreditScore] = useState(0);
   const [pytBudget, setpytBudget] = useState(0);
-  const [vehicleMake, setvehicleMake] = useState("");
-  const [vehicleModel, setvehicleModel] = useState("");
-  const [vehicleYear, setvehicleYear] = useState(0);
-  const [vehicleKms, setvehicleKms] = useState(0);
-  const [vehiclePrice, setvehiclePrice] = useState(0);
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [year, setYear] = useState(0);
+  const [kms, setKms] = useState(0);
+  const [price, setPrice] = useState(0);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const UserInfo = { creditScore, pytBudget };
-    const CarInfo = {
-      vehicleMake,
-      vehicleModel,
-      vehicleYear,
-      vehicleKms,
-      vehiclePrice,
-    };
-    const fullInfo = { "car buyer": UserInfo, car: CarInfo };
-
-    const res = await fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/loan", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(fullInfo),
-    });
-
-    if (res.ok) {
-      console.log(await res.json());
-    } else {
-      console.error(await res.text());
-    }
+    console.log(
+      fetchLoanData(
+        new CarBuyer(pytBudget, creditScore),
+        new Car(price, make, model, year, kms)
+      )
+    );
   }
 
   return (
     <div className="bg-gray-100 pb-32">
       <div>
       <form onSubmit={handleSubmit}>
+      <Search />
 
         <div className="flex items-center mb-5 inline-block">
           <label class="inline-block w-auto mr-6 text-start"> Credit Score: </label>
@@ -52,7 +41,6 @@ const UserForm = () => {
         />
         </div>
         </div>
-
 
         <div className="flex items-center mb-5 inline-block ">
           <label class="inline-block w-auto mr-6 text-start"> Budget: </label>
@@ -76,7 +64,7 @@ const UserForm = () => {
                   type="text"
                   placeholder="Enter Vehicle Make"
                   name="vehicleMake"
-                  onChange={(input) => setvehicleMake(input.target.value)}
+                  onChange={(input) => setMake(input.target.value)}
                   required
               />
             </div>
@@ -90,7 +78,7 @@ const UserForm = () => {
                 type="text"
                 placeholder="Enter Vehicle Model"
                 name="vehicleModel"
-                onChange={(input) => setvehicleModel(input.target.value)}
+                onChange={(input) => setModel(input.target.value)}
                 required
             />
           </div>
@@ -104,7 +92,7 @@ const UserForm = () => {
                 type="number"
                 placeholder="Enter Vehicle Year"
                 name="vehicleYear"
-                onChange={(input) => setvehicleYear(parseInt(input.target.value))}
+                onChange={(input) => setYear(parseInt(input.target.value))}
                 required
             />
           </div>
@@ -116,9 +104,10 @@ const UserForm = () => {
             <input
                 id="Distance Driven"
                 type="number"
+                step={0.01}
                 placeholder="Enter Distance"
                 name="vehicleKms"
-                onChange={(input) => setvehicleKms(parseFloat(input.target.value))}
+                onChange={(input) => setKms(parseFloat(input.target.value))}
                 required
             />
           </div>
@@ -130,9 +119,10 @@ const UserForm = () => {
             <input
                 id="Price"
                 type="number"
+                step={0.01}
                 placeholder="vehiclePrice"
                 name="vehiclePrice"
-                onChange={(input) => setvehiclePrice(parseFloat(input.target.value))}
+                onChange={(input) => setPrice(parseFloat(input.target.value))}
                 required
             />
           </div>
