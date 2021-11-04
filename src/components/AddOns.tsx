@@ -1,6 +1,3 @@
 const x = () => {
-  return (
-      <a href="http://">
-      CONTINUE </a>
-  )
-}
+  return <a href="http://">CONTINUE </a>;
+};
