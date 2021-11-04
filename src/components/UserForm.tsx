@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Search from "./Search";
 
 const UserForm = () => {
   const [creditScore, setCreditScore] = useState(0);
@@ -38,6 +39,8 @@ const UserForm = () => {
     <div className="bg-gray-100 pb-32">
       <div>
         <form onSubmit={handleSubmit}>
+          <Search />
+          <hr className="border-b-2 border-t-0 my-16 border-red-300" />
           <div className="flex items-center mb-5 inline-block">
             <label className="inline-block w-auto mr-6 text-start">
               {" "}
@@ -58,7 +61,10 @@ const UserForm = () => {
           </div>
 
           <div className="flex items-center mb-5 inline-block ">
-            <label className="inline-block w-auto mr-6 text-start"> Budget: </label>
+            <label className="inline-block w-auto mr-6 text-start">
+              {" "}
+              Budget:{" "}
+            </label>
             <div className="flex-1 py-2 border-b-2 border-red-300 text-end">
               <input
                 id="Budget"
