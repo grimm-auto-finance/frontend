@@ -1,42 +1,32 @@
 import { useState } from "react";
+import { Car, CarBuyer } from "../entities";
+import fetchLoanData from "../use-cases/fetchLoanData";
+import Search from "./Search";
 
 const UserForm = () => {
   const [creditScore, setCreditScore] = useState(0);
   const [pytBudget, setpytBudget] = useState(0);
-  const [vehicleMake, setvehicleMake] = useState("");
-  const [vehicleModel, setvehicleModel] = useState("");
-  const [vehicleYear, setvehicleYear] = useState(0);
-  const [vehicleKms, setvehicleKms] = useState(0);
-  const [vehiclePrice, setvehiclePrice] = useState(0);
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [year, setYear] = useState(0);
+  const [kms, setKms] = useState(0);
+  const [price, setPrice] = useState(0);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const UserInfo = { creditScore, pytBudget };
-    const CarInfo = {
-      vehicleMake,
-      vehicleModel,
-      vehicleYear,
-      vehicleKms,
-      vehiclePrice,
-    };
-    const fullInfo = { "car buyer": UserInfo, car: CarInfo };
-
-    const res = await fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/loan", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(fullInfo),
-    });
-
-    if (res.ok) {
-      console.log(await res.json());
-    } else {
-      console.error(await res.text());
-    }
+    console.log(
+      fetchLoanData(
+        new CarBuyer(pytBudget, creditScore),
+        new Car(price, make, model, year, kms)
+      )
+    );
   }
 
   return (
     <div className="bg-gray-100 pb-32">
       <div>
+    <div className="UserForm">
+      <Search />
       <form onSubmit={handleSubmit}>
 
         <div className="flex items-center mb-5 inline-block">
@@ -49,10 +39,24 @@ const UserForm = () => {
                 name="creditScore"
                 onChange={(input) => setCreditScore(parseInt(input.target.value))}
                 required
-        />
+               />
         </div>
         </div>
 
+        <div className="flex items-center mb-5 inline-block ">
+          <label class="inline-block w-auto mr-6 text-start"> Budget: </label>
+          <div className="flex-1 py-2 border-b-2 border-red-300 text-end">
+             <input
+               id="Budget"
+               type="number"
+          step={0.01}
+          placeholder="Enter Budget"
+          name="pytBudget"
+          onChange={(input) => setpytBudget(parseFloat(input.target.value))}
+          required
+        />
+        </div>
+        </div>
 
         <div className="flex items-center mb-5 inline-block ">
           <label class="inline-block w-auto mr-6 text-start"> Budget: </label>
