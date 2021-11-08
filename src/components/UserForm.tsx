@@ -17,7 +17,7 @@ const UserForm = () => {
     console.log(
       fetchLoanData(
         new CarBuyer(pytBudget, creditScore),
-        new Car(kilometres,price, make, model, year)
+        new Car(kilometres, price, make, model, year)
       )
     );
   }

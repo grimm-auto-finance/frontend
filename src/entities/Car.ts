@@ -23,7 +23,7 @@ export class Car {
    * @param addOns A mapping of addon names to AddOn objects
    */
   constructor(
-      kilometres: number,
+    kilometres: number,
     price: number,
     make: string,
     model: string,
