@@ -5,11 +5,11 @@ import { AddOn, AddOnJSON } from "./AddOn";
  * viewed and configured in the user interface.
  */
 export class Car {
+  kilometres: number;
   price: number;
   make: string;
   model: string;
   year: number;
-  kms: number;
   addOns: Map<string, AddOn>;
 
   /**
@@ -23,28 +23,28 @@ export class Car {
    * @param addOns A mapping of addon names to AddOn objects
    */
   constructor(
+      kilometres: number,
     price: number,
     make: string,
     model: string,
     year: number,
-    kms: number,
     addOns: Map<string, AddOn> = new Map()
   ) {
+    this.kilometres = kilometres;
     this.make = make;
     this.price = price;
     this.year = year;
     this.model = model;
-    this.kms = kms;
     this.addOns = addOns;
   }
 
   static from(json: CarJSON) {
     return new Car(
+      json.kilometres,
       json.price,
       json.make,
       json.model,
       json.year,
-      json.kms,
       new Map(
         Object.keys(json.addOns).map((k) => {
           return [k, json.addOns[k]];
@@ -66,10 +66,10 @@ export class Car {
 }
 
 export type CarJSON = {
+  kilometres: number;
   price: number;
   make: string;
   model: string;
   year: number;
-  kms: number;
   addOns: { [key: string]: AddOnJSON };
 };

@@ -9,7 +9,7 @@ const UserForm = () => {
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState(0);
-  const [kms, setKms] = useState(0);
+  const [kilometres, setKms] = useState(0);
   const [price, setPrice] = useState(0);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -17,7 +17,7 @@ const UserForm = () => {
     console.log(
       fetchLoanData(
         new CarBuyer(pytBudget, creditScore),
-        new Car(price, make, model, year, kms)
+        new Car(kilometres,price, make, model, year)
       )
     );
   }
