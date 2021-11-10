@@ -9,7 +9,7 @@ const UserForm = () => {
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState(0);
-  const [kilometres, setKms] = useState(0);
+  const [kilometres, setKilometres] = useState(0);
   const [price, setPrice] = useState(0);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -130,7 +130,9 @@ const UserForm = () => {
                 step={0.01}
                 placeholder="Enter Distance"
                 name="vehicleKms"
-                onChange={(input) => setKms(parseFloat(input.target.value))}
+                onChange={(input) =>
+                  setKilometres(parseFloat(input.target.value))
+                }
                 required
               />
             </div>
