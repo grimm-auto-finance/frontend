@@ -25,16 +25,17 @@ describe("Car", () => {
 
   beforeEach(() => {
     car = new Car(
+      50000,
       10000,
       "Honda",
       "Civic",
       2002,
-      0,
       new Map([[addOn.name, addOn]])
     );
   });
 
   it("can be created from the constructor", () => {
+    expect(car.kilometres).toBe(50000);
     expect(car.price).toBe(10000);
     expect(car.make).toBe("Honda");
     expect(car.model).toBe("Civic");
