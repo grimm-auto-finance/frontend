@@ -9,6 +9,7 @@
     "test-dev": "jest --watchAll --verbose --coverage"
   },
   "dependencies": {
+    "@mdi/js": "^6.4.95",
     "jest": "^27.3.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
@@ -18,7 +19,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react": "^1.0.0",
-    "autoprefixer": "^10.3.7",
+    "autoprefixer": "10.3.7",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "tailwindcss": "^2.2.17",
