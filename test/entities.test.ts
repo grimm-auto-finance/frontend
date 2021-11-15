@@ -23,7 +23,7 @@ describe("Car", () => {
   let car: Car;
   const addOn = new AddOn("Marshmallows", 5.59, "Very Tasty");
 
-  beforeEach(() => {
+  it("can be created from the constructor", () => {
     car = new Car(
       50000,
       10000,
@@ -32,9 +32,7 @@ describe("Car", () => {
       2002,
       new Map([[addOn.name, addOn]])
     );
-  });
 
-  it("can be created from the constructor", () => {
     expect(car.kilometres).toBe(50000);
     expect(car.price).toBe(10000);
     expect(car.make).toBe("Honda");
@@ -43,7 +41,27 @@ describe("Car", () => {
     expect(car.addOns).toStrictEqual(new Map([[addOn.name, addOn]]));
   });
 
+  it("can be created from the constructor without add-ons", () => {
+    car = new Car(50000, 10000, "Honda", "Civic", 2002);
+
+    expect(car.kilometres).toBe(50000);
+    expect(car.price).toBe(10000);
+    expect(car.make).toBe("Honda");
+    expect(car.model).toBe("Civic");
+    expect(car.year).toBe(2002);
+    expect(car.addOns).toStrictEqual(new Map());
+  });
+
   it("can be created from and stringified to JSON", () => {
+    car = new Car(
+      50000,
+      10000,
+      "Honda",
+      "Civic",
+      2002,
+      new Map([[addOn.name, addOn]])
+    );
+
     const jsonCar = JSON.stringify(car);
     expect(Car.from(JSON.parse(jsonCar))).toStrictEqual(car);
   });
