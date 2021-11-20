@@ -71,12 +71,13 @@ describe("Car Buyer", () => {
   let carBuyer: CarBuyer;
 
   beforeEach(() => {
-    carBuyer = new CarBuyer(10000, 600);
+    carBuyer = new CarBuyer(10000, 600, 3000);
   });
 
   it("can be created from the constructor", () => {
     expect(carBuyer.budget).toBe(10000);
     expect(carBuyer.creditScore).toBe(600);
+    expect(carBuyer.downpayment).toBe(3000);
   });
 
   it("can be created from and stringified to JSON", () => {
