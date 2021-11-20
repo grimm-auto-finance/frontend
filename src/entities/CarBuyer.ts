@@ -7,24 +7,28 @@
 export class CarBuyer {
   creditScore: number;
   budget: number;
+  downpayment: number;
 
   /**
    * Constructs a new CarBuyer with the specified
    * budget and credit score.
-   * @param creditScore
-   * @param budget
+   * @param creditScore The credit score of the buyer
+   * @param budget The budget of the buyer
+   * @param downpayment The down payment amount of the buyer
    */
-  constructor(budget: number, creditScore: number) {
+  constructor(budget: number, creditScore: number, downpayment: number) {
     this.budget = budget;
     this.creditScore = creditScore;
+    this.downpayment = downpayment;
   }
 
   static from(json: CarBuyerJSON) {
-    return new CarBuyer(json.budget, json.creditScore);
+    return new CarBuyer(json.budget, json.creditScore, json.downpayment);
   }
 }
 
 export type CarBuyerJSON = {
   creditScore: number;
   budget: number;
+  downpayment: number;
 };
