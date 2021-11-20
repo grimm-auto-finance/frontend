@@ -11,7 +11,7 @@ const UserForm = () => {
   const [year, setYear] = useState(0);
   const [kilometres, setKilometres] = useState(0);
   const [price, setPrice] = useState(0);
-  const [downpayment, setDownPayment] = useState(0);
+  const [downpayment, setDownpayment] = useState(0);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -168,7 +168,7 @@ const UserForm = () => {
                 placeholder="Down Payment"
                 name="downpayment"
                 onChange={(input) =>
-                  setDownPayment(parseFloat(input.target.value))
+                  setDownpayment(parseFloat(input.target.value))
                 }
                 required
               />
