@@ -79,7 +79,7 @@ const UserForm = () => {
                 placeholder="Down Payment"
                 name="downpayment"
                 onChange={(input) =>
-                  setDownPayment(parseFloat(input.target.value))
+                  setDownpayment(parseFloat(input.target.value))
                 }
                 required
               />
