@@ -1,4 +1,5 @@
 import { Car } from "../entities";
+import { CarJSON } from "../entities/Car";
 
 export default async (searchString: string): Promise<Car[]> => {
   const res = await fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/search", {
@@ -7,8 +8,7 @@ export default async (searchString: string): Promise<Car[]> => {
   });
   if (res.ok) {
     const json = await res.json();
-    // @ts-ignore
-    return json.map((c) => Car.from(c));
+    return json.map((c: { car: CarJSON }) => Car.from(c.car));
   } else {
     throw new Error();
   }

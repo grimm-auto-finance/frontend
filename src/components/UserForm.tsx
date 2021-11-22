@@ -67,6 +67,25 @@ const UserForm = () => {
             </div>
           </div>
 
+          <div className="flex items-center mb-5 pb-8">
+            <label className="inline-block w-auto mr-6 text-start">
+              Down Payment:{" "}
+            </label>
+            <div className="flex-1 py-2 border-b-2 border-red-300">
+              <input
+                id="downpayment"
+                type="number"
+                step={0.01}
+                placeholder="Down Payment"
+                name="downpayment"
+                onChange={(input) =>
+                  setDownPayment(parseFloat(input.target.value))
+                }
+                required
+              />
+            </div>
+          </div>
+
           <div className="flex items-center mb-5 text-right">
             <label className="inline-block w-auto mr-6 text-start">
               {" "}
@@ -151,25 +170,6 @@ const UserForm = () => {
                 placeholder="vehiclePrice"
                 name="vehiclePrice"
                 onChange={(input) => setPrice(parseFloat(input.target.value))}
-                required
-              />
-            </div>
-          </div>
-
-          <div className="flex items-center mb-5 pb-8">
-            <label className="inline-block w-auto mr-6 text-start">
-              Down Payment:{" "}
-            </label>
-            <div className="flex-1 py-2 border-b-2 border-red-300">
-              <input
-                id="downpayment"
-                type="number"
-                step={0.01}
-                placeholder="Down Payment"
-                name="downpayment"
-                onChange={(input) =>
-                  setDownPayment(parseFloat(input.target.value))
-                }
                 required
               />
             </div>
