@@ -2,7 +2,7 @@ import { useState }  from "react";
 import React, { Component } from 'react';
 import { Car } from "../entities/Car";
 import fetchSearchResults from "../use-cases/fetchSearchResults";
-import AutoFill from "./AutoFill";
+// import AutoFill from "./AutoFill";
 
 class Search extends Component  {
   render() {
@@ -20,7 +20,7 @@ class Search extends Component  {
           }
           required
         />
-        <AutoFill searchResults={searchResults} />
+        {/* <AutoFill searchResults={searchResults} /> */}
       </div>
       );
     };
