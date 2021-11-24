@@ -26,14 +26,13 @@ export class Car {
    * @param addOns A mapping of addon names to AddOn objects
    */
   constructor(
-      kilometres: number,
-      price: number,
-      make: string,
-      model: string,
-      year: number,
-      id: number,
-      addOns: Map<string, AddOn> = new Map()
-
+    kilometres: number,
+    price: number,
+    make: string,
+    model: string,
+    year: number,
+    id: number,
+    addOns: Map<string, AddOn> = new Map()
   ) {
     this.kilometres = kilometres;
     this.make = make;
@@ -46,17 +45,17 @@ export class Car {
 
   static from(json: CarJSON) {
     return new Car(
-        json.kilometres,
-        json.price,
-        json.make,
-        json.model,
-        json.year,
-        json.id,
-        new Map(
-            Object.keys(json.addOns).map((k) => {
-              return [k, json.addOns[k]];
-            })
-        )
+      json.kilometres,
+      json.price,
+      json.make,
+      json.model,
+      json.year,
+      json.id,
+      new Map(
+        Object.keys(json.addOns).map((k) => {
+          return [k, json.addOns[k]];
+        })
+      )
     );
   }
 

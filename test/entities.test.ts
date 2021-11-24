@@ -31,7 +31,7 @@ describe("Car", () => {
       "Civic",
       2002,
       5,
-      new Map([[addOn.name, addOn]]),
+      new Map([[addOn.name, addOn]])
     );
 
     expect(car.kilometres).toBe(50000);
