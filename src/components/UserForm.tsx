@@ -11,6 +11,8 @@ const UserForm = () => {
   const [year, setYear] = useState(0);
   const [kilometres, setKilometres] = useState(0);
   const [price, setPrice] = useState(0);
+  // TODO: Change ID not to be hardcoded or even used here
+  const id = 5;
   const [downpayment, setDownpayment] = useState(0);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -18,7 +20,8 @@ const UserForm = () => {
     console.log(
       fetchLoanData(
         new CarBuyer(pytBudget, creditScore, downpayment),
-        new Car(kilometres, price, make, model, year)
+        // id is hardcoded for now
+        new Car(kilometres, price, make, model, year, id)
       )
     );
   }

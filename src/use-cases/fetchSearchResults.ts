@@ -8,7 +8,7 @@ export default async (searchString: string): Promise<Car[]> => {
   });
   if (res.ok) {
     const json = await res.json();
-    return json.map((c: { car: CarJSON }) => Car.from(c.car));
+    return json.map((c: CarJSON) => Car.from(c));
   } else {
     throw new Error();
   }
