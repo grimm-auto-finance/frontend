@@ -69,6 +69,13 @@ describe("Car", () => {
     const jsonCar = JSON.stringify(car);
     expect(Car.from(JSON.parse(jsonCar))).toStrictEqual(car);
   });
+
+  it("can be created from and stringified to JSON without add-ons", () => {
+    car = new Car(50000, 10000, "Honda", "Civic", 2002, 5);
+
+    const jsonCar = JSON.stringify(car);
+    expect(Car.from(JSON.parse(jsonCar))).toStrictEqual(car);
+  });
 });
 
 describe("Car Buyer", () => {

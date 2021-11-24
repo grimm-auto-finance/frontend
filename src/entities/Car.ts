@@ -51,11 +51,13 @@ export class Car {
       json.model,
       json.year,
       json.id,
-      new Map(
-        Object.keys(json.addOns).map((k) => {
-          return [k, json.addOns[k]];
-        })
-      )
+      json.addOns
+        ? new Map(
+            Object.keys(json.addOns).map((k) => {
+              return [k, json.addOns[k]];
+            })
+          )
+        : undefined
     );
   }
 
