@@ -30,6 +30,7 @@ describe("Car", () => {
       "Honda",
       "Civic",
       2002,
+      5,
       new Map([[addOn.name, addOn]])
     );
 
@@ -39,16 +40,18 @@ describe("Car", () => {
     expect(car.model).toBe("Civic");
     expect(car.year).toBe(2002);
     expect(car.addOns).toStrictEqual(new Map([[addOn.name, addOn]]));
+    expect(car.id).toBe(5);
   });
 
   it("can be created from the constructor without add-ons", () => {
-    car = new Car(50000, 10000, "Honda", "Civic", 2002);
+    car = new Car(50000, 10000, "Honda", "Civic", 2002, 5);
 
     expect(car.kilometres).toBe(50000);
     expect(car.price).toBe(10000);
     expect(car.make).toBe("Honda");
     expect(car.model).toBe("Civic");
     expect(car.year).toBe(2002);
+    expect(car.id).toBe(5);
     expect(car.addOns).toStrictEqual(new Map());
   });
 
@@ -59,8 +62,16 @@ describe("Car", () => {
       "Honda",
       "Civic",
       2002,
+      5,
       new Map([[addOn.name, addOn]])
     );
+
+    const jsonCar = JSON.stringify(car);
+    expect(Car.from(JSON.parse(jsonCar))).toStrictEqual(car);
+  });
+
+  it("can be created from and stringified to JSON without add-ons", () => {
+    car = new Car(50000, 10000, "Honda", "Civic", 2002, 5);
 
     const jsonCar = JSON.stringify(car);
     expect(Car.from(JSON.parse(jsonCar))).toStrictEqual(car);

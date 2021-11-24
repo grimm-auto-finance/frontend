@@ -19,7 +19,9 @@ const Search = () => {
       />
       {searchResults.map((car, i) => (
         <div className="bg-white m-4 border-2 rounded-md" key={i}>
-          {car.year} {car.make} {car.model}
+          {"$"}
+          {car.price} {"-"} {car.year} {car.make} {car.model} {car.kilometres}{" "}
+          {"kms"}
         </div>
       ))}
     </div>
