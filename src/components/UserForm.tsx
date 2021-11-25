@@ -11,9 +11,13 @@ interface Props {
   kilometres: number;
 }
 
-interface IUserFormState {}
-
-const UserForm: React.FC<Props> = ({ make, model, year, price, kilometres }) => {
+const UserForm: React.FC<Props> = ({
+  make,
+  model,
+  year,
+  price,
+  kilometres,
+}) => {
   const [creditScore, setCreditScore] = useState(0);
   const [pytBudget, setpytBudget] = useState(0);
   // TODO: Change ID not to be hardcoded or even used here
@@ -116,8 +120,8 @@ const UserForm: React.FC<Props> = ({ make, model, year, price, kilometres }) => 
           <div className="flex-1 py-2 border-b-2 border-red-300">
             <input
               id="Make"
-              text-right
               type="text"
+              value={make}
               placeholder="Enter Vehicle Make"
               name="vehicleMake"
               onChange={(input) => setMake(input.target.value)}

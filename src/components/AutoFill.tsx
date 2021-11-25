@@ -48,7 +48,13 @@ const AutoFill: React.FC<Props> = ({ searchResults }) => {
           </button>
         </div>
       ))}
-      <UserForm make={make} model={model} year={year}  price={price} kilometres={kilometres}/>
+      <UserForm
+        make={make}
+        model={model}
+        year={year}
+        price={price}
+        kilometres={kilometres}
+      />
     </div>
   );
 };
