@@ -11,12 +11,16 @@ interface Props {
 const AutoFill: React.FC<Props> = ({ searchResults }) => {
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
-  const [year, setYear] = useState("");
+  const [year, setYear] = useState(0);
+  const [kilometres, setKilometres] = useState(0);
+  const [price, setPrice] = useState(0);
 
   async function autoFill(carry: Car) {
     setMake(carry.make);
     setModel(carry.model);
-    setYear(String(carry.year));
+    setYear(carry.year);
+    setKilometres(carry.kilometres);
+    setPrice(carry.price);
   }
   return (
     <div>
@@ -44,7 +48,7 @@ const AutoFill: React.FC<Props> = ({ searchResults }) => {
           </button>
         </div>
       ))}
-      <UserForm make={make} model={model} year={year} />
+      <UserForm make={make} model={model} year={year}  price={price} kilometres={kilometres}/>
     </div>
   );
 };

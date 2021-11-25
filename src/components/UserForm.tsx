@@ -6,16 +6,16 @@ import fetchLoanData from "../use-cases/fetchLoanData";
 interface Props {
   make: string;
   model: string;
-  year: string;
+  year: number;
+  price: number;
+  kilometres: number;
 }
 
 interface IUserFormState {}
 
-const UserForm: React.FC<Props> = ({ make, model, year }) => {
+const UserForm: React.FC<Props> = ({ make, model, year, price, kilometres }) => {
   const [creditScore, setCreditScore] = useState(0);
   const [pytBudget, setpytBudget] = useState(0);
-  const [kilometres, setKilometres] = useState(0);
-  const [price, setPrice] = useState(0);
   // TODO: Change ID not to be hardcoded or even used here
   const id = 5;
   const [downpayment, setDownpayment] = useState(0);
@@ -26,7 +26,7 @@ const UserForm: React.FC<Props> = ({ make, model, year }) => {
       fetchLoanData(
         new CarBuyer(pytBudget, creditScore, downpayment),
         // id is hardcoded for now
-        new Car(kilometres, price, make, model, parseInt(year), id)
+        new Car(kilometres, price, make, model, year, id)
       )
     );
   }
@@ -39,8 +39,16 @@ const UserForm: React.FC<Props> = ({ make, model, year }) => {
     model = s;
   }
 
-  async function setYear(s: string) {
+  async function setYear(s: number) {
     year = s;
+  }
+
+  async function setKilometres(s: number) {
+    kilometres = s;
+  }
+
+  async function setPrice(s: number) {
+    price = s;
   }
 
   return (
@@ -148,7 +156,7 @@ const UserForm: React.FC<Props> = ({ make, model, year }) => {
               value={year}
               placeholder="Enter Vehicle Year"
               name="vehicleYear"
-              onChange={(input) => setYear(input.target.value)}
+              onChange={(input) => setYear(parseInt(input.target.value))}
               required
             />
           </div>
@@ -163,6 +171,7 @@ const UserForm: React.FC<Props> = ({ make, model, year }) => {
             <input
               id="Distance Driven"
               type="number"
+              value={kilometres}
               step={0.01}
               placeholder="Enter Distance"
               name="vehicleKms"
@@ -183,6 +192,7 @@ const UserForm: React.FC<Props> = ({ make, model, year }) => {
               id="Price"
               type="number"
               step={0.01}
+              value={price}
               placeholder="vehiclePrice"
               name="vehiclePrice"
               onChange={(input) => setPrice(parseFloat(input.target.value))}
