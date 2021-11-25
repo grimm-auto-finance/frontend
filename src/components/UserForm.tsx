@@ -27,7 +27,6 @@ const UserForm: React.FC<Props> = ({ make, model, year }) => {
         new CarBuyer(pytBudget, creditScore, downpayment),
         // id is hardcoded for now
         new Car(kilometres, price, make, model, parseInt(year), id)
-
       )
     );
   }
@@ -81,43 +80,41 @@ const UserForm: React.FC<Props> = ({ make, model, year }) => {
             />
           </div>
         </div>
- 
-          <div className="flex items-center mb-5 pb-8">
-            <label className="inline-block w-auto mr-6 text-start">
-              Down Payment:{" "}
-            </label>
-            <div className="flex-1 py-2 border-b-2 border-red-300">
-              <input
-                id="downpayment"
-                type="number"
-                step={0.01}
-                placeholder="Down Payment"
-                name="downpayment"
-                onChange={(input) =>
-                  setDownpayment(parseFloat(input.target.value))
-                }
-                required
-              />
-            </div>
+
+        <div className="flex items-center mb-5 pb-8">
+          <label className="inline-block w-auto mr-6 text-start">
+            Down Payment:{" "}
+          </label>
+          <div className="flex-1 py-2 border-b-2 border-red-300">
+            <input
+              id="downpayment"
+              type="number"
+              step={0.01}
+              placeholder="Down Payment"
+              name="downpayment"
+              onChange={(input) =>
+                setDownpayment(parseFloat(input.target.value))
+              }
+              required
+            />
           </div>
+        </div>
 
-          <div className="flex items-center mb-5 text-right">
-            <label className="inline-block w-auto mr-6 text-start">
-              {" "}
-              Vehicle Make:{" "}
-            </label>
-            <div className="flex-1 py-2 border-b-2 border-red-300">
-              <input
-                id="Make"
-                text-right
-                type="text"
-                placeholder="Enter Vehicle Make"
-                name="vehicleMake"
-                onChange={(input) => setMake(input.target.value)}
-                required
-              />
-            </div>
-
+        <div className="flex items-center mb-5 text-right">
+          <label className="inline-block w-auto mr-6 text-start">
+            {" "}
+            Vehicle Make:{" "}
+          </label>
+          <div className="flex-1 py-2 border-b-2 border-red-300">
+            <input
+              id="Make"
+              text-right
+              type="text"
+              placeholder="Enter Vehicle Make"
+              name="vehicleMake"
+              onChange={(input) => setMake(input.target.value)}
+              required
+            />
           </div>
         </div>
 
@@ -193,16 +190,14 @@ const UserForm: React.FC<Props> = ({ make, model, year }) => {
             />
           </div>
         </div>
-          
-          <button
-            type="submit"
-            className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"
-          >
-            Enter
-          </button>
-        </form>
-      </div>
 
+        <button
+          type="submit"
+          className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"
+        >
+          Enter
+        </button>
+      </form>
     </div>
   );
 };

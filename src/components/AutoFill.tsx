@@ -38,9 +38,9 @@ const AutoFill: React.FC<Props> = ({ searchResults }) => {
               }
             }}
           >
-          {"$"}
-          {car.price} {"-"} {car.year} {car.make} {car.model} {car.kilometres}{" "}
-          {"kms"}
+            {"$"}
+            {car.price} {"-"} {car.year} {car.make} {car.model} {car.kilometres}{" "}
+            {"kms"}
           </button>
         </div>
       ))}

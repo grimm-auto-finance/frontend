@@ -8,7 +8,6 @@ const Search = () => {
   const [searchResults, setSearchResults] = useState<Car[]>([]);
 
   return (
-
     <div className="bg-gray-100 pb-32">
       <div className="m-4 mb-8">
         <input
