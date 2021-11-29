@@ -2,6 +2,7 @@ import { useState } from "react";
 import React, { Component } from "react";
 import { Car, CarBuyer } from "../entities";
 import fetchLoanData from "../use-cases/fetchLoanData";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 interface Props {
   car_: Car | undefined;
@@ -30,6 +31,7 @@ const UserForm: React.FC<Props> = ({
   }
 
   return (
+    <Router>
     <div>
       <form onSubmit={handleSubmit}>
         <div className="m-4 mb-8"></div>
@@ -89,10 +91,12 @@ const UserForm: React.FC<Props> = ({
           type="submit"
           className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"
         >
-          Enter
+          <Link to="/Dashboard">Enter</Link>
         </button>
       </form>
+      <Route exact path="/Dashboard" component={Dashboard} />
     </div>
+    </Router>
   );
 };
 
