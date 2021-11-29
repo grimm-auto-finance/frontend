@@ -4,19 +4,11 @@ import { Car, CarBuyer } from "../entities";
 import fetchLoanData from "../use-cases/fetchLoanData";
 
 interface Props {
-  make: string;
-  model: string;
-  year: number;
-  price: number;
-  kilometres: number;
+  car_: Car | undefined;
 }
 
 const UserForm: React.FC<Props> = ({
-  make,
-  model,
-  year,
-  price,
-  kilometres,
+  car_
 }) => {
   const [creditScore, setCreditScore] = useState(0);
   const [pytBudget, setpytBudget] = useState(0);
@@ -26,33 +18,15 @@ const UserForm: React.FC<Props> = ({
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(
-      fetchLoanData(
-        new CarBuyer(pytBudget, creditScore, downpayment),
-        // id is hardcoded for now
-        new Car(kilometres, price, make, model, year, id)
-      )
-    );
-  }
-
-  async function setMake(s: string) {
-    make = s;
-  }
-
-  async function setModel(s: string) {
-    model = s;
-  }
-
-  async function setYear(s: number) {
-    year = s;
-  }
-
-  async function setKilometres(s: number) {
-    kilometres = s;
-  }
-
-  async function setPrice(s: number) {
-    price = s;
+    if (typeof car_ !== 'undefined') {
+      console.log(
+        fetchLoanData(
+          new CarBuyer(pytBudget, creditScore, downpayment),
+          // id is hardcoded for now
+          car_
+        )
+      );
+    }
   }
 
   return (
@@ -111,100 +85,6 @@ const UserForm: React.FC<Props> = ({
             />
           </div>
         </div>
-
-        <div className="flex items-center mb-5 text-right">
-          <label className="inline-block w-auto mr-6 text-start">
-            {" "}
-            Vehicle Make:{" "}
-          </label>
-          <div className="flex-1 py-2 border-b-2 border-red-300">
-            <input
-              id="Make"
-              type="text"
-              value={make}
-              placeholder="Enter Vehicle Make"
-              name="vehicleMake"
-              onChange={(input) => setMake(input.target.value)}
-              required
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center mb-5">
-          <label className="inline-block w-auto mr-6 text-start">
-            {" "}
-            Vehicle Model:{" "}
-          </label>
-          <div className="flex-1 py-2 border-b-2 border-red-300">
-            <input
-              id="Model"
-              type="text"
-              value={model}
-              placeholder="Enter Vehicle Model"
-              name="vehicleModel"
-              onChange={(input) => setModel(input.target.value)}
-              required
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center mb-5">
-          <label className="inline-block w-auto mr-6 text-start">
-            {" "}
-            Vehicle Year:{" "}
-          </label>
-          <div className="flex-1 py-2 border-b-2 border-red-300">
-            <input
-              id="Year"
-              type="number"
-              value={year}
-              placeholder="Enter Vehicle Year"
-              name="vehicleYear"
-              onChange={(input) => setYear(parseInt(input.target.value))}
-              required
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center mb-5">
-          <label className="inline-block w-auto mr-6 text-start">
-            {" "}
-            Vehicle Distance Driven (KMs):{" "}
-          </label>
-          <div className="flex-1 py-2 border-b-2 border-red-300">
-            <input
-              id="Distance Driven"
-              type="number"
-              value={kilometres}
-              step={0.01}
-              placeholder="Enter Distance"
-              name="vehicleKms"
-              onChange={(input) =>
-                setKilometres(parseFloat(input.target.value))
-              }
-              required
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center mb-5 pb-8">
-          <label className="inline-block w-auto mr-6 text-start">
-            Vehicle Price:{" "}
-          </label>
-          <div className="flex-1 py-2 border-b-2 border-red-300">
-            <input
-              id="Price"
-              type="number"
-              step={0.01}
-              value={price}
-              placeholder="vehiclePrice"
-              name="vehiclePrice"
-              onChange={(input) => setPrice(parseFloat(input.target.value))}
-              required
-            />
-          </div>
-        </div>
-
         <button
           type="submit"
           className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"

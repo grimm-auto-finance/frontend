@@ -9,19 +9,8 @@ interface Props {
 }
 
 const AutoFill: React.FC<Props> = ({ searchResults }) => {
-  const [make, setMake] = useState("");
-  const [model, setModel] = useState("");
-  const [year, setYear] = useState(0);
-  const [kilometres, setKilometres] = useState(0);
-  const [price, setPrice] = useState(0);
+  const [car_, setCar] = useState<Car>();
 
-  async function autoFill(carry: Car) {
-    setMake(carry.make);
-    setModel(carry.model);
-    setYear(carry.year);
-    setKilometres(carry.kilometres);
-    setPrice(carry.price);
-  }
   return (
     <div>
       {searchResults.map((car, i) => (
@@ -38,7 +27,7 @@ const AutoFill: React.FC<Props> = ({ searchResults }) => {
                   String(car.year)
               );
               if (confirmBox === true) {
-                autoFill(car);
+                setCar(car);
               }
             }}
           >
@@ -49,11 +38,7 @@ const AutoFill: React.FC<Props> = ({ searchResults }) => {
         </div>
       ))}
       <UserForm
-        make={make}
-        model={model}
-        year={year}
-        price={price}
-        kilometres={kilometres}
+        car_={car_}
       />
     </div>
   );
