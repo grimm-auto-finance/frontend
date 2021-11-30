@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import fetchSearchResults from "../use-cases/fetchSearchResults";
 import { Car, CarBuyer } from "../entities";
 import fetchLoanData from "../use-cases/fetchLoanData";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Search = () => {
   const [searchResults, setSearchResults] = useState<Car[]>([]);
@@ -122,7 +123,7 @@ const Search = () => {
         <button
           type="submit"
           className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"
-        >
+        ><Link to="/">Enter</Link>
         </button>
       </form>
     </div>

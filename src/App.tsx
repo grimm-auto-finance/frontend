@@ -1,29 +1,16 @@
-import logo from "./logo-new.png";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import LandingPage from "./components/LandingPage";
-import Footer from "./components/Footer";
-import Gallery from "./components/Gallery";
-import Search from "./components/Search";
 import "tailwindcss/tailwind.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Autofill from "./scenes/autofill"
 
 function App() {
   return (
-    <div className="App">
+    <Router>
       <div>
-        <Navbar />
+          <Route exact path="/" component={Autofill} />
+          <Route path="/dashboard" component={DashBoard} />
       </div>
-      <div>
-        <LandingPage />
-      </div>
-      <div className="content">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Search />
-        </header>
-        <Footer />
-      </div>
-    </div>
+    </Router>
   );
 }
 export default App;
