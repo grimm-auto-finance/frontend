@@ -85,6 +85,7 @@ const UserForm: React.FC<Props> = ({
             <input
               id="Budget"
               type="number"
+              step={0.01}
               placeholder="Enter Budget"
               name="pytBudget"
               onChange={(input) => setpytBudget(parseFloat(input.target.value))}
