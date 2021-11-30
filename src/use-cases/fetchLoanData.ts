@@ -7,10 +7,11 @@ export default async (carBuyer: CarBuyer, car: Car): Promise<LoanData> => {
     body: JSON.stringify({ carBuyer: carBuyer, car: car }),
   });
 
-  console.log(JSON.stringify({ carBuyer: carBuyer, car: car }));
-
   if (res.ok) {
-    return res.json() as Promise<LoanData>;
+    // TODO: refactor this on the backend since we don't need this data back
+    return res
+      .json()
+      .then((res) => LoanData.from(res.loan)) as Promise<LoanData>;
   } else {
     throw new Error();
   }
