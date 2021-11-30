@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import { AddOn } from "../entities";
-import { mdiChevronRight, mdiPlusCircle } from "@mdi/js";
+import { mdiChevronRight, mdiMinusCircle, mdiPlusCircle } from "@mdi/js";
 
-function AddOnBox(props: { addOn: AddOn }) {
+function AddOnBox(props: {
+  addOn: AddOn;
+  onAdd: (addOn: AddOn) => void;
+  onRemove: (addOn: AddOn) => void;
+}) {
   const [expanded, setExpanded] = useState(false);
+  const [added, setAdded] = useState(false);
 
   let chevronClassName =
     "transition fill-current w-6 inline-block" + (expanded ? " rotate-90" : "");
@@ -19,17 +24,28 @@ function AddOnBox(props: { addOn: AddOn }) {
             <path d={mdiChevronRight} />
           </svg>
         </button>
-        <div className="">{props.addOn.name}</div>
+        <div className="truncate">{props.addOn.name}</div>
         <div className="flex-grow" />
         <div>${props.addOn.price}</div>
-        <button className="bg-blue-300 rounded-3xl shadow-xl hover:shadow-2xl transition h-auto text-sm text-blue-900 hover:opacity-100 px-2 whitespace-nowrap">
+        {/* TODO: Improve wrapping when size is small here */}
+        <button
+          className="bg-blue-300 rounded-3xl shadow-xl hover:shadow-2xl transition h-auto text-sm text-blue-900 hover:opacity-100 px-2 whitespace-nowrap"
+          onClick={() => {
+            if (added) {
+              props.onRemove(props.addOn);
+            } else {
+              props.onAdd(props.addOn);
+            }
+            setAdded(!added);
+          }}
+        >
           <svg
             viewBox="0 0 24 24"
             className="text-white fill-current hover:drop-shadow-2xl transition inline-block w-4 text-current"
           >
-            <path d={mdiPlusCircle} />
+            <path d={added ? mdiMinusCircle : mdiPlusCircle} />
           </svg>
-          <span className="inline-block">Add</span>
+          <span className="inline-block">{added ? "Remove" : "Add"}</span>
         </button>
       </div>
       {expanded && props.addOn.description}

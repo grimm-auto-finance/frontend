@@ -1,28 +1,76 @@
 import AddOnBox from "../components/AddOnBox";
 import Mercedes from "../car-images/Mercedes.png";
-import { Car } from "../entities";
-import { mdiCog, mdiArrowLeft, mdiAccountOutline } from "@mdi/js";
+import { AddOn, Car, CarBuyer, LoanData } from "../entities";
+import { mdiCog, mdiArrowLeft } from "@mdi/js";
+import { useEffect, useState } from "react";
+import fetchLoanData from "../use-cases/fetchLoanData";
+import fetchAddOns from "../use-cases/fetchAddOns";
 
-let searchString = "";
-let addOns = [];
+function Dashboard() {
+  const [car, setCar] = useState<Car | null>(null);
+  const [carBuyer, setCarBuyer] = useState<CarBuyer | null>(null);
+  const [searchString, setSearchString] = useState<string | null>(null);
+  const [addOns, setAddOns] = useState<AddOn[] | null>(null);
+  const [loanData, setLoanData] = useState<LoanData | null>(null);
+  // TODO: un-hardcode these
+  const id = 98;
+  const buyer = new CarBuyer(10000, 600, 1000);
 
-function Dashboard(props: { car: Car }) {
+  // @ts-ignore
+  useEffect(async () => {
+    let car = await fetchAddOns(id);
+    setAddOns([...car.addOns.values()]);
+    car.addOns = new Map();
+    setCar(car);
+    setCarBuyer(buyer);
+    // @ts-ignore
+    setLoanData(await fetchLoanData(buyer, car));
+  }, []);
+
+  useEffect(() => {
+    console.log(loanData);
+  });
+
   return (
-    <div className="flex h-screen">
-      <div className="bg-gray-200 shadow-xl z-10 p-4 flex flex-col gap-4">
+    <div className="flex h-screen overflow-hidden">
+      <div className="bg-gray-200 shadow-xl z-10 p-4 flex flex-col gap-4 w-1/4 overflow-y-scroll">
         <div className="text-2xl font-semibold">Available Add-Ons</div>
-        <div className="bg-red-400 p-2 rounded mt-8">Add-Ons Budget</div>
+        <div className="bg-red-400 p-2 rounded mt-8 resize">Add-Ons Budget</div>
         <input
           type="search"
           placeholder="Search"
           className="border-4 rounded p-2 border-red-400"
           onChange={async (event) => {
-            searchString = event.target.value;
+            setSearchString(event.target.value);
           }}
         />
-        {[...props.car.addOns.values()].map((a, i) => {
-          return <AddOnBox key={i} addOn={a} />;
-        })}
+        {car !== null && carBuyer !== null && addOns !== null
+          ? (searchString === null
+              ? [...addOns.values()]
+              : [...addOns.values()].filter(
+                  (a) =>
+                    a
+                      .toString()
+                      .toLowerCase()
+                      .indexOf(searchString.toLowerCase()) !== -1
+                )
+            ).map((a, i) => {
+              return (
+                <AddOnBox
+                  key={i}
+                  addOn={a}
+                  onAdd={async (addOn: AddOn) => {
+                    car.addOns.set(addOn.name, addOn);
+                    setLoanData(await fetchLoanData(carBuyer, car));
+                  }}
+                  onRemove={async (addOn: AddOn) => {
+                    car.addOns.delete(addOn.name);
+                    setLoanData(await fetchLoanData(carBuyer, car));
+                  }}
+                />
+              );
+            })
+          : []}
       </div>
       <div className="flex-grow bg-white flex flex-col">
         <div className="bg-red-300 shadow-lg h-16 flex justify-between">
@@ -33,18 +81,11 @@ function Dashboard(props: { car: Car }) {
             >
               <path d={mdiArrowLeft} />
             </svg>
-            <span className="inline-block">Back To Cars</span>
+            <span className="inline-block" onClick={() => location.reload()}>
+              Back To Cars
+            </span>
           </button>
           <div className="flex gap-4">
-            <button className="bg-blue-300 rounded-3xl shadow-xl hover:shadow-2xl transition h-auto my-3 text-sm text-blue-900 hover:opacity-100 px-3">
-              <svg
-                viewBox="0 0 24 24"
-                className="text-white fill-current hover:drop-shadow-2xl transition inline-block pr-3 w-10 text-current"
-              >
-                <path d={mdiAccountOutline} />
-              </svg>
-              <span className="inline-block">Edit Buyer Information</span>
-            </button>
             <button className="bg-red-500 h-full w-12 transition">
               <svg
                 viewBox="0 0 24 24"
@@ -55,42 +96,54 @@ function Dashboard(props: { car: Car }) {
             </button>
           </div>
         </div>
-        <div className="flex-grow flex justify-around px-16 py-8">
-          <div className="max-w-screen-md flex flex-col">
-            <div className="flex-grow-0 flex-shrink text-5xl font-rounded font-semibold">
-              {props.car.make} {props.car.model} {props.car.year}
-            </div>
-            <img className="w-3/4 m-auto" src={Mercedes} />
-            <div className="bg-blue-50 rounded-lg text-2xl font-semibold flex justify-between p-4">
-              <div className="font-rounded">SENSO Score</div>
-              <div className="text-blue-900">Very High</div>
-            </div>
-            <div className="flex pt-4 gap-4">
-              <div className="flex-grow flex flex-col gap-4">
-                <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
-                  <div className="font-rounded">Loan Amount</div>
-                  <div className="text-blue-900">CAD $24,560</div>
+        <div className="flex-grow flex justify-around px-16 py-8 overflow-y-scroll">
+          {(() => {
+            if (car !== null && loanData !== null) {
+              return (
+                <div className="flex flex-col justify-between w-full">
+                  <div className="flex-grow-0 flex-shrink text-5xl font-rounded font-semibold">
+                    {car.make} {car.model} {car.year}
+                  </div>
+                  <img className="max-w-xs mx-auto" src={Mercedes} />
+                  <div className="bg-blue-50 rounded-lg text-2xl font-semibold flex justify-between p-4">
+                    <div className="font-rounded">SENSO Score</div>
+                    <div className="text-blue-900">{loanData.sensoScore}</div>
+                  </div>
+                  <div className="flex pt-4 gap-4">
+                    <div className="flex-grow flex flex-col gap-4">
+                      <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                        <div className="font-rounded">Loan Amount</div>
+                        <div className="text-blue-900">
+                          CAD ${loanData.loanAmount}
+                        </div>
+                      </div>
+                      <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                        <div className="font-rounded">Term</div>
+                        <div className="text-blue-900">
+                          {loanData.termLength} Months
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex-grow flex flex-col gap-4">
+                      <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                        <div className="font-rounded">Interest Rate</div>
+                        <div className="text-blue-900">
+                          {loanData.interestRate}%
+                        </div>
+                      </div>
+                      <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                        <div className="font-rounded">Amount Down</div>
+                        <div className="text-blue-900">TODO</div>
+                      </div>
+                    </div>
+                  </div>
+                  <button className="bg-red-400 rounded-3xl shadow-xl hover:shadow-2xl transition h-auto my-3 text-2xl text-white hover:opacity-100 px-3 py-1 mx-auto">
+                    Finalize Sale
+                  </button>
                 </div>
-                <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
-                  <div className="font-rounded">Term</div>
-                  <div className="text-blue-900">36 Months</div>
-                </div>
-              </div>
-              <div className="flex-grow flex flex-col gap-4">
-                <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
-                  <div className="font-rounded">Interest Rate</div>
-                  <div className="text-blue-900">16.5%</div>
-                </div>
-                <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
-                  <div className="font-rounded">Amount Down</div>
-                  <div className="text-blue-900">5,000</div>
-                </div>
-              </div>
-            </div>
-            <button className="bg-red-400 rounded-3xl shadow-xl hover:shadow-2xl transition h-auto my-3 text-2xl text-white hover:opacity-100 px-3 py-1 mx-auto">
-              Finalize Sale
-            </button>
-          </div>
+              );
+            }
+          })()}
         </div>
       </div>
     </div>
