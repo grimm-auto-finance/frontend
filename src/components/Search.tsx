@@ -11,7 +11,6 @@ const Search = () => {
   const [creditScore, setCreditScore] = useState(0);
   const [pytBudget, setpytBudget] = useState(0);
   // TODO: Change ID not to be hardcoded or even used here
-  const id = 5;
   const [downpayment, setDownpayment] = useState(0);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -41,51 +40,49 @@ const Search = () => {
           required
         />
         <div>
-          {searchResults.map((car, i) => (
-            <div className="bg-white m-4 border-2 rounded-md" key={i}>
-              <button
-                type="button"
-                onClick={(input) => {
-                  const confirmBox = window.confirm(
-                    "Are you sure want an " +
-                      String(car.model) +
-                      " " +
-                      String(car.make) +
-                      " from " +
-                      String(car.year)
-                  );
-                  if (confirmBox === true) {
-                    setCar(car);
-                  }
-                }}
-              >
-                {"$"}
-                {car.price} {"-"} {car.year} {car.make} {car.model}{" "}
-                {car.kilometres} {"kms"}
-              </button>
-            </div>
-          ))}
-          <div>
-            <form onSubmit={handleSubmit}>
-              <div className="m-4 mb-8"></div>
-              <div className="flex items-center mb-5">
-                <label className="inline-block w-auto mr-6 text-start">
-                  {" "}
-                  Credit Score:{" "}
-                </label>
-                <div className="flex-1 py-2 border-b-2 border-red-300 text-end">
-                  <input
-                    id="Credit Score"
-                    type="number"
-                    placeholder="Credit Score"
-                    name="creditScore"
-                    onChange={(input) =>
-                      setCreditScore(parseInt(input.target.value))
-                    }
-                    required
-                  />
-                </div>
-              </div>
+      {searchResults.map((car, i) => (
+        <div className="bg-white m-4 border-2 rounded-md" key={i}>
+          <button
+            type="button"
+            onClick={(input) => {
+              const confirmBox = window.confirm(
+                "Are you sure want an " +
+                  String(car.model) +
+                  " " +
+                  String(car.make) +
+                  " from " +
+                  String(car.year)
+              );
+              if (confirmBox === true) {
+                setCar(car);
+              }
+            }}
+          >
+            {"$"}
+            {car.price} {"-"} {car.year} {car.make} {car.model} {car.kilometres}{" "} {car.id}
+            {"kms"}
+          </button>
+        </div>
+      ))}
+     <div>
+      <form onSubmit={handleSubmit}>
+        <div className="m-4 mb-8"></div>
+        <div className="flex items-center mb-5">
+          <label className="inline-block w-auto mr-6 text-start">
+            {" "}
+            Credit Score:{" "}
+          </label>
+          <div className="flex-1 py-2 border-b-2 border-red-300 text-end">
+            <input
+              id="Credit Score"
+              type="number"
+              placeholder="Credit Score"
+              name="creditScore"
+              onChange={(input) => setCreditScore(parseInt(input.target.value))}
+              required
+            />
+          </div>
+        </div>
 
               <div className="flex items-center mb-5 ">
                 <label className="inline-block w-auto mr-6 text-start">
@@ -124,15 +121,14 @@ const Search = () => {
                   />
                 </div>
               </div>
-              <button
-                type="submit"
-                className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"
-              >
-                <Link to="/dashboard">Enter</Link>
-              </button>
-            </form>
-          </div>
-        </div>
+        <button
+          type="submit"
+          className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"
+        ><Link to="/dashboard" state={{ car: car_ }}>Enter</Link>
+        </button>
+      </form>
+    </div>
+    </div>
       </div>
     </div>
   );
