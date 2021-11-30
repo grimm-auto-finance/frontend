@@ -9,6 +9,7 @@
     "test-dev": "jest --watchAll --verbose --coverage"
   },
   "dependencies": {
+    "@mdi/js": "^6.5.95",
     "jest": "^27.3.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
