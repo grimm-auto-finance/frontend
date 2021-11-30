@@ -1,17 +1,18 @@
 import "./App.css";
 import "tailwindcss/tailwind.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Autofill from "./scenes/autofill"
+import { BrowserRouter as BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Userform from "./scenes/userform"
 import DashBoard from "./scenes/dashboard"
+import { Car } from "./entities";
 
-function App() {
+function App(){
   return (
-    <Router>
-      <div>
-          <Route exact path="/" component={Autofill} />
-          <Route path="/dashboard" component={DashBoard} />
-      </div>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Userform />} />
+          <Route path="/dashboard" element={<DashBoard car={new Car(0, 10000, "Honda", "Civic", 2002, 1, new Map())}/> } />
+          </Routes>
+    </BrowserRouter>
   );
 }
 export default App;

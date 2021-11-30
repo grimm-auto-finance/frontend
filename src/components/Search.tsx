@@ -123,7 +123,7 @@ const Search = () => {
         <button
           type="submit"
           className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"
-        ><Link to="/">Enter</Link>
+        ><Link to="/dashboard">Enter</Link>
         </button>
       </form>
     </div>

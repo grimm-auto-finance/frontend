@@ -1,12 +1,12 @@
-import logo from "./logo-new.png";
-import "./App.css";
+import logo from "../logo-new.png";
+import "../App.css"
 import Navbar from "../components/Navbar";
 import LandingPage from "../components/LandingPage";
 import Footer from "../components/Footer";
 import Search from "../components/Search";
 import "tailwindcss/tailwind.css";
 
-const Autofill = () => {
+const Userform = () => {
   return (
     <div className="App">
       <div>
@@ -26,4 +26,4 @@ const Autofill = () => {
   );
 }
 
-export default Autofill;
+export default Userform;

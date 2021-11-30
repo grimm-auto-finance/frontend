@@ -1,4 +1,4 @@
-import AddOnBox from "../components/AddOnBox";
+import AddOnBox from "../components/AddOnBox"; 
 import Mercedes from "../car-images/Mercedes.png";
 import { Car } from "../entities";
 import { mdiCog, mdiArrowLeft, mdiAccountOutline } from "@mdi/js";
