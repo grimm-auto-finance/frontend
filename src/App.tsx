@@ -1,7 +1,6 @@
 import logo from "./logo-new.png";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import UserForm from "./components/UserForm";
 import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 import Gallery from "./components/Gallery";
