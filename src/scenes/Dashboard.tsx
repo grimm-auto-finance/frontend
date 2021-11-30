@@ -114,13 +114,13 @@ function Dashboard() {
                       <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                         <div className="font-rounded">Loan Amount</div>
                         <div className="text-blue-900">
-                          CAD ${loanData.loanAmount}
+                          CAD ${loanData.amount}
                         </div>
                       </div>
                       <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                         <div className="font-rounded">Term</div>
                         <div className="text-blue-900">
-                          {loanData.termLength} Months
+                          {loanData.term} Months
                         </div>
                       </div>
                     </div>
