@@ -1,6 +1,6 @@
-import { Car } from "../entities";
+import { AddOn } from "../entities";
 
-export default async (id: number): Promise<Car[]> => {
+export default async (id: number): Promise<AddOn[]> => {
   const res = await fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/addons", {
     method: "POST",
     body: id.toString(),
@@ -8,7 +8,7 @@ export default async (id: number): Promise<Car[]> => {
   if (res.ok) {
     const json = await res.json();
     // @ts-ignore
-    return json.map((c) => Car.from(c));
+    return json.map((c) => Addon.from(c));
   } else {
     throw new Error();
   }

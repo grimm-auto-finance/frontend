@@ -10,7 +10,7 @@ function App(){
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Userform />} />
-          <Route path="/dashboard" element={<DashBoard car={new Car(0, 10000, "Honda", "Civic", 2002, 1, new Map())}/> } />
+          <Route path="/dashboard" element={<DashBoard />} />
           </Routes>
     </BrowserRouter>
   );
