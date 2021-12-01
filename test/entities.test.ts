@@ -108,8 +108,8 @@ describe("Loan Data", () => {
     expect(loanData.interestRate).toBe(1.25);
     expect(loanData.installment).toBe(500);
     expect(loanData.sensoScore).toBe("Very Low");
-    expect(loanData.loanAmount).toBe(10000);
-    expect(loanData.termLength).toBe(36);
+    expect(loanData.amount).toBe(10000);
+    expect(loanData.term).toBe(36);
     expect(loanData.interestSum).toBe(2000);
   });
 

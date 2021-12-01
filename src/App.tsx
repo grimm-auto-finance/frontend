@@ -5,6 +5,7 @@ import UserForm from "./components/UserForm";
 import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 import Gallery from "./components/Gallery";
+import Search from "./components/Search";
 import "tailwindcss/tailwind.css";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
       <div className="content">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <UserForm />
+          <Search />
         </header>
         <Footer />
       </div>
