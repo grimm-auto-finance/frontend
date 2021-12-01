@@ -1,5 +1,5 @@
 import logo from "../logo-new.png";
-import "../App.css"
+import "../App.css";
 import Navbar from "../components/Navbar";
 import LandingPage from "../components/LandingPage";
 import Footer from "../components/Footer";
@@ -21,9 +21,9 @@ const Userform = () => {
           <Search />
         </header>
         <Footer />
-      </div> 
+      </div>
     </div>
   );
-}
+};
 
 export default Userform;
