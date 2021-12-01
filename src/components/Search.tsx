@@ -51,27 +51,23 @@ const Search = () => {
           ))}
           <div>
             <form>
-
               <div className="flex justify-between bg-gray-100 rounded border border-gray-200 mb-8">
-                <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
-
-                </div>
+                <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none"></div>
                 <label className="flex items-center bg-transparent py-1 text-gray-600 px-4 focus:outline-none p-30 ">
-                  {" "} Credit Score:{" "}
+                  {" "}
+                  Credit Score:{" "}
                 </label>
                 <input
-                    id="Credit Score"
-                    type="number"
-                    placeholder="Credit Score"
-                    name="creditScore"
-                    onChange={(input) =>
-                        setCreditScore(parseInt(input.target.value))
-                    }
-                    required
+                  id="Credit Score"
+                  type="number"
+                  placeholder="Credit Score"
+                  name="creditScore"
+                  onChange={(input) =>
+                    setCreditScore(parseInt(input.target.value))
+                  }
+                  required
                 />
-                <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
-
-                </div>
+                <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none"></div>
               </div>
 
               <div className="flex justify-between bg-gray-100 rounded border border-gray-200 mb-8">
@@ -79,16 +75,19 @@ const Search = () => {
                   $
                 </div>
                 <label className="flex items-center bg-transparent py-1 text-gray-600 px-4 focus:outline-none p-30 ">
-                  {" "} Budget:{" "}
+                  {" "}
+                  Budget:{" "}
                 </label>
                 <input
-                    className="bg-transparent py-1 text-gray-600 px-4 focus:outline-none"
-                    id="Budget"
-                    type="number"
-                    placeholder="Enter Budget"
-                    name="pytBudget"
-                    onChange={(input) => setpytBudget(parseFloat(input.target.value))}
-                    required
+                  className="bg-transparent py-1 text-gray-600 px-4 focus:outline-none"
+                  id="Budget"
+                  type="number"
+                  placeholder="Enter Budget"
+                  name="pytBudget"
+                  onChange={(input) =>
+                    setpytBudget(parseFloat(input.target.value))
+                  }
+                  required
                 />
                 <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
                   .00
@@ -103,25 +102,24 @@ const Search = () => {
                   Down Payment:{" "}
                 </label>
                 <input
-                    id="downpayment"
-                    type="number"
-                    step={0.01}
-                    placeholder="Down Payment"
-                    name="downpayment"
-                    onChange={(input) =>
-                        setDownpayment(parseFloat(input.target.value))
-                    }
-                    required
+                  id="downpayment"
+                  type="number"
+                  step={0.01}
+                  placeholder="Down Payment"
+                  name="downpayment"
+                  onChange={(input) =>
+                    setDownpayment(parseFloat(input.target.value))
+                  }
+                  required
                 />
                 <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
                   .00
                 </div>
               </div>
 
-
               <button
                 type="submit"
-                className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-32"
+                className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-28 transform hover:scale-105 duration-300 ease-in-out"
               >
                 <Link
                   to="/dashboard"
