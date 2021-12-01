@@ -5,6 +5,7 @@ import { mdiCog, mdiArrowLeft } from "@mdi/js";
 import { useEffect, useState } from "react";
 import fetchLoanData from "../use-cases/fetchLoanData";
 import fetchAddOns from "../use-cases/fetchAddOns";
+import { Link, useLocation } from "react-router-dom";
 
 function Dashboard() {
   const [car, setCar] = useState<Car | null>(null);
@@ -12,24 +13,19 @@ function Dashboard() {
   const [searchString, setSearchString] = useState<string | null>(null);
   const [addOns, setAddOns] = useState<AddOn[] | null>(null);
   const [loanData, setLoanData] = useState<LoanData | null>(null);
-  // TODO: un-hardcode these
-  const id = 98;
-  const buyer = new CarBuyer(10000, 600, 1000);
+
+  const location = useLocation();
 
   // @ts-ignore
   useEffect(async () => {
-    let car = await fetchAddOns(id);
-    setAddOns([...car.addOns.values()]);
-    car.addOns = new Map();
+    // TODO: catch errors here
+    const car = Car.from(location.state.car);
+    const buyer = CarBuyer.from(location.state.carBuyer);
     setCar(car);
     setCarBuyer(buyer);
-    // @ts-ignore
+    setAddOns(await fetchAddOns(location.state.car.id));
     setLoanData(await fetchLoanData(buyer, car));
   }, []);
-
-  useEffect(() => {
-    console.log(loanData);
-  });
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -74,17 +70,18 @@ function Dashboard() {
       </div>
       <div className="flex-grow bg-white flex flex-col">
         <div className="bg-red-300 shadow-lg h-16 flex justify-between">
-          <button className="h-full hover:drop-shadow-2xl transition hover:opacity-80 text-white">
+          <Link
+            to="/"
+            className="h-full hover:drop-shadow-2xl transition hover:opacity-80 text-white"
+          >
             <svg
               viewBox="0 0 24 24"
               className="h-full fill-current p-3 inline-block"
             >
               <path d={mdiArrowLeft} />
             </svg>
-            <span className="inline-block" onClick={() => location.reload()}>
-              Back To Cars
-            </span>
-          </button>
+            <span className="inline-block">Back To Cars</span>
+          </Link>
           <div className="flex gap-4">
             <button className="bg-red-500 h-full w-12 transition">
               <svg
