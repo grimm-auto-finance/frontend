@@ -14,7 +14,8 @@
     "@mdi/js": "^6.4.95",
     "jest": "^27.3.1",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "react-router-dom": "^6.0.2"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
