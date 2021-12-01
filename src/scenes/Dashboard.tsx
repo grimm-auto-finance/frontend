@@ -5,7 +5,7 @@ import { mdiCog, mdiArrowLeft } from "@mdi/js";
 import { useEffect, useState } from "react";
 import fetchLoanData from "../use-cases/fetchLoanData";
 import fetchAddOns from "../use-cases/fetchAddOns";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Dashboard() {
   const [car, setCar] = useState<Car | null>(null);
@@ -16,19 +16,14 @@ function Dashboard() {
 
   const location = useLocation();
 
-  // TODO: un-hardcode these
   // @ts-ignore
   useEffect(async () => {
     // TODO: catch errors here
-    const vid = location.state.car.id;
-    const buyer = location.state.carBuyer;
-    // @ts-ignore
-    let car = await fetchAddOns(vid);
-    setAddOns([...car.addOns.values()]);
-    car.addOns = new Map();
+    const car = Car.from(location.state.car);
+    const buyer = CarBuyer.from(location.state.carBuyer);
     setCar(car);
     setCarBuyer(buyer);
-    // @ts-ignore
+    setAddOns(await fetchAddOns(location.state.car.id));
     setLoanData(await fetchLoanData(buyer, car));
   }, []);
 

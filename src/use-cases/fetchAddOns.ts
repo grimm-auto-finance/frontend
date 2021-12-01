@@ -1,15 +1,14 @@
-import { Car } from "../entities";
+import { AddOn } from "../entities";
 
-export default async (id: number): Promise<Car> => {
+export default async (id: number): Promise<AddOn[]> => {
   const res = await fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/addons", {
     method: "POST",
-    // TODO: refactor the backend to accept a string with the number instead of json so we don't need to do this
-    body: JSON.stringify({ id: id }),
+    body: id.toString(),
   });
+
   if (res.ok) {
     const json = await res.json();
-    // @ts-ignore
-    return Car.from(json);
+    return json.map((a: AddOn) => AddOn.from(a));
   } else {
     throw new Error();
   }

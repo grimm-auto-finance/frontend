@@ -1,30 +1,14 @@
 import { useState } from "react";
-import React, { Component } from "react";
 import fetchSearchResults from "../use-cases/fetchSearchResults";
 import { Car, CarBuyer } from "../entities";
-import fetchLoanData from "../use-cases/fetchLoanData";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Search = () => {
   const [searchResults, setSearchResults] = useState<Car[]>([]);
-  const [car_, setCar] = useState<Car>();
+  const [car, setCar] = useState<Car>();
   const [creditScore, setCreditScore] = useState(0);
   const [pytBudget, setpytBudget] = useState(0);
-  // TODO: Change ID not to be hardcoded or even used here
   const [downpayment, setDownpayment] = useState(0);
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (typeof car_ !== "undefined") {
-      console.log(
-        fetchLoanData(
-          new CarBuyer(pytBudget, creditScore, downpayment),
-          // id is hardcoded for now
-          car_
-        )
-      );
-    }
-  }
 
   return (
     <div className="bg-gray-100 pb-32">
@@ -44,7 +28,7 @@ const Search = () => {
             <div className="bg-white m-4 border-2 rounded-md" key={i}>
               <button
                 type="button"
-                onClick={(input) => {
+                onClick={() => {
                   const confirmBox = window.confirm(
                     "Are you sure want an " +
                       String(car.model) +
@@ -66,7 +50,7 @@ const Search = () => {
             </div>
           ))}
           <div>
-            <form onSubmit={handleSubmit}>
+            <form>
               <div className="m-4 mb-8"></div>
               <div className="flex items-center mb-5">
                 <label className="inline-block w-auto mr-6 text-start">
@@ -131,7 +115,7 @@ const Search = () => {
                 <Link
                   to="/dashboard"
                   state={{
-                    car: car_,
+                    car: car,
                     carBuyer: new CarBuyer(pytBudget, creditScore, downpayment),
                   }}
                 >
