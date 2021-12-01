@@ -7,8 +7,8 @@ export class LoanData {
   interestRate: number;
   installment: number;
   sensoScore: string;
-  loanAmount: number;
-  termLength: number;
+  amount: number;
+  term: number;
   interestSum: number;
 
   /**
@@ -24,15 +24,15 @@ export class LoanData {
     interestRate: number,
     installment: number,
     sensoScore: string,
-    loanAmount: number,
-    termLength: number,
+    amount: number,
+    term: number,
     interestSum: number
   ) {
     this.interestRate = interestRate;
     this.installment = installment;
     this.sensoScore = sensoScore;
-    this.loanAmount = loanAmount;
-    this.termLength = termLength;
+    this.amount = amount;
+    this.term = term;
     this.interestSum = interestSum;
   }
 
@@ -41,8 +41,8 @@ export class LoanData {
       json.interestRate,
       json.installment,
       json.sensoScore,
-      json.loanAmount,
-      json.termLength,
+      json.amount,
+      json.term,
       json.interestSum
     );
   }
@@ -52,7 +52,7 @@ export type LoanDataJSON = {
   interestRate: number;
   installment: number;
   sensoScore: string;
-  loanAmount: number;
-  termLength: number;
+  amount: number;
+  term: number;
   interestSum: number;
 };

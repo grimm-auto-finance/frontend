@@ -71,6 +71,10 @@ export class Car {
       }, addOnObject),
     };
   }
+
+  getFullPrice() {
+    return [...this.addOns.values()].reduce((s, a) => s + a.price, this.price);
+  }
 }
 
 export type CarJSON = {
