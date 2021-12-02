@@ -25,7 +25,10 @@ const Search = () => {
         />
         <div>
           {searchResults.map((car, i) => (
-            <div className="bg-white m-4 border-2 rounded-md" key={i}>
+            <div className="antialiased bg-gray-100 text-gray-500
+          flex flex-col justify-center h-full
+          rounded-none bg-red-100 hover:bg-red-300
+          dark:bg-blue-900 dark:hover:bg-gray-500 dark:text-white" key={i}>
               <button
                 type="button"
                 onClick={() => {
@@ -51,7 +54,7 @@ const Search = () => {
           ))}
           <div>
             <form>
-              <div className="flex justify-between bg-gray-100 rounded border border-gray-200 mb-8">
+              <div className="flex justify-between bg-gray-100 rounded border-0 border-t-4 hover:border-blue-900 mb-8">
                 <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none"></div>
                 <label className="flex items-center bg-transparent py-1 text-gray-600 px-4 focus:outline-none p-30 ">
                   {" "}
@@ -70,13 +73,13 @@ const Search = () => {
                 <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none"></div>
               </div>
 
-              <div className="flex justify-between bg-gray-100 rounded border border-gray-200 mb-8">
+              <div className="flex justify-between bg-gray-100 rounded border-0 border-t-4 hover:border-blue-900 mb-8">
                 <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
                   $
                 </div>
                 <label className="flex items-center bg-transparent py-1 text-gray-600 px-4 focus:outline-none p-30 ">
                   {" "}
-                  Budget:{" "}
+                  Monthly Budget:{" "}
                 </label>
                 <input
                   className="bg-transparent py-1 text-gray-600 px-4 focus:outline-none"
@@ -94,7 +97,7 @@ const Search = () => {
                 </div>
               </div>
 
-              <div className="flex justify-between bg-gray-100 rounded border border-gray-200 mb-8">
+              <div className="flex justify-between bg-gray-100 rounded border-0 border-t-4 hover:border-blue-900 mb-8">
                 <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
                   $
                 </div>
