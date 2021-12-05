@@ -5,12 +5,9 @@ import cars3 from "../car-images/cars3.png";
 
 const LandingPage = () => {
   return (
-    <div className="h-auto">
-      <div className="h-2">
-        <a target="_blank" href="./CarImages/AbstractLights.png">
-          <img width="100%" height="30%" src={cars3} />
-        </a>
-      </div>
+    <div className="h-12 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
+        
+          <img className="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500" width="100%" src={cars3} />
     </div>
   );
 };

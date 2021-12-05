@@ -12,7 +12,7 @@ const Search = () => {
 
   return (
     <div className="bg-gray-100 pb-32">
-      <div className="m-4 mb-8">
+      <div className="m-4 mb-8 ">
         <input
           className="rounded-3xl border-2 p-4"
           id="Budget"
@@ -23,12 +23,13 @@ const Search = () => {
           }
           required
         />
-        <div>
+        <div >
+          <div>
           {searchResults.map((car, i) => (
             <div className="antialiased bg-gray-100 text-gray-500
           flex flex-col justify-center h-full
           rounded-none bg-red-100 hover:bg-red-300
-          dark:bg-blue-900 dark:hover:bg-gray-500 dark:text-white" key={i}>
+          dark:bg-blue-900 dark:hover:bg-gray-500 dark:text-white " key={i}>
               <button
                 type="button"
                 onClick={() => {
@@ -45,10 +46,56 @@ const Search = () => {
                   }
                 }}
               >
-                {"$"}
-                {car.price} {"-"} {car.year} {car.make} {car.model}{" "}
-                {car.kilometres} {car.id}
-                {"kms"}
+                <table className="table-auto w-full ">
+                <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50 dark:text-gray-100 dark:bg-blue-600">
+                <tr>
+                  <th className="p-2 whitespace-nowrap">
+                    <div className="font-semibold text-left"> Vehicle</div>
+                  </th>
+                  <th className="p-2 whitespace-nowrap">
+                    <div className="font-semibold text-left">
+                      {" "}
+                      Kms Driven
+                    </div>
+                  </th>
+                  <th className="p-2 whitespace-nowrap">
+                    <div className="font-semibold text-left">Price</div>
+                  </th>
+                </tr>
+                </thead>
+                <tbody className="text-2xl divide-y divide-gray-100">
+                <tr>
+                  <td className="p-2 whitespace-nowrap">
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
+                        <img
+                            className="rounded-full"
+                            src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Car_Icon.svg"
+                            width="40"
+                            height="40"
+                        />
+                      </div>
+                      <div className="pl-5 font-medium text-gray-800 dark:text-white ">
+                        {" "}
+                        {car.make} {car.model} {","} {car.year}{" "}
+                      </div>
+                    </div>
+                  </td>
+
+                  <td className="p-3 whitespace-nowrap">
+                    <div className="text-left">
+                      {" "}
+                      {car.kilometres} {"kms"}{" "}
+                    </div>
+                  </td>
+                  <td className="p-3 whitespace-nowrap">
+                    <div className="text-left font-medium text-green-500">
+                      {"$"} {car.price}
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
               </button>
             </div>
           ))}
@@ -120,6 +167,7 @@ const Search = () => {
                 </div>
               </div>
 
+
               <button
                 type="submit"
                 className="bg-blue-200 text-3xl text-gray-400 rounded-lg text-center py-8 px-28 transform hover:scale-105 duration-300 ease-in-out"
@@ -138,6 +186,7 @@ const Search = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

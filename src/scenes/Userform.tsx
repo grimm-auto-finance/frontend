@@ -16,10 +16,10 @@ const Userform = () => {
         <LandingPage />
       </div>
       <div className="content">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Search />
+        <header className="justify-center App-header">
+          <img src={logo} className="h-32" alt="logo" />
         </header>
+          <Search />
         <Footer />
       </div>
     </div>
