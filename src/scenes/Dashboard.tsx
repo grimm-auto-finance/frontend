@@ -45,10 +45,8 @@ function Dashboard() {
               ? [...addOns.values()]
               : [...addOns.values()].filter(
                   (a) =>
-                    a
-                      .toString()
-                      .toLowerCase()
-                      .indexOf(searchString.toLowerCase()) !== -1
+                    a.name.toLowerCase().indexOf(searchString.toLowerCase()) !==
+                    -1
                 )
             ).map((a, i) => {
               return (
