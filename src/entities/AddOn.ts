@@ -24,10 +24,6 @@ export class AddOn {
   static from(json: AddOnJSON) {
     return new AddOn(json.name, json.price, json.description);
   }
-
-  toString() {
-    return `${this.name} ${this.price} ${this.description}`;
-  }
 }
 
 export type AddOnJSON = {
