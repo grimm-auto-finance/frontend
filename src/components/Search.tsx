@@ -146,6 +146,7 @@ const Search = () => {
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex items-center">
                             <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
+                              {/* TODO: Use the respective car Image */}
                               <img
                                 className="rounded-full"
                                 src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Car_Icon.svg"
