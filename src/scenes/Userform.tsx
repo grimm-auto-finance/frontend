@@ -19,7 +19,7 @@ const Userform = () => {
         <div
           className={
             mode
-              ? "dark:bg-gray-800 w-auto p-6 shadow-xl transition duration-700 dark:text-white transition duration-700"
+              ? "bg-gray-800 w-auto p-6 shadow-xl transition duration-700 text-white transition duration-700"
               : "bg-gray-100 shadow-xl  mb-5 w-auto  p-6 transition duration-700 text-gray-600 transition duration-700"
           }
         >

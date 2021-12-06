@@ -36,7 +36,7 @@ function Dashboard() {
       <div
         className={
           mode
-            ? "dark:bg-gray-800 w-auto shadow-xl transition duration-700 dark:text-white transition duration-700"
+            ? "bg-gray-800 w-auto shadow-xl transition duration-700 text-white transition duration-700"
             : "bg-gray-100 shadow-xl  w-auto ransition duration-700 text-gray-600 transition duration-700"
         }
       >
