@@ -16,8 +16,7 @@ const Userform = () => {
   return (
     <div>
       <div className="text-center">
-
-          <div
+        <div
           className={
             mode
               ? "dark:bg-gray-800 w-auto p-6 shadow-xl transition duration-700 dark:text-white transition duration-700"
@@ -34,7 +33,7 @@ const Userform = () => {
           <Search />
         </div>
       </div>
-        <Footer />
+      <Footer />
     </div>
   );
 };
