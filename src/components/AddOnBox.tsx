@@ -49,11 +49,13 @@ function AddOnBox(props: {
           >
             <svg
               viewBox="0 0 24 24"
-              className="text-white fill-current hover:drop-shadow-2xl transition inline-block w-4 text-current"
+              className="text-white text-right fill-current hover:drop-shadow-2xl transition inline-block w-4 text-current"
             >
               <path d={added ? mdiMinusCircle : mdiPlusCircle} />
             </svg>
-            <span className="inline-block">{added ? "Remove" : "Add"}</span>
+            <span className="inline-block px-1">
+              {added ? "Remove" : " Add"}
+            </span>
           </button>
         </div>
       </div>
