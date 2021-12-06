@@ -36,8 +36,8 @@ function Dashboard() {
       <div
         className={
           mode
-            ? "dark:bg-gray-800 w-auto shadow-xl transition duration-700 dark:text-gray-400 transition duration-700"
-            : "bg-gray-100 shadow-xl   w-auto ransition duration-700 text-gray-600 transition duration-700"
+            ? "dark:bg-gray-800 w-auto shadow-xl transition duration-700 dark:text-white transition duration-700"
+            : "bg-gray-100 shadow-xl  w-auto ransition duration-700 text-gray-600 transition duration-700"
         }
       >
         <div className="flex h-screen overflow-hidden">
@@ -87,7 +87,7 @@ function Dashboard() {
           </div>
 
           <div className="flex-grow flex flex-col">
-            <div className="bg-blue-1000  shadow-lg h-16 flex justify-between">
+            <div className="bg-blue-3000  shadow-lg h-16 flex justify-between">
               <Link
                 to="/"
                 className="h-full hover:drop-shadow-2xl transition hover:opacity-80"
@@ -124,21 +124,21 @@ function Dashboard() {
                       {/* TODO: Add respective image of car from databse */}
 
                       <img className="max-w-xs mx-auto" src={Mercedes} />
-                      <div className="bg-blue-100 border-0 border-b-8 hover:border-indigo-500 rounded-lg text-2xl font-semibold flex justify-between p-4">
-                        <div className="font-rounded">SENSO Score</div>
-                        <div className="text-blue-900">
+                      <div className="bg-blue-300 border-0 border-b-8 hover:border-indigo-500 rounded-lg text-2xl font-semibold flex justify-between p-4">
+                        <div className="font-rounded ml-8">SENSO Score</div>
+                        <div className="text-blue-900 mr-8">
                           {loanData.sensoScore}
                         </div>
                       </div>
                       <div className="flex pt-4 gap-4">
                         <div className="flex-grow flex flex-col gap-4">
-                          <div className="bg-blue-100 border-0 border-b-8 hover:border-indigo-500 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                          <div className="bg-blue-300 border-0 border-b-8 border-green-500 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                             <div className="font-rounded">Loan Amount</div>
-                            <div className="text-blue-900">
+                            <div className="text-green-600">
                               CAD ${loanData.amount}
                             </div>
                           </div>
-                          <div className="bg-blue-100 border-0 border-b-8 hover:border-indigo-500 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                          <div className="bg-blue-300 border-0 border-b-8 border-yellow-500 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                             <div className="font-rounded">Term</div>
                             <div className="text-blue-900">
                               {loanData.term} Months
@@ -146,13 +146,13 @@ function Dashboard() {
                           </div>
                         </div>
                         <div className="flex-grow flex flex-col gap-4">
-                          <div className="bg-blue-100 border-0 border-b-8 hover:border-indigo-500 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                          <div className="bg-blue-300 border-0 border-b-8 border-indigo-700 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                             <div className="font-rounded">Interest Rate</div>
                             <div className="text-blue-900">
                               {loanData.interestRate}%
                             </div>
                           </div>
-                          <div className="bg-blue-100 border-0 border-b-8 hover:border-indigo-500 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                          <div className="bg-blue-300 border-0 border-b-8 border-red-700 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                             <div className="font-rounded">Amount Down</div>
                             <div className="text-blue-900">TODO</div>
                           </div>
