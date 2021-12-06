@@ -13,6 +13,10 @@ function Dashboard() {
   const [searchString, setSearchString] = useState<string | null>(null);
   const [addOns, setAddOns] = useState<AddOn[] | null>(null);
   const [loanData, setLoanData] = useState<LoanData | null>(null);
+  const [mode, setMode] = useState(false);
+  const handleClick = () => {
+    setMode(!mode);
+  };
 
   const location = useLocation();
 
@@ -28,14 +32,29 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="flex h-screen overflow-hidden">
-      <div className="bg-gray-200 shadow-xl z-10 p-4 flex flex-col gap-4 w-1/4 overflow-y-scroll">
-        <div className="text-2xl font-semibold">Available Add-Ons</div>
-        <div className="bg-red-400 p-2 rounded mt-8 resize">Add-Ons Budget</div>
+<div>
+      <div
+          className={
+            mode
+                ? "dark:bg-gray-800 w-auto shadow-xl transition duration-700 dark:text-gray-400 transition duration-700"
+                : "bg-gray-100 shadow-xl   w-auto ransition duration-700 text-gray-600 transition duration-700"
+          }
+      >
+
+  <div className="flex h-screen overflow-hidden">
+
+      <div className="shadow-xl z-10 p-4 flex flex-col gap-4 w-1/4 overflow-y-scroll">
+          <div className="text-center mt-4 text-2xl font-semibold">
+          Available  Add-Ons </div>
+        <div className=" bg-blue-700 text-white text-center p-2 rounded mt-4">
+          Add-Ons Budget </div>
+
+
+
         <input
           type="search"
           placeholder="Search"
-          className="border-4 rounded p-2 border-red-400"
+          className="border-4 rounded p-2 border-blue-400 hover:border-blue-200"
           onChange={async (event) => {
             setSearchString(event.target.value);
           }}
@@ -69,85 +88,14 @@ function Dashboard() {
           : []}
       </div>
 
-      <div className="w-full md:w-3/5 mx-auto p-8">
-        <p>
-          Open <strong>multiple</strong>
-        </p>
-        <div className="shadow-md">
-          <div className="tab w-full overflow-hidden border-t">
-            <input
-              className="absolute opacity-0 "
-              id="tab-multi-one"
-              type="checkbox"
-              name="tabs"
-            />
-            <label
-              className="block p-5 leading-normal cursor-pointer"
-              for="tab-multi-one"
-            >
-              Label One
-            </label>
-            <div className="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
-              <p className="p-5">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Tenetur, architecto, explicabo perferendis nostrum, maxime
-                impedit atque odit sunt pariatur illo obcaecati soluta molestias
-                iure facere dolorum adipisci eum? Saepe, itaque.
-              </p>
-            </div>
-          </div>
-          <div className="tab w-full overflow-hidden border-t">
-            <input
-              className="absolute opacity-0"
-              id="tab-multi-two"
-              type="checkbox"
-              name="tabs"
-            />
-            <label
-              className="block p-5 leading-normal cursor-pointer"
-              for="tab-multi-two"
-            >
-              Label Two
-            </label>
-            <div className="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
-              <p className="p-5">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Tenetur, architecto, explicabo perferendis nostrum, maxime
-                impedit atque odit sunt pariatur illo obcaecati soluta molestias
-                iure facere dolorum adipisci eum? Saepe, itaque.
-              </p>
-            </div>
-          </div>
-          <div className="tab w-full overflow-hidden border-t">
-            <input
-              className="absolute opacity-0"
-              id="tab-multi-three"
-              type="checkbox"
-              name="tabs"
-            />
-            <label
-              className="block p-5 leading-normal cursor-pointer"
-              for="tab-multi-three"
-            >
-              Label Three
-            </label>
-            <div className="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
-              <p className="p-5">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Tenetur, architecto, explicabo perferendis nostrum, maxime
-                impedit atque odit sunt pariatur illo obcaecati soluta molestias
-                iure facere dolorum adipisci eum? Saepe, itaque.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div className="flex-grow bg-white flex flex-col">
-        <div className="bg-red-300 shadow-lg h-16 flex justify-between">
+
+
+      <div className="flex-grow flex flex-col">
+        <div className="bg-blue-1000  shadow-lg h-16 flex justify-between">
           <Link
             to="/"
-            className="h-full hover:drop-shadow-2xl transition hover:opacity-80 text-white"
+            className="h-full hover:drop-shadow-2xl transition hover:opacity-80"
           >
             <svg
               viewBox="0 0 24 24"
@@ -155,41 +103,48 @@ function Dashboard() {
             >
               <path d={mdiArrowLeft} />
             </svg>
-            <span className="inline-block">Back To Cars</span>
+            <span className="inline-block text-white">Back To Cars</span>
+            <span>
+
+
+            </span>
           </Link>
           <div className="flex gap-4">
-            <button className="bg-red-500 h-full w-12 transition">
-              <svg
-                viewBox="0 0 24 24"
-                className="text-white fill-current p-3 hover:drop-shadow-2xl transition inline-block w-12"
+            <button className="bg-blue-800 h-full w-12 transition">
+              <button
+                  className="rounded-lg overflow-x-auto h-8 "
+                  onClick={handleClick}
               >
-                <path d={mdiCog} />
-              </svg>
+                {mode ? '🌙' : '☀️'}
+              </button>
             </button>
           </div>
         </div>
-        <div className="flex-grow flex justify-around px-16 py-8 overflow-y-scroll">
+
+        <div className="flex-grow  flex justify-around px-16 py-8 overflow-y-scroll">
           {(() => {
             if (car !== null && loanData !== null) {
               return (
                 <div className="flex flex-col justify-between w-full">
-                  <div className="flex-grow-0 flex-shrink text-5xl font-rounded font-semibold">
+                  <div className="flex-grow-0 text-center flex-shrink text-5xl font-rounded font-semibold">
                     {car.make} {car.model} {car.year}
                   </div>
+                  {/* TODO: Add respective image of car from databse */}
+
                   <img className="max-w-xs mx-auto" src={Mercedes} />
-                  <div className="bg-blue-50 rounded-lg text-2xl font-semibold flex justify-between p-4">
+                  <div className="bg-blue-100 rounded-lg text-2xl font-semibold flex justify-between p-4">
                     <div className="font-rounded">SENSO Score</div>
                     <div className="text-blue-900">{loanData.sensoScore}</div>
                   </div>
                   <div className="flex pt-4 gap-4">
                     <div className="flex-grow flex flex-col gap-4">
-                      <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                      <div className="bg-blue-100 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                         <div className="font-rounded">Loan Amount</div>
                         <div className="text-blue-900">
                           CAD ${loanData.amount}
                         </div>
                       </div>
-                      <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                      <div className="bg-blue-100 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                         <div className="font-rounded">Term</div>
                         <div className="text-blue-900">
                           {loanData.term} Months
@@ -197,19 +152,19 @@ function Dashboard() {
                       </div>
                     </div>
                     <div className="flex-grow flex flex-col gap-4">
-                      <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                      <div className="bg-blue-100 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                         <div className="font-rounded">Interest Rate</div>
                         <div className="text-blue-900">
                           {loanData.interestRate}%
                         </div>
                       </div>
-                      <div className="bg-blue-50 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
+                      <div className="bg-blue-100 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                         <div className="font-rounded">Amount Down</div>
                         <div className="text-blue-900">TODO</div>
                       </div>
                     </div>
                   </div>
-                  <button className="bg-red-400 rounded-3xl shadow-xl hover:shadow-2xl transition h-auto my-3 text-2xl text-white hover:opacity-100 px-3 py-1 mx-auto">
+                  <button className="bg-blue-700 rounded-sm shadow-xl hover:shadow-2xl transition h-auto my-3 text-2xl text-white hover:opacity-100 px-3 py-1 mx-auto">
                     Finalize Sale
                   </button>
                 </div>
@@ -217,7 +172,14 @@ function Dashboard() {
             }
           })()}
         </div>
+
+
       </div>
+  </div>
+</div>
+
+
+
     </div>
   );
 }
