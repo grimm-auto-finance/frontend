@@ -22,4 +22,4 @@ function Enterbutton(props: { creditScore: number; downpayment: number; pytBudge
     return <h1></h1>
   }
 
-  export default Enterbutton;
+export default Enterbutton;

@@ -10,21 +10,6 @@ class CarBuyerInputs extends React.Component<calls, {}> {
 
     constructor(props: any) {
         super(props);
-        this.setCredit = this.setCredit.bind(this);
-        this.setBudget = this.setBudget.bind(this);
-        this.setDownpayment = this.setDownpayment.bind(this);
-      }
-
-      setCredit(op: number) {
-        this.props.onCreditChange(op)
-      }
-    
-      setBudget(op: number) {
-        this.props.onBudgetChange(op)
-      }
-    
-      setDownpayment(op: number) {
-        this.props.onDownpaymentChange(op)
       }
 
   render() {
@@ -46,7 +31,7 @@ class CarBuyerInputs extends React.Component<calls, {}> {
                 onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() }
                 placeholder="Credit Score"
                 name="creditScore"
-                onChange={(input) => this.setCredit(parseFloat(input.target.value))}
+                onChange={(input) => this.props.onCreditChange(parseFloat(input.target.value))}
                 required
               />
               <div className="flex items-center inline bg-gray-200 py-4 px-4 select-none"></div>
@@ -67,7 +52,7 @@ class CarBuyerInputs extends React.Component<calls, {}> {
                 onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() }
                 placeholder="Enter Budget"
                 name="pytBudget"
-                onChange={(input) => this.setBudget(parseFloat(input.target.value))}
+                onChange={(input) => this.props.onBudgetChange(parseFloat(input.target.value))}
                 required
               />
               <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
@@ -90,7 +75,7 @@ class CarBuyerInputs extends React.Component<calls, {}> {
                 step={0.01}
                 placeholder="Down Payment"
                 name="downpayment"
-                onChange={(input) => this.setDownpayment(parseFloat(input.target.value))}
+                onChange={(input) => this.props.onDownpaymentChange(parseFloat(input.target.value))}
                 required
               />
               <div className="flex items-center inline bg-gray-200 py-4 px-4 text-gray-600 select-none">

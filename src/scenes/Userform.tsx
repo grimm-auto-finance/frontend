@@ -1,14 +1,10 @@
-import logo from "../logo-new.png";
 import "../App.css";
 import Navbar from "../components/Navbar";
-import LandingPage from "../components/LandingPage";
 import Footer from "../components/Footer";
-import Search from "../components/Search";
 import Enterbutton from "../components/Enterbutton";
 import CarBuyerInputs from "../components/CarBuyerInputs";
 import CarSearch from "../components/CarSearch";
 import "tailwindcss/tailwind.css";
-import { useState } from "react";
 import React from "react";
 import { Car } from "../entities";
 
@@ -73,7 +69,6 @@ class Userform extends React.Component<{}, { mode: boolean, car: Car | undefined
               {mode ? "🌙" : "☀️"}
             </button>
             <Navbar />
-            {/* <Search /> */}
             <CarBuyerInputs onCreditChange={this.setCredit} onBudgetChange={this.setBudget} onDownpaymentChange={this.setDownpayment}/>
             <CarSearch onCarChange={this.setCar} onCarListChange={this.setSearch} searchResults={this.state.searchResults}/>
           <Enterbutton creditScore={this.state.creditScore} downpayment={this.state.downpayment} pytBudget={this.state.pytBudget} car={this.state.car}/>

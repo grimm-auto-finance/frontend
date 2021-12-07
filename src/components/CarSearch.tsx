@@ -12,16 +12,6 @@ class CarSearch extends React.Component<calls, {}> {
 
     constructor(props: any) {
         super(props);
-        this.setCar = this.setCar.bind(this);
-        this.setSearch = this.setSearch.bind(this);
-      }
-
-      setCar(op: Car) {
-        this.props.onCarChange(op)
-      }
-    
-      setSearch(op: Car[]) {
-        this.props.onCarListChange(op)
       }
     
   render() {
@@ -35,7 +25,7 @@ class CarSearch extends React.Component<calls, {}> {
             type="search"
             placeholder="Search"
             onChange={async (input) =>
-              this.setSearch(await fetchSearchResults(input.target.value))
+              this.props.onCarListChange(await fetchSearchResults(input.target.value))
             }
             required
           />
@@ -61,7 +51,7 @@ class CarSearch extends React.Component<calls, {}> {
                   String(car.year)
               );
               if (confirmBox === true) {
-                this.setCar(car);
+                this.props.onCarChange(car);
               }
             }}
           >
