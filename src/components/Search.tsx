@@ -10,6 +10,14 @@ const Search = () => {
   const [pytBudget, setpytBudget] = useState(0);
   const [downpayment, setDownpayment] = useState(0);
 
+  function getSimulatedCreditScore() {
+    const min = 400;
+    const max = 900;
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  // @ts-ignore
+  // @ts-ignore
   return (
     <div className="bg-gray-100 pb-32">
       <div className="m-4 mb-8">
@@ -51,25 +59,9 @@ const Search = () => {
           ))}
           <div>
             <form>
-              <div className="m-4 mb-8"></div>
-              <div className="flex items-center mb-5">
-                <label className="inline-block w-auto mr-6 text-start">
-                  {" "}
-                  Credit Score:{" "}
-                </label>
-                <div className="flex-1 py-2 border-b-2 border-red-300 text-end">
-                  <input
-                    id="Credit Score"
-                    type="number"
-                    placeholder="Credit Score"
-                    name="creditScore"
-                    onChange={(input) =>
-                      setCreditScore(parseInt(input.target.value))
-                    }
-                    required
-                  />
-                </div>
-              </div>
+              <script type="text/javascript" src="Search.tsx">
+                setCreditScore(getSimulatedCreditScore())
+              </script>
 
               <div className="flex items-center mb-5 ">
                 <label className="inline-block w-auto mr-6 text-start">

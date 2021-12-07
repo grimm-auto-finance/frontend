@@ -16,6 +16,16 @@ function Dashboard() {
 
   const location = useLocation();
 
+  function sensoInterpretation(sensoScore: String) {
+    const SensMap = new Map();
+    SensMap.set("VERY LOW", "1% - 20%");
+    SensMap.set("LOW", "21% - 40%");
+    SensMap.set("MEDIUM", "41% - 60%");
+    SensMap.set("HIGH", "61% - 80%");
+    SensMap.set("VERY HIGH", "81% - 100%");
+    return SensMap.get(sensoScore);
+  }
+
   // @ts-ignore
   useEffect(async () => {
     // TODO: catch errors here
@@ -103,8 +113,10 @@ function Dashboard() {
                   </div>
                   <img className="max-w-xs mx-auto" src={Mercedes} />
                   <div className="bg-blue-50 rounded-lg text-2xl font-semibold flex justify-between p-4">
-                    <div className="font-rounded">SENSO Score</div>
-                    <div className="text-blue-900">{loanData.sensoScore}</div>
+                    <div className="font-rounded">Loan Viability</div>
+                    <div className="text-blue-900">
+                      {sensoInterpretation(loanData.sensoScore)}
+                    </div>
                   </div>
                   <div className="flex pt-4 gap-4">
                     <div className="flex-grow flex flex-col gap-4">
