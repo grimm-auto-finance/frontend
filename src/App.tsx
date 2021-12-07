@@ -1,5 +1,5 @@
-import "./App.css";
 import "tailwindcss/tailwind.css";
+
 import {
   BrowserRouter as BrowserRouter,
   Routes,
