@@ -16,6 +16,21 @@ const Search = () => {
     setMode(!mode);
   };
 
+  const valid_credit = (s: string) => {
+    let isnum = /^\d+$/.test(s);
+    if (isnum == true) {
+      setCreditScore(parseInt(s));
+    }
+    else {
+      const stringBox = window.confirm(
+        "Please only enter numbers"
+      );
+      if (stringBox === true) {
+        setCreditScore(0);
+      }
+    }
+  }
+
   return (
     <div className="justify-center pt-4">
       <form className=" w-auto">
@@ -32,7 +47,7 @@ const Search = () => {
             type="number"
             placeholder="Credit Score"
             name="creditScore"
-            onChange={(input) => setCreditScore(parseInt(input.target.value))}
+            onChange={(input) => valid_credit(input.target.value)}
             required
           />
           <div className="flex items-center inline bg-gray-200 py-4 px-4 select-none"></div>
