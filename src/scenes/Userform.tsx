@@ -4,20 +4,49 @@ import Navbar from "../components/Navbar";
 import LandingPage from "../components/LandingPage";
 import Footer from "../components/Footer";
 import Search from "../components/Search";
+import Enterbutton from "../components/Enterbutton";
+import CarBuyerInputs from "../components/CarBuyerInputs";
+import CarSearch from "../components/CarSearch";
 import "tailwindcss/tailwind.css";
 import { useState } from "react";
 import React from "react";
+import { Car } from "../entities";
 
-class Userform extends React.Component<{}, { mode: boolean }> {
+class Userform extends React.Component<{}, { mode: boolean, car: Car | undefined, searchResults: Car[], creditScore: number, pytBudget: number, downpayment: number }> {
 
   constructor(props: any) {
     super(props);
     this.setMode = this.setMode.bind(this);
-    this.state = {mode: false};
+    this.setCar = this.setCar.bind(this);
+    this.setSearch = this.setSearch.bind(this);
+    this.setCredit = this.setCredit.bind(this);
+    this.setBudget = this.setBudget.bind(this);
+    this.setDownpayment = this.setDownpayment.bind(this);
+    this.state = {mode: false, car: undefined, searchResults: [], creditScore: 0, pytBudget: 0, downpayment: 0};
   }
 
   setMode(op: boolean) {
     this.setState({mode: op})
+  }
+
+  setCar(op: Car) {
+    this.setState({car: op})
+  }
+
+  setSearch(op: Car[]) {
+    this.setState({searchResults: op})
+  }
+
+  setCredit(op: number) {
+    this.setState({creditScore: op})
+  }
+
+  setBudget(op: number) {
+    this.setState({pytBudget: op})
+  }
+
+  setDownpayment(op: number) {
+    this.setState({downpayment: op})
   }
 
   render() {
@@ -44,7 +73,10 @@ class Userform extends React.Component<{}, { mode: boolean }> {
               {mode ? "🌙" : "☀️"}
             </button>
             <Navbar />
-            <Search />
+            {/* <Search /> */}
+            <CarBuyerInputs onCreditChange={this.setCredit} onBudgetChange={this.setBudget} onDownpaymentChange={this.setDownpayment}/>
+            <CarSearch onCarChange={this.setCar} onCarListChange={this.setSearch} searchResults={this.state.searchResults}/>
+          <Enterbutton creditScore={this.state.creditScore} downpayment={this.state.downpayment} pytBudget={this.state.pytBudget} car={this.state.car}/>
           </div>
         </div>
         <Footer />
