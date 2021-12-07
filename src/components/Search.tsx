@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Search = () => {
   const [searchResults, setSearchResults] = useState<Car[]>([]);
   const [car, setCar] = useState<Car>();
+  const [carList, setCarList] = useState<Car[]>([]); 
   const [creditScore, setCreditScore] = useState(0);
   const [pytBudget, setpytBudget] = useState(0);
   const [downpayment, setDownpayment] = useState(0);
@@ -39,6 +40,7 @@ const Search = () => {
                   );
                   if (confirmBox === true) {
                     setCar(car);
+                    setCarList([car])
                   }
                 }}
               >
@@ -49,7 +51,14 @@ const Search = () => {
               </button>
             </div>
           ))}
-          <div>
+        <div>
+        <div>
+          {carList.map((car, i) => (
+            <div className="bg-white m-4 border-2 rounded-md" key={i}>
+                Your Choice: {car.year} {car.make} {car.model}
+            </div>
+          ))}
+        </div>
             <form>
               <div className="m-4 mb-8"></div>
               <div className="flex items-center mb-5">
