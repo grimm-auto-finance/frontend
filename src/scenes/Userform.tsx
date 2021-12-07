@@ -6,36 +6,51 @@ import Footer from "../components/Footer";
 import Search from "../components/Search";
 import "tailwindcss/tailwind.css";
 import { useState } from "react";
+import React from "react";
 
-const Userform = () => {
-  const [mode, setMode] = useState(false);
+class Userform extends React.Component<{}, { mode: boolean }> {
 
-  const handleClick = () => {
-    setMode(!mode);
-  };
-  return (
-    <div>
-      <div className="text-center">
-        <div
-          className={
-            mode
-              ? "bg-gray-800 w-auto p-6 shadow-xl transition duration-700 text-white transition duration-700"
-              : "bg-gray-100 shadow-xl  mb-5 w-auto  p-6 transition duration-700 text-gray-600 transition duration-700"
-          }
-        >
-          <button
-            className="inline-block rounded-lg overflow-x-auto h-8"
-            onClick={handleClick}
+  constructor(props: any) {
+    super(props);
+    this.setMode = this.setMode.bind(this);
+    this.state = {mode: false};
+  }
+
+  setMode(op: boolean) {
+    this.setState({mode: op})
+  }
+
+  render() {
+
+    const mode = this.state.mode;
+    const handleClick = () => {
+      this.setMode(!this.state.mode);
+    };
+
+    return (
+      <div>
+        <div className="text-center">
+          <div
+            className={
+              mode
+                ? "bg-gray-800 w-auto p-6 shadow-xl transition duration-700 text-white transition duration-700"
+                : "bg-gray-100 shadow-xl  mb-5 w-auto  p-6 transition duration-700 text-gray-600 transition duration-700"
+            }
           >
-            {mode ? "🌙" : "☀️"}
-          </button>
-          <Navbar />
-          <Search />
+            <button
+              className="inline-block rounded-lg overflow-x-auto h-8"
+              onClick={handleClick}
+            >
+              {mode ? "🌙" : "☀️"}
+            </button>
+            <Navbar />
+            <Search />
+          </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  );
+    );
+  }
 };
 
 export default Userform;
