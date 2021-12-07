@@ -18,11 +18,12 @@ const Search = () => {
   return (
     <div className="justify-center pt-4">
       <form className=" w-auto">
-        <div className="flex justify-center bg-gray-100 rounded border-0 border-t-4 hover:border-blue-800 mb-8 m-4 h-auto">
-          <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none"></div>
-          <label className="flex items-center bg-transparent py-1 text-gray-600 px-4 focus:outline-none p-30 m-4 p-6">
-            {" "}
-            Credit Score:{" "}
+        <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
+          <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
+            {"  "}
+          </div>
+          <label className="flex items-center bg-transparent py-1 px-4 focus:outline-none p-30 m-4 p-6">
+            Credit Score:
           </label>
           <input
             className="bg-transparent py-1 text-gray-600 px-4 focus:outline-none w-full"
@@ -33,14 +34,14 @@ const Search = () => {
             onChange={(input) => setCreditScore(parseInt(input.target.value))}
             required
           />
-          <div className="flex items-center inline bg-gray-200 py-4 px-4 text-gray-600 select-none"></div>
+          <div className="flex items-center inline bg-gray-200 py-4 px-4 select-none"></div>
         </div>
 
-        <div className="flex justify-center bg-gray-100 rounded border-0 border-t-4 hover:border-blue-800 mb-8 m-4 h-auto">
+        <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
           <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
             $
           </div>
-          <label className="flex items-center bg-transparent py-1 text-gray-600 px-4 focus:outline-none p-30 m-4 p-6">
+          <label className="flex items-center bg-transparent py-1 px-4 focus:outline-none p-30 m-4 p-6">
             {" "}
             Monthly Budget:{" "}
           </label>
@@ -58,11 +59,11 @@ const Search = () => {
           </div>
         </div>
 
-        <div className="flex justify-center bg-gray-100 rounded border-0 border-t-4 hover:border-blue-800 mb-8 m-4 h-auto">
+        <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
           <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
             $
           </div>
-          <label className="flex items-center bg-transparent py-1 text-gray-600 px-4 focus:outline-none p-30 m-4 p-6">
+          <label className="flex items-center bg-transparent py-1  px-4 focus:outline-none p-30 m-4 p-6">
             Down Payment:{" "}
           </label>
           <input
@@ -99,10 +100,9 @@ const Search = () => {
           <div className=" h-44 mb-1">
             {searchResults.map((car, i) => (
               <div
-                className="antialiased bg-gray-100 text-gray-500
+                className="antialiased
           flex flex-col justify-center
-          rounded-none bg-red-100 hover:bg-red-300
-          dark:bg-blue-900 dark:hover:bg-gray-500 dark:text-white"
+          rounded-none hover:bg-blue-300"
                 key={i}
               >
                 <button
@@ -148,13 +148,13 @@ const Search = () => {
                             <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
                               {/* TODO: Use the respective car Image */}
                               <img
-                                className="rounded-full"
+                                className="pl-2 rounded-full"
                                 src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Car_Icon.svg"
                                 width="40"
                                 height="40"
                               />
                             </div>
-                            <div className="pl-5 font-medium text-gray-800 dark:text-white ">
+                            <div className="pl-5 font-medium">
                               {" "}
                               {car.make} {car.model} {","} {car.year}{" "}
                             </div>
@@ -183,7 +183,7 @@ const Search = () => {
       </div>
       <button
         type="submit"
-        className="bg-blue-400 text-3xl rounded-lg text-center m-12 py-8 px-28 transform hover:scale-105 duration-300 ease-in-out"
+        className="bg-blue-400 text-3xl rounded-lg text-center m-6 py-6 px-20 transform hover:text-white hover:bg-blue-800 hover:scale-105 duration-300 ease-in-out"
       >
         <Link
           to="/dashboard"
