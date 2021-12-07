@@ -164,7 +164,9 @@ function Dashboard() {
                           </div>
                           <div className="bg-blue-300 border-0 border-b-8 border-red-700 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                             <div className="font-rounded">Amount Down</div>
-                            <div className="text-blue-900">TODO</div>
+                            <div className="text-blue-900">
+                              {carBuyer?.downpayment}
+                            </div>
                           </div>
                         </div>
                       </div>
