@@ -84,7 +84,7 @@ const Search = () => {
       <div>
         <div>
           <input
-            className="rounded-2xl border-4 hover:border-green-600 p-4 mb-4 text-gray-700"
+            className="rounded-3xl border-2 p-4 mb-8"
             id="Budget"
             type="search"
             placeholder="Search"
@@ -99,8 +99,10 @@ const Search = () => {
           <div className=" h-44 mb-1">
             {searchResults.map((car, i) => (
               <div
-                className="antialiased flex flex-col justify-center
-          rounded-none hover:bg-blue-300 hover:text-gray-900"
+                className="antialiased bg-gray-100 text-gray-500
+          flex flex-col justify-center
+          rounded-none bg-red-100 hover:bg-red-300
+          dark:bg-blue-900 dark:hover:bg-gray-500 dark:text-white"
                 key={i}
               >
                 <button
@@ -120,10 +122,10 @@ const Search = () => {
                   }}
                 >
                   <table className="table-auto w-full">
-                    <thead className="text-xs font-semibold rounded uppercase text-gray-100 bg-blue-600">
+                    <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50 dark:text-gray-100 dark:bg-blue-600">
                       <tr>
                         <th className="p-2 whitespace-nowrap">
-                          <div className="font-semibold text-left pl-4">
+                          <div className="font-semibold text-left">
                             {" "}
                             Vehicle
                           </div>
@@ -152,7 +154,7 @@ const Search = () => {
                                 height="40"
                               />
                             </div>
-                            <div className="pl-5 font-medium">
+                            <div className="pl-5 font-medium text-gray-800 dark:text-white ">
                               {" "}
                               {car.make} {car.model} {","} {car.year}{" "}
                             </div>
@@ -178,7 +180,6 @@ const Search = () => {
             ))}
           </div>
         </div>
-
       </div>
       <button
         type="submit"
