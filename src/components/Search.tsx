@@ -17,75 +17,6 @@ const Search = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="bg-gray-100 pb-32">
-      <div className="m-4 mb-8">
-        <input
-          className="rounded-3xl border-2 p-4"
-          id="Budget"
-          type="search"
-          placeholder="Search"
-          onChange={async (input) =>
-            setSearchResults(await fetchSearchResults(input.target.value))
-          }
-          required
-        />
-        <div>
-          {searchResults.map((car, i) => (
-            <div className="bg-white m-4 border-2 rounded-md" key={i}>
-              <button
-                type="button"
-                onClick={() => {
-                  const confirmBox = window.confirm(
-                    "Are you sure want an " +
-                      String(car.model) +
-                      " " +
-                      String(car.make) +
-                      " from " +
-                      String(car.year)
-                  );
-                  if (confirmBox === true) {
-                    setCar(car);
-                    setCarList([car])
-                  }
-                }}
-              >
-                {"$"}
-                {car.price} {"-"} {car.year} {car.make} {car.model}{" "}
-                {car.kilometres} {car.id}
-                {"kms"}
-              </button>
-            </div>
-          ))}
-        <div>
-        <div>
-          {carList.map((car, i) => (
-            <div className="bg-white m-4 border-2 rounded-md" key={i}>
-                Your Choice: {car.year} {car.make} {car.model}
-            </div>
-          ))}
-        </div>
-            <form>
-              <div className="m-4 mb-8"></div>
-              <div className="flex items-center mb-5">
-                <label className="inline-block w-auto mr-6 text-start">
-                  {" "}
-                  Credit Score:{" "}
-                </label>
-                <div className="flex-1 py-2 border-b-2 border-red-300 text-end">
-                  <input
-                    id="Credit Score"
-                    type="number"
-                    placeholder="Credit Score"
-                    name="creditScore"
-                    onChange={(input) =>
-                      setCreditScore(parseInt(input.target.value))
-                    }
-                    required
-                  />
-                </div>
-              </div>
-=======
     <div className="justify-center pt-4">
       <form className=" w-auto">
         <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
@@ -106,7 +37,6 @@ const Search = () => {
           />
           <div className="flex items-center inline bg-gray-200 py-4 px-4 select-none"></div>
         </div>
->>>>>>> 4d69b4a0c056536932eba15b8e8e3c05ad581285
 
         <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
           <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
