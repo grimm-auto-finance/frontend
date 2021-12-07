@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 const Search = () => {
   const [searchResults, setSearchResults] = useState<Car[]>([]);
   const [car, setCar] = useState<Car>();
-  const [creditScore, setCreditScore] = useState(0);
+  const [creditScore, setCreditScore] = useState(
+    Math.floor(Math.random() * (900 - 400) + 400)
+  );
   const [pytBudget, setpytBudget] = useState(0);
   const [downpayment, setDownpayment] = useState(0);
   const [mode, setMode] = useState(false);
@@ -15,21 +17,11 @@ const Search = () => {
     setMode(!mode);
   };
 
-  function getSimulatedCreditScore() {
-    const min = 400;
-    const max = 900;
-    return Math.floor(Math.random() * (max - min) + min);
-  }
-
   // @ts-ignore
   // @ts-ignore
   return (
     <div className="justify-center pt-4">
       <form className=" w-auto">
-        <script type="text/javascript" src="Search.tsx">
-          setCreditScore(getSimulatedCreditScore())
-        </script>
-
         <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
           <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
             $
