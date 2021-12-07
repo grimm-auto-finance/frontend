@@ -15,22 +15,24 @@ const Userform = () => {
   };
   return (
     <div>
-      <div className="text-center">
+      <div className="justify-cener items-center text-center">
         <div
           className={
             mode
-              ? "bg-gray-800 w-auto p-6 shadow-xl transition duration-700 text-white transition duration-700"
-              : "bg-gray-100 shadow-xl  mb-5 w-auto  p-6 transition duration-700 text-gray-600 transition duration-700"
+              ? "bg-gray-800 shadow-xl pt-4 px-12 text-white transition duration-700"
+              : "bg-gray-100 shadow-xl pt-4 px-12 text-gray-600 transition duration-700"
           }
         >
           <button
-            className="inline-block rounded-lg overflow-x-auto h-8"
+            className="rounded-lg py-2"
             onClick={handleClick}
           >
             {mode ? "🌙" : "☀️"}
           </button>
           <Navbar />
-          <Search />
+          <div >
+            <Search />
+          </div>
         </div>
       </div>
       <Footer />
