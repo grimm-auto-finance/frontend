@@ -1,12 +1,11 @@
 import { useState } from "react";
 import fetchSearchResults from "../use-cases/fetchSearchResults";
 import { Car, CarBuyer } from "../entities";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Search = () => {
   const [searchResults, setSearchResults] = useState<Car[]>([]);
   const [car, setCar] = useState<Car>();
-  const [carList, setCarList] = useState<Car[]>([]); 
   const [creditScore, setCreditScore] = useState(0);
   const [pytBudget, setpytBudget] = useState(0);
   const [downpayment, setDownpayment] = useState(0);
@@ -15,21 +14,6 @@ const Search = () => {
   const handleClick = () => {
     setMode(!mode);
   };
-
-  const valid_credit = (s: string) => {
-    let isnum = /^\d+$/.test(s);
-    if (isnum == true) {
-      setCreditScore(parseInt(s));
-    }
-    else {
-      const stringBox = window.confirm(
-        "Please only enter numbers"
-      );
-      if (stringBox === true) {
-        setCreditScore(0);
-      }
-    }
-  }
 
   return (
     <div className="justify-center pt-4">
@@ -45,9 +29,10 @@ const Search = () => {
             className="bg-transparent py-1 text-gray-600 px-4 focus:outline-none w-full"
             id="Credit Score"
             type="number"
+            onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() }
             placeholder="Credit Score"
             name="creditScore"
-            onChange={(input) => valid_credit(input.target.value)}
+            onChange={(input) => setCreditScore(parseFloat(input.target.value))}
             required
           />
           <div className="flex items-center inline bg-gray-200 py-4 px-4 select-none"></div>
@@ -65,6 +50,7 @@ const Search = () => {
             className="bg-transparent py-1 text-gray-600 px-4 focus:outline-none w-full"
             id="Budget"
             type="number"
+            onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() }
             placeholder="Enter Budget"
             name="pytBudget"
             onChange={(input) => setpytBudget(parseFloat(input.target.value))}
@@ -86,6 +72,7 @@ const Search = () => {
             className="bg-transparent py-1 text-gray-600 px-4 focus:outline-none w-full"
             id="downpayment"
             type="number"
+            onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() }
             step={0.01}
             placeholder="Down Payment"
             name="downpayment"
@@ -197,22 +184,31 @@ const Search = () => {
           </div>
         </div>
       </div>
-      <button
-        type="submit"
-        className="bg-blue-400 text-3xl rounded-lg text-center m-6 py-6 px-20 transform hover:text-white hover:bg-blue-800 hover:scale-105 duration-300 ease-in-out"
-      >
-        <Link
-          to="/dashboard"
-          state={{
-            car: car,
-            carBuyer: new CarBuyer(pytBudget, creditScore, downpayment),
-          }}
-        >
-          Enter
-        </Link>
-      </button>
+      <div>
+        <Enterbutton creditScore={creditScore} downpayment={downpayment} pytBudget={pytBudget} car={car}/>
+      </div>
     </div>
   );
 };
+
+function Enterbutton(props: { creditScore: number; downpayment: number; pytBudget: number; car: Car | undefined;}) {
+  if (props.creditScore != 0 && props.downpayment != 0 && props.pytBudget != 0 && typeof props.car !== "undefined") {
+    return <button
+    type="submit"
+    className="bg-blue-400 text-3xl rounded-lg text-center m-6 py-6 px-20 transform hover:text-white hover:bg-blue-800 hover:scale-105 duration-300 ease-in-out"
+  >
+    <Link
+      to="/dashboard"
+      state={{
+        car: props.car,
+        carBuyer: new CarBuyer(props.pytBudget, props.creditScore, props.downpayment),
+      }}
+    >
+      Enter
+    </Link>
+  </button>
+  }
+  return <h1></h1>
+}
 
 export default Search;
