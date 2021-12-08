@@ -1,4 +1,5 @@
 import AddOnContainer from "../components/AddOnContainer";
+import Mercedes from "../car-images/Mercedes.png";
 import MainDisplay from "../components/MainDisplay";
 import { AddOn, Car, CarBuyer, LoanData } from "../entities";
 import { mdiCog, mdiArrowLeft } from "@mdi/js";
