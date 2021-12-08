@@ -1,72 +1,20 @@
-import { useState } from "react";
+import React from "react";
+import { Car } from "../entities";
 import fetchSearchResults from "../use-cases/fetchSearchResults";
-import { Car, CarBuyer } from "../entities";
-import { Link } from "react-router-dom";
 
-const Search = () => {
-  const [searchResults, setSearchResults] = useState<Car[]>([]);
-  const [car, setCar] = useState<Car>();
-  const [creditScore, setCreditScore] = useState(
-    Math.floor(Math.random() * (900 - 400) + 400)
-  );
-  const [pytBudget, setpytBudget] = useState(0);
-  const [downpayment, setDownpayment] = useState(0);
-  const [mode, setMode] = useState(false);
+interface calls {
+  onCarChange(op: Car): any;
+  onCarListChange(op: Car[]): any;
+  searchResults: Car[];
+}
 
-  const handleClick = () => {
-    setMode(!mode);
-  };
+class CarSearch extends React.Component<calls, {}> {
+  constructor(props: any) {
+    super(props);
+  }
 
-  // @ts-ignore
-  // @ts-ignore
-  return (
-    <div className="justify-center pt-4">
-      <form className=" w-auto">
-        <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
-          <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
-            $
-          </div>
-          <label className="flex items-center bg-transparent py-1 px-4 focus:outline-none p-30 m-4 p-6">
-            {" "}
-            Monthly Budget:{" "}
-          </label>
-          <input
-            className="bg-transparent py-1 text-gray-600 px-4 focus:outline-none w-full"
-            id="Budget"
-            type="number"
-            placeholder="Enter Budget"
-            name="pytBudget"
-            onChange={(input) => setpytBudget(parseFloat(input.target.value))}
-            required
-          />
-          <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
-            .00
-          </div>
-        </div>
-
-        <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
-          <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
-            $
-          </div>
-          <label className="flex items-center bg-transparent py-1  px-4 focus:outline-none p-30 m-4 p-6">
-            Down Payment:{" "}
-          </label>
-          <input
-            className="bg-transparent py-1 text-gray-600 px-4 focus:outline-none w-full"
-            id="downpayment"
-            type="number"
-            step={0.01}
-            placeholder="Down Payment"
-            name="downpayment"
-            onChange={(input) => setDownpayment(parseFloat(input.target.value))}
-            required
-          />
-          <div className="flex items-center inline bg-gray-200 py-4 px-4 text-gray-600 select-none">
-            .00
-          </div>
-        </div>
-      </form>
-
+  render() {
+    return (
       <div>
         <div>
           <input
@@ -75,19 +23,20 @@ const Search = () => {
             type="search"
             placeholder="Search"
             onChange={async (input) =>
-              setSearchResults(await fetchSearchResults(input.target.value))
+              this.props.onCarListChange(
+                await fetchSearchResults(input.target.value)
+              )
             }
             required
           />
         </div>
-
         <div className="overflow-y-auto">
           <div className=" h-44 mb-1">
-            {searchResults.map((car, i) => (
+            {this.props.searchResults.map((car, i) => (
               <div
                 className="antialiased
-          flex flex-col justify-center
-          rounded-none hover:bg-blue-300"
+    flex flex-col justify-center
+    rounded-none hover:bg-blue-300"
                 key={i}
               >
                 <button
@@ -102,7 +51,7 @@ const Search = () => {
                         String(car.year)
                     );
                     if (confirmBox === true) {
-                      setCar(car);
+                      this.props.onCarChange(car);
                     }
                   }}
                 >
@@ -166,22 +115,8 @@ const Search = () => {
           </div>
         </div>
       </div>
-      <button
-        type="submit"
-        className="bg-blue-400 text-3xl rounded-lg text-center m-6 py-6 px-20 transform hover:text-white hover:bg-blue-800 hover:scale-105 duration-300 ease-in-out"
-      >
-        <Link
-          to="/dashboard"
-          state={{
-            car: car,
-            carBuyer: new CarBuyer(pytBudget, creditScore, downpayment),
-          }}
-        >
-          Enter
-        </Link>
-      </button>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default Search;
+export default CarSearch;

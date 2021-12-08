@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AddOn } from "../entities";
 import { mdiChevronRight, mdiMinusCircle, mdiPlusCircle } from "@mdi/js";
 
@@ -15,8 +15,8 @@ function AddOnBox(props: {
 
   return (
     <div
-      className="shadow-md tab w-full
-     overflow-y-auto border-t w-full
+      className="shadow-md tab
+     overflow-y-auto w-full
      border-0 border-t-8 hover:border-blue-800
      rounded-sm p-8 text-left"
     >
