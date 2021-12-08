@@ -1,9 +1,20 @@
 import { AddOn, Car, CarBuyer, LoanData } from "../entities";
 import Mercedes from "../car-images/Mercedes.png";
 
-function MainDisplay(props: { car: Car | null; loanData: LoanData | null }) {
+function MainDisplay(props: { car: Car | null; loanData: LoanData | null ; carBuyer: CarBuyer| null}) {
   const car = props.car;
   const loanData = props.loanData;
+  const carBuyer = props.carBuyer;
+
+    function sensoInterpretation(sensoScore: String) {
+        const SensMap = new Map();
+        SensMap.set("VERY LOW", "1% - 20%");
+        SensMap.set("LOW", "21% - 40%");
+        SensMap.set("MEDIUM", "41% - 60%");
+        SensMap.set("HIGH", "61% - 80%");
+        SensMap.set("VERY HIGH", "81% - 100%");
+        return SensMap.get(sensoScore);
+    }
 
   if (car !== null && loanData !== null) {
     return (
@@ -16,7 +27,7 @@ function MainDisplay(props: { car: Car | null; loanData: LoanData | null }) {
         <img className="max-w-xs mx-auto" src={Mercedes} />
         <div className="bg-blue-300 border-0 border-b-8 hover:border-indigo-500 rounded-lg text-2xl font-semibold flex justify-between p-4">
           <div className="font-rounded ml-8">SENSO Score</div>
-          <div className="text-blue-900 mr-8">{loanData.sensoScore}</div>
+          <div className="text-blue-900 mr-8">{sensoInterpretation(loanData.sensoScore)}</div>
         </div>
         <div className="flex pt-4 gap-4">
           <div className="flex-grow flex flex-col gap-4">
@@ -36,7 +47,9 @@ function MainDisplay(props: { car: Car | null; loanData: LoanData | null }) {
             </div>
             <div className="bg-blue-300 border-0 border-b-8 border-red-700 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
               <div className="font-rounded">Amount Down</div>
-              <div className="text-blue-900">TODO</div>
+              <div className="text-blue-900">
+                  {"$"}{carBuyer?.downpayment}
+              </div>
             </div>
           </div>
         </div>

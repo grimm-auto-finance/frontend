@@ -9,34 +9,13 @@ interface calls {
 class CarBuyerInputs extends React.Component<calls, {}> {
   constructor(props: any) {
     super(props);
+    this.props.onCreditChange( Math.floor(Math.random() * (900 - 400) + 400));
   }
 
   render() {
     return (
       <div className="justify-center pt-4">
         <form className=" w-auto">
-          <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
-            <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
-              {"  "}
-            </div>
-            <label className="flex items-center bg-transparent py-1 px-4 focus:outline-none p-30 m-4 p-6">
-              Credit Score:
-            </label>
-            <input
-              className="bg-transparent py-1 text-gray-600 px-4 focus:outline-none w-full"
-              id="Credit Score"
-              type="number"
-              onKeyDown={(evt) => evt.key === "e" && evt.preventDefault()}
-              placeholder="Credit Score"
-              name="creditScore"
-              onChange={(input) =>
-                this.props.onCreditChange(parseFloat(input.target.value))
-              }
-              required
-            />
-            <div className="flex items-center inline bg-gray-200 py-4 px-4 select-none"></div>
-          </div>
-
           <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
             <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
               $
