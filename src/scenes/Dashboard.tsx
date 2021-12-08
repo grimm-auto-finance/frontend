@@ -41,7 +41,14 @@ function Dashboard() {
         }
       >
         <div className="flex h-screen overflow-hidden">
-          <AddOnContainer car={car} carBuyer={carBuyer} addOns={addOns} searchString={searchString} setSearchString={setSearchString} setLoanData={setLoanData}/>
+          <AddOnContainer
+            car={car}
+            carBuyer={carBuyer}
+            addOns={addOns}
+            searchString={searchString}
+            setSearchString={setSearchString}
+            setLoanData={setLoanData}
+          />
           <div className="flex-grow flex flex-col">
             <div className="bg-blue-3000  shadow-lg h-16 flex justify-between">
               <Link
@@ -70,7 +77,7 @@ function Dashboard() {
             </div>
 
             <div className="flex-grow  flex justify-around px-16 py-8 overflow-y-scroll">
-              <MainDisplay car={car} loanData={loanData}/>
+              <MainDisplay car={car} loanData={loanData} />
             </div>
           </div>
         </div>
