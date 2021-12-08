@@ -1,21 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import fetchSearchResults from "../use-cases/fetchSearchResults";
 import { Car, CarBuyer } from "../entities";
 import { Link } from "react-router-dom";
 
 const Search = () => {
   const [searchResults, setSearchResults] = useState<Car[]>([]);
+  const [prevSearchString, setPrevSearchString] = useState("");
+  const [searchString, setSearchString] = useState("");
   const [car, setCar] = useState<Car>();
-  const [creditScore, setCreditScore] = useState(
+  const [creditScore, _] = useState(
     Math.floor(Math.random() * (900 - 400) + 400)
   );
   const [pytBudget, setpytBudget] = useState(0);
   const [downpayment, setDownpayment] = useState(0);
-  const [mode, setMode] = useState(false);
 
-  const handleClick = () => {
-    setMode(!mode);
-  };
+  useEffect(() => {
+    const timer = setInterval(async () => {
+      if (searchString != prevSearchString) {
+        console.log("searching");
+        setPrevSearchString(searchString);
+        setSearchResults(await fetchSearchResults(searchString));
+      }
+    }, 250);
+
+    return () => clearInterval(timer);
+  });
 
   // @ts-ignore
   // @ts-ignore
@@ -23,7 +32,7 @@ const Search = () => {
     <div className="justify-center pt-4">
       <form className=" w-auto">
         <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
-          <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
+          <div className="items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
             $
           </div>
           <label className="flex items-center bg-transparent py-1 px-4 focus:outline-none p-30 m-4 p-6">
@@ -39,13 +48,13 @@ const Search = () => {
             onChange={(input) => setpytBudget(parseFloat(input.target.value))}
             required
           />
-          <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
+          <div className="items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
             .00
           </div>
         </div>
 
         <div className="flex justify-center rounded border-0 border-t-4 border-b-4 hover:border-blue-800 mb-8 m-4 h-auto">
-          <div className="flex items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
+          <div className="items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
             $
           </div>
           <label className="flex items-center bg-transparent py-1  px-4 focus:outline-none p-30 m-4 p-6">
@@ -61,7 +70,7 @@ const Search = () => {
             onChange={(input) => setDownpayment(parseFloat(input.target.value))}
             required
           />
-          <div className="flex items-center inline bg-gray-200 py-4 px-4 text-gray-600 select-none">
+          <div className="items-center inline bg-gray-200 py-4 px-4 text-gray-600 select-none">
             .00
           </div>
         </div>
@@ -74,9 +83,9 @@ const Search = () => {
             id="Budget"
             type="search"
             placeholder="Search"
-            onChange={async (input) =>
-              setSearchResults(await fetchSearchResults(input.target.value))
-            }
+            onChange={async (input) => {
+              setSearchString(input.target.value);
+            }}
             required
           />
         </div>
