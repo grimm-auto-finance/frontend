@@ -9,7 +9,7 @@ interface calls {
 class CarBuyerInputs extends React.Component<calls, {}> {
   constructor(props: any) {
     super(props);
-    this.props.onCreditChange( Math.floor(Math.random() * (900 - 400) + 400));
+    this.props.onCreditChange(Math.floor(Math.random() * (900 - 400) + 400));
   }
 
   render() {

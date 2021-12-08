@@ -87,7 +87,7 @@ function Dashboard() {
               </div>
             </div>
             <div className="flex-grow  flex justify-around px-16 py-8 overflow-y-scroll">
-              <MainDisplay car={car} loanData={loanData} carBuyer={carBuyer}/>
+              <MainDisplay car={car} loanData={loanData} carBuyer={carBuyer} />
             </div>
           </div>
         </div>
