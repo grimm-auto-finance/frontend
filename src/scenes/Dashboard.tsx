@@ -20,6 +20,16 @@ function Dashboard() {
 
   const location = useLocation();
 
+  function sensoInterpretation(sensoScore: String) {
+    const SensMap = new Map();
+    SensMap.set("VERY LOW", "1% - 20%");
+    SensMap.set("LOW", "21% - 40%");
+    SensMap.set("MEDIUM", "41% - 60%");
+    SensMap.set("HIGH", "61% - 80%");
+    SensMap.set("VERY HIGH", "81% - 100%");
+    return SensMap.get(sensoScore);
+  }
+
   // @ts-ignore
   useEffect(async () => {
     // TODO: catch errors here
@@ -127,7 +137,7 @@ function Dashboard() {
                       <div className="bg-blue-300 border-0 border-b-8 hover:border-indigo-500 rounded-lg text-2xl font-semibold flex justify-between p-4">
                         <div className="font-rounded ml-8">SENSO Score</div>
                         <div className="text-blue-900 mr-8">
-                          {loanData.sensoScore}
+                          {sensoInterpretation(loanData.sensoScore)}
                         </div>
                       </div>
                       <div className="flex pt-4 gap-4">
@@ -154,7 +164,10 @@ function Dashboard() {
                           </div>
                           <div className="bg-blue-300 border-0 border-b-8 border-red-700 rounded-lg text-2xl font-semibold py-4 px-8 text-left">
                             <div className="font-rounded">Amount Down</div>
-                            <div className="text-blue-900">TODO</div>
+                            <div className="text-blue-900">
+                              {"$"}
+                              {carBuyer?.downpayment}
+                            </div>
                           </div>
                         </div>
                       </div>
