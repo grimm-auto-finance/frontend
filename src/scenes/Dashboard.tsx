@@ -2,7 +2,7 @@ import AddOnContainer from "../components/AddOnContainer";
 import Mercedes from "../car-images/Mercedes.png";
 import MainDisplay from "../components/MainDisplay";
 import { AddOn, Car, CarBuyer, LoanData } from "../entities";
-import { mdiCog, mdiArrowLeft } from "@mdi/js";
+import { mdiArrowLeft } from "@mdi/js";
 import { useEffect, useState } from "react";
 import fetchLoanData from "../use-cases/fetchLoanData";
 import fetchAddOns from "../use-cases/fetchAddOns";
@@ -47,8 +47,8 @@ function Dashboard() {
       <div
         className={
           mode
-            ? "bg-gray-800 w-auto shadow-xl transition duration-700 text-white transition duration-700"
-            : "bg-gray-100 shadow-xl  w-auto ransition duration-700 text-gray-600 transition duration-700"
+            ? "bg-gray-800 w-auto shadow-xl text-white transition duration-700"
+            : "bg-gray-100 shadow-xl w-auto text-gray-600 transition duration-700"
         }
       >
         <div className="flex h-screen overflow-hidden">

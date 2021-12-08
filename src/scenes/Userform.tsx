@@ -73,8 +73,8 @@ class Userform extends React.Component<
           <div
             className={
               mode
-                ? "bg-gray-800 w-auto p-6 shadow-xl transition duration-700 text-white transition duration-700"
-                : "bg-gray-100 shadow-xl  mb-5 w-auto  p-6 transition duration-700 text-gray-600 transition duration-700"
+                ? "bg-gray-800 w-auto p-6 shadow-xl text-white transition duration-700"
+                : "bg-gray-100 shadow-xl  mb-5 w-auto  p-6 text-gray-600 transition duration-700"
             }
           >
             <button
