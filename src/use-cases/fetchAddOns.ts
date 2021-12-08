@@ -10,6 +10,6 @@ export default async (id: number): Promise<AddOn[]> => {
     const json = await res.json();
     return json.map((a: AddOn) => AddOn.from(a));
   } else {
-    throw new Error();
+    throw new Error(await res.text());
   }
 };
