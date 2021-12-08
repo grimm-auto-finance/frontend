@@ -1,4 +1,4 @@
-import { Car, LoanData } from "../entities";
+import { Car, CarBuyer, LoanData } from "../entities";
 import Mercedes from "../car-images/Mercedes.png";
 
 function MainDisplay(props: {
