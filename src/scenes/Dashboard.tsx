@@ -57,6 +57,7 @@ function Dashboard() {
             car={car}
             carBuyer={carBuyer}
             addOns={addOns}
+            loanData={loanData}
             searchString={searchString}
             setSearchString={setSearchString}
             setLoanData={setLoanData}
@@ -77,13 +78,13 @@ function Dashboard() {
                 <span></span>
               </Link>
               <div className="flex gap-4">
-                <button className="bg-blue-800 h-full w-12 transition">
-                  <button
-                    className="rounded-lg overflow-x-auto h-8 "
-                    onClick={handleClick}
-                  >
+                <button
+                  className="bg-blue-800 h-full w-12 transition"
+                  onClick={handleClick}
+                >
+                  <div className="rounded-lg overflow-x-auto h-8">
                     {mode ? "🌙" : "☀️"}
-                  </button>
+                  </div>
                 </button>
               </div>
             </div>

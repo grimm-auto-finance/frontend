@@ -11,7 +11,7 @@ export default async (carBuyer: CarBuyer, car: Car): Promise<LoanData> => {
   const res = await fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/loan", {
     method: "POST",
     headers: { "Content-type": "application/json" },
-    body: JSON.stringify({ carBuyer: carBuyer, car: car }),
+    body: JSON.stringify({ carBuyer: carBuyer, car: car, loopMax: -1 }),
   });
 
   if (res.ok) {
