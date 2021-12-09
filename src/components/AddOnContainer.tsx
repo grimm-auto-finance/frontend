@@ -30,14 +30,15 @@ function AddOnContainer(props: {
       <div className="text-center mt-4 text-2xl font-semibold">
         Available Add-Ons{" "}
       </div>
-      <div className=" bg-blue-700 text-white text-center p-2 rounded mt-4">
-        Add-Ons Budget{" "}
-        <div className="text-white-900">
-          {"$"}
-          {loanData?.addOnBudget}
+      {loanData && (
+        <div className="bg-blue-700 text-white text-center p-2 rounded mt-4">
+          Add-Ons Budget{" "}
+          <div className="text-white-900">
+            {"$"}
+            {loanData?.addOnBudget}
+          </div>
         </div>
-      </div>
-
+      )}
       <input
         type="search"
         placeholder="Search"
