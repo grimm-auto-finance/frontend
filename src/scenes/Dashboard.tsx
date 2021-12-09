@@ -57,6 +57,7 @@ function Dashboard() {
             car={car}
             carBuyer={carBuyer}
             addOns={addOns}
+            loanData={loanData}
             searchString={searchString}
             setSearchString={setSearchString}
             setLoanData={setLoanData}

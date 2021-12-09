@@ -10,6 +10,7 @@ export class LoanData {
   amount: number;
   term: number;
   interestSum: number;
+  addOnBudget: number;
 
   /**
    * Constructs a new LoanData object with the given values.
@@ -19,6 +20,7 @@ export class LoanData {
    * @param amount The loan amount
    * @param term The term length of the loan in months
    * @param interestSum The total added sum due to interest
+   * @param addOnBudget The budget for add ons
    */
   constructor(
     interestRate: number,
@@ -26,7 +28,8 @@ export class LoanData {
     sensoScore: string,
     amount: number,
     term: number,
-    interestSum: number
+    interestSum: number,
+    addOnBudget: number
   ) {
     this.interestRate = interestRate;
     this.installment = installment;
@@ -34,6 +37,7 @@ export class LoanData {
     this.amount = amount;
     this.term = term;
     this.interestSum = interestSum;
+    this.addOnBudget = addOnBudget;
   }
 
   /**
@@ -47,7 +51,8 @@ export class LoanData {
       json.sensoScore,
       json.amount,
       json.term,
-      json.interestSum
+      json.interestSum,
+      json.addOnBudget
     );
   }
 }
@@ -59,4 +64,5 @@ export type LoanDataJSON = {
   amount: number;
   term: number;
   interestSum: number;
+  addOnBudget: number;
 };
