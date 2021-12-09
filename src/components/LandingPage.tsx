@@ -1,5 +1,3 @@
-import React from "react";
-import AbstractLights from "../CarImages/AbstractLights.png";
 import cars3 from "../car-images/cars3.png";
 
 const LandingPage = () => {

@@ -1,4 +1,3 @@
-import React from "react";
 import Github from "../car-images/Github.png";
 
 export default function Footer() {
