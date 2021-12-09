@@ -65,8 +65,10 @@ function AddOnContainer(props: {
                 onAdd={async (addOn: AddOn) => {
                   {
                     try {
-                      let res = await fetchLoanData(carBuyer, car);
                       car.addOns.set(addOn.name, addOn);
+                      let res = await fetchLoanData(carBuyer, car, 0);
+                      // @ts-ignore
+                      res.addOnBudget = loanData.addOnBudget;
                       props.setLoanData(res);
                     } catch (error) {
                       window.alert(
@@ -78,8 +80,10 @@ function AddOnContainer(props: {
                 onRemove={async (addOn: AddOn) => {
                   {
                     try {
-                      let res = await fetchLoanData(carBuyer, car);
                       car.addOns.delete(addOn.name);
+                      let res = await fetchLoanData(carBuyer, car, 0);
+                      // @ts-ignore
+                      res.addOnBudget = loanData.addOnBudget;
                       props.setLoanData(res);
                     } catch (error) {
                       window.alert(
