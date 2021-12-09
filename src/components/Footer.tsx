@@ -1,4 +1,4 @@
-import Github from "../car-images/Github.png";
+import Github from "../assets/Github.png";
 
 export default function Footer() {
   return (
