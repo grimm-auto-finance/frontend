@@ -1,6 +1,11 @@
 import { Car, CarBuyer, LoanData } from "../entities";
 import Mercedes from "../car-images/Mercedes.png";
 
+/**
+ *  Generates the main data needed for the display part of the dashboard
+ * @param props the info collected from the useform
+ * @constructor
+ */
 function MainDisplay(props: {
   car: Car | null;
   loanData: LoanData | null;
@@ -10,6 +15,10 @@ function MainDisplay(props: {
   const loanData = props.loanData;
   const carBuyer = props.carBuyer;
 
+  /**
+   * Converts the given senso score into a percentage interpretations
+   * @param sensoScore The given senso score
+   */
   function sensoInterpretation(sensoScore: String) {
     const SensMap = new Map();
     SensMap.set("VERY LOW", "1% - 20%");

@@ -2,6 +2,14 @@ import { Car, CarBuyer, AddOn, LoanData } from "../entities";
 import AddOnBox from "./AddOnBox";
 import fetchLoanData from "../use-cases/fetchLoanData";
 
+/**
+ * Initalizes the information needed to allow the user to select addons by getting it from the userform and from the
+ * call of the addons route
+ * @param props The properties needed to obtain the addons be it from the userform like the customer information or
+ * the car info from the search or the loan data from the laon route, and lastly the search input from the user in the
+ * dashboard to choose the wanted addons
+ * @constructor
+ */
 function AddOnContainer(props: {
   car: Car | null;
   carBuyer: CarBuyer | null;
@@ -37,7 +45,7 @@ function AddOnContainer(props: {
             ? [...addOns.values()]
             : [...addOns.values()].filter(
                 (a) =>
-                  a
+                  a.name
                     .toString()
                     .toLowerCase()
                     .indexOf(searchString.toLowerCase()) !== -1

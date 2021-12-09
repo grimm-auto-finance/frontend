@@ -2,12 +2,19 @@ import React from "react";
 import { Car } from "../entities";
 import fetchSearchResults from "../use-cases/fetchSearchResults";
 
+/**
+ * Selects list of cars that corresponds to the users search input, and then stores the specific car that the user
+ * selected fro the list of cars
+ */
 interface calls {
   onCarChange(op: Car): any;
   onCarListChange(op: Car[]): any;
   searchResults: Car[];
 }
 
+/**
+ * Constructs the properties needed to be stored from the Car search call
+ */
 class CarSearch extends React.Component<calls, {}> {
   constructor(props: any) {
     super(props);

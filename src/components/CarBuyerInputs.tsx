@@ -6,6 +6,9 @@ interface calls {
   onDownpaymentChange(op: number): any;
 }
 
+/**
+ * Constructs the properties needed to be stored from the user personal info input
+ */
 class CarBuyerInputs extends React.Component<calls, {}> {
   constructor(props: any) {
     super(props);
