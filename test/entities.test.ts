@@ -128,7 +128,7 @@ describe("Loan Data", () => {
   it("can be created from the constructor", () => {
     expect(loanData.interestRate).toBe(1.25);
     expect(loanData.installment).toBe(500);
-    expect(loanData.installments).toBe([
+    expect(loanData.installments).toStrictEqual([
       {
         capital: 1234,
         interest: 1234,
