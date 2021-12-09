@@ -9,6 +9,7 @@ export class Car {
   price: number;
   make: string;
   model: string;
+  image: string;
   year: number;
   id: number;
   addOns: Map<string, AddOn>;
@@ -30,6 +31,7 @@ export class Car {
     price: number,
     make: string,
     model: string,
+    image: string,
     year: number,
     id: number,
     addOns: Map<string, AddOn> = new Map()
@@ -39,6 +41,7 @@ export class Car {
     this.price = price;
     this.year = year;
     this.model = model;
+    this.image =image;
     this.id = id;
     this.addOns = addOns;
   }
@@ -49,6 +52,7 @@ export class Car {
       json.price,
       json.make,
       json.model,
+      json.image,
       json.year,
       json.id,
       json.addOns
@@ -82,6 +86,7 @@ export type CarJSON = {
   price: number;
   make: string;
   model: string;
+  image: string;
   year: number;
   id: number;
   addOns: { [key: string]: AddOnJSON };
