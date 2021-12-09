@@ -26,9 +26,12 @@ function MainDisplay(props: {
         <div className="flex-grow-0 text-center flex-shrink text-5xl font-rounded font-semibold">
           {car.make} {car.model} {car.year}
         </div>
-        {/* TODO: Add respective image of car from databse */}
 
-        <img className="max-w-xs mx-auto" src={car.image} />
+        <img
+          className="max-w-xs mx-auto"
+          src={car.image}
+          alt="Car Image of Selected"
+        />
         <div className="bg-blue-300 border-0 border-b-8 hover:border-indigo-500 rounded-lg text-2xl font-semibold flex justify-between p-4">
           <div className="font-rounded ml-8">SENSO Score</div>
           <div className="text-blue-900 mr-8">

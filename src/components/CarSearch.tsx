@@ -84,7 +84,7 @@ class CarSearch extends React.Component<calls, {}> {
                               <img
                                 className="pl-2 rounded-full"
                                 src={car.image}
-                                alt=""
+                                alt="car image displayed"
                                 width="40"
                                 height="40"
                               />
