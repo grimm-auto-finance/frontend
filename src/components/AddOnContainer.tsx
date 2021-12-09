@@ -23,7 +23,7 @@ function AddOnContainer(props: {
   const carBuyer = props.carBuyer;
   const addOns = props.addOns;
   const searchString = props.searchString;
-  const loanData = props.loanData
+  const loanData = props.loanData;
 
   return (
     <div className="shadow-xl z-10 p-4 flex flex-col gap-4 w-1/4 overflow-y-scroll">
@@ -33,8 +33,8 @@ function AddOnContainer(props: {
       <div className=" bg-blue-700 text-white text-center p-2 rounded mt-4">
         Add-Ons Budget{" "}
         <div className="text-white-900">
-                {"$"}
-                {loanData?.addOnBudget}
+          {"$"}
+          {loanData?.addOnBudget}
         </div>
       </div>
 
