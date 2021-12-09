@@ -83,7 +83,8 @@ class CarSearch extends React.Component<calls, {}> {
                               {/* TODO: Use the respective car Image */}
                               <img
                                 className="pl-2 rounded-full"
-                                src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Car_Icon.svg"
+                                src={car.image}
+                                alt=""
                                 width="40"
                                 height="40"
                               />
