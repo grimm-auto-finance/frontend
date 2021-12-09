@@ -7,11 +7,15 @@ import { LoanDataJSON } from "../entities/LoanData";
  * @param carBuyer The information of the customer
  * @param car The car selected by the customer
  */
-export default async (carBuyer: CarBuyer, car: Car): Promise<LoanData> => {
+export default async (
+  carBuyer: CarBuyer,
+  car: Car,
+  loopMax: number = -1
+): Promise<LoanData> => {
   const res = await fetch(import.meta.env.VITE_BACKEND_BASE_URL + "/loan", {
     method: "POST",
     headers: { "Content-type": "application/json" },
-    body: JSON.stringify({ carBuyer: carBuyer, car: car, loopMax: -1 }),
+    body: JSON.stringify({ carBuyer: carBuyer, car: car, loopMax: loopMax }),
   });
 
   if (res.ok) {
