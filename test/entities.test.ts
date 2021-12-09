@@ -105,12 +105,38 @@ describe("Loan Data", () => {
   let loanData: LoanData;
 
   beforeEach(() => {
-    loanData = new LoanData(1.25, 500, "Very Low", 10000, 36, 2000, 5000);
+    loanData = new LoanData(
+      1.25,
+      500,
+      [
+        {
+          capital: 1234,
+          interest: 1234,
+          installment: 1234,
+          remain: 1234,
+          interestSum: 1253,
+        },
+      ],
+      "Very Low",
+      10000,
+      36,
+      2000,
+      5000
+    );
   });
 
   it("can be created from the constructor", () => {
     expect(loanData.interestRate).toBe(1.25);
     expect(loanData.installment).toBe(500);
+    expect(loanData.installments).toBe([
+      {
+        capital: 1234,
+        interest: 1234,
+        installment: 1234,
+        remain: 1234,
+        interestSum: 1253,
+      },
+    ]);
     expect(loanData.sensoScore).toBe("Very Low");
     expect(loanData.amount).toBe(10000);
     expect(loanData.term).toBe(36);
