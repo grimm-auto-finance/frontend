@@ -1,6 +1,11 @@
 import { Car, CarBuyer } from "../entities";
 import { Link } from "react-router-dom";
 
+/**
+ * Generates an enter button when the user fills all the information in the userform
+ * @param props the info filled by the user in the userform
+ * @constructor
+ */
 function Enterbutton(props: {
   creditScore: number;
   downpayment: number;

@@ -8,6 +8,11 @@ import fetchLoanData from "../use-cases/fetchLoanData";
 import fetchAddOns from "../use-cases/fetchAddOns";
 import { Link, useLocation } from "react-router-dom";
 
+/**
+ * Uses the input from the user input and the car selection to create the
+ * data displayed in the dashboard
+ * @constructor
+ */
 function Dashboard() {
   const [car, setCar] = useState<Car | null>(null);
   const [carBuyer, setCarBuyer] = useState<CarBuyer | null>(null);
@@ -19,18 +24,14 @@ function Dashboard() {
     setMode(!mode);
   };
 
+  /**
+   * Using the react router to obtain the use states of objects from the different componenets
+   */
   const location = useLocation();
 
-  function sensoInterpretation(sensoScore: String) {
-    const SensMap = new Map();
-    SensMap.set("VERY LOW", "1% - 20%");
-    SensMap.set("LOW", "21% - 40%");
-    SensMap.set("MEDIUM", "41% - 60%");
-    SensMap.set("HIGH", "61% - 80%");
-    SensMap.set("VERY HIGH", "81% - 100%");
-    return SensMap.get(sensoScore);
-  }
-
+  /**
+   * Performs the actions to obtain the data needed by the dashboard.
+   */
   // @ts-ignore
   useEffect(async () => {
     // TODO: catch errors here
