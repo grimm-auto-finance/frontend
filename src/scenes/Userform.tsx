@@ -7,7 +7,6 @@ import CarSearch from "../components/CarSearch";
 import "tailwindcss/tailwind.css";
 import { useState } from "react";
 
-
 import React from "react";
 import { Car } from "../entities";
 
