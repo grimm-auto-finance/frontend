@@ -55,14 +55,18 @@ function AddOnContainer(props: {
               <AddOnBox
                 key={i}
                 addOn={a}
-                onAdd={async (addOn: AddOn) => { {
-                  try {
-                    let res = await fetchLoanData(carBuyer, car);
-                    car.addOns.set(addOn.name, addOn);
-                    props.setLoanData(res);
-                  } catch (error) {
-                    window.alert("There was a problem with the database: " + error)
-                  }}
+                onAdd={async (addOn: AddOn) => {
+                  {
+                    try {
+                      let res = await fetchLoanData(carBuyer, car);
+                      car.addOns.set(addOn.name, addOn);
+                      props.setLoanData(res);
+                    } catch (error) {
+                      window.alert(
+                        "There was a problem with the database: " + error
+                      );
+                    }
+                  }
                 }}
                 onRemove={async (addOn: AddOn) => {
                   {
@@ -71,11 +75,13 @@ function AddOnContainer(props: {
                       car.addOns.delete(addOn.name);
                       props.setLoanData(res);
                     } catch (error) {
-                      window.alert("There was a problem with the database: " + error)
-                    }}
+                      window.alert(
+                        "There was a problem with the database: " + error
+                      );
+                    }
+                  }
                 }}
               />
-
             );
           })
         : []}
