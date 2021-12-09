@@ -63,12 +63,30 @@ function AddOnContainer(props: {
                 key={i}
                 addOn={a}
                 onAdd={async (addOn: AddOn) => {
-                  car.addOns.set(addOn.name, addOn);
-                  props.setLoanData(await fetchLoanData(carBuyer, car));
+                  {
+                    try {
+                      let res = await fetchLoanData(carBuyer, car);
+                      car.addOns.set(addOn.name, addOn);
+                      props.setLoanData(res);
+                    } catch (error) {
+                      window.alert(
+                        "There was a problem with the database: " + error
+                      );
+                    }
+                  }
                 }}
                 onRemove={async (addOn: AddOn) => {
-                  car.addOns.delete(addOn.name);
-                  props.setLoanData(await fetchLoanData(carBuyer, car));
+                  {
+                    try {
+                      let res = await fetchLoanData(carBuyer, car);
+                      car.addOns.delete(addOn.name);
+                      props.setLoanData(res);
+                    } catch (error) {
+                      window.alert(
+                        "There was a problem with the database: " + error
+                      );
+                    }
+                  }
                 }}
               />
             );

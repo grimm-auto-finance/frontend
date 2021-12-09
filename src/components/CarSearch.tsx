@@ -29,11 +29,14 @@ class CarSearch extends React.Component<calls, {}> {
             id="Budget"
             type="search"
             placeholder="Search"
-            onChange={async (input) =>
-              this.props.onCarListChange(
-                await fetchSearchResults(input.target.value)
-              )
-            }
+            onChange={async (input) => {
+              try {
+                let res = await fetchSearchResults(input.target.value);
+                this.props.onCarListChange(res);
+              } catch (error) {
+                window.alert("There was a problem with the database: " + error);
+              }
+            }}
             required
           />
         </div>
