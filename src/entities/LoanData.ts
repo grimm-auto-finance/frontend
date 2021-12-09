@@ -6,6 +6,13 @@
 export class LoanData {
   interestRate: number;
   installment: number;
+  installments: {
+    capital: number;
+    interest: number;
+    installment: number;
+    remain: number;
+    interestSum: number;
+  }[];
   sensoScore: string;
   amount: number;
   term: number;
@@ -25,6 +32,13 @@ export class LoanData {
   constructor(
     interestRate: number,
     installment: number,
+    installments: {
+      capital: number;
+      interest: number;
+      installment: number;
+      remain: number;
+      interestSum: number;
+    }[],
     sensoScore: string,
     amount: number,
     term: number,
@@ -33,6 +47,7 @@ export class LoanData {
   ) {
     this.interestRate = interestRate;
     this.installment = installment;
+    this.installments = installments;
     this.sensoScore = sensoScore;
     this.amount = amount;
     this.term = term;
@@ -48,6 +63,7 @@ export class LoanData {
     return new LoanData(
       json.interestRate,
       json.installment,
+      json.installments,
       json.sensoScore,
       json.amount,
       json.term,
@@ -60,6 +76,13 @@ export class LoanData {
 export type LoanDataJSON = {
   interestRate: number;
   installment: number;
+  installments: {
+    capital: number;
+    interest: number;
+    installment: number;
+    remain: number;
+    interestSum: number;
+  }[];
   sensoScore: string;
   amount: number;
   term: number;

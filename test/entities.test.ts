@@ -29,6 +29,7 @@ describe("Car", () => {
       10000,
       "Honda",
       "Civic",
+      "image",
       2002,
       5,
       new Map([[addOn.name, addOn]])
@@ -38,18 +39,20 @@ describe("Car", () => {
     expect(car.price).toBe(10000);
     expect(car.make).toBe("Honda");
     expect(car.model).toBe("Civic");
+    expect(car.image).toBe("image");
     expect(car.year).toBe(2002);
     expect(car.addOns).toStrictEqual(new Map([[addOn.name, addOn]]));
     expect(car.id).toBe(5);
   });
 
   it("can be created from the constructor without add-ons", () => {
-    car = new Car(50000, 10000, "Honda", "Civic", 2002, 5);
+    car = new Car(50000, 10000, "Honda", "Civic", "image", 2002, 5);
 
     expect(car.kilometres).toBe(50000);
     expect(car.price).toBe(10000);
     expect(car.make).toBe("Honda");
     expect(car.model).toBe("Civic");
+    expect(car.image).toBe("image");
     expect(car.year).toBe(2002);
     expect(car.id).toBe(5);
     expect(car.addOns).toStrictEqual(new Map());
@@ -61,6 +64,7 @@ describe("Car", () => {
       10000,
       "Honda",
       "Civic",
+      "image",
       2002,
       5,
       new Map([[addOn.name, addOn]])
@@ -71,7 +75,7 @@ describe("Car", () => {
   });
 
   it("can be created from and stringified to JSON without add-ons", () => {
-    car = new Car(50000, 10000, "Honda", "Civic", 2002, 5);
+    car = new Car(50000, 10000, "Honda", "Civic", "image", 2002, 5);
 
     const jsonCar = JSON.stringify(car);
     expect(Car.from(JSON.parse(jsonCar))).toStrictEqual(car);
@@ -101,12 +105,38 @@ describe("Loan Data", () => {
   let loanData: LoanData;
 
   beforeEach(() => {
-    loanData = new LoanData(1.25, 500, "Very Low", 10000, 36, 2000, 5000);
+    loanData = new LoanData(
+      1.25,
+      500,
+      [
+        {
+          capital: 1234,
+          interest: 1234,
+          installment: 1234,
+          remain: 1234,
+          interestSum: 1253,
+        },
+      ],
+      "Very Low",
+      10000,
+      36,
+      2000,
+      5000
+    );
   });
 
   it("can be created from the constructor", () => {
     expect(loanData.interestRate).toBe(1.25);
     expect(loanData.installment).toBe(500);
+    expect(loanData.installments).toStrictEqual([
+      {
+        capital: 1234,
+        interest: 1234,
+        installment: 1234,
+        remain: 1234,
+        interestSum: 1253,
+      },
+    ]);
     expect(loanData.sensoScore).toBe("Very Low");
     expect(loanData.amount).toBe(10000);
     expect(loanData.term).toBe(36);
