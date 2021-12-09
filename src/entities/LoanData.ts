@@ -13,12 +13,12 @@ export class LoanData {
 
   /**
    * Constructs a new LoanData object with the given values.
-   * @param interestRate
-   * @param installment
-   * @param sensoScore
-   * @param loanAmount
-   * @param termLength
-   * @param interestSum
+   * @param interestRate The interest rate of the loan
+   * @param installment The loan installments
+   * @param sensoScore The senso score of the loan
+   * @param amount The loan amount
+   * @param term The term length of the loan in months
+   * @param interestSum The total added sum due to interest
    */
   constructor(
     interestRate: number,
@@ -36,6 +36,10 @@ export class LoanData {
     this.interestSum = interestSum;
   }
 
+  /**
+   * Creates an instance of LoanData from the corresponding Json
+   * @param json The corresponding json used to generate the loan data
+   */
   static from(json: LoanDataJSON) {
     return new LoanData(
       json.interestRate,

@@ -11,9 +11,9 @@ export class AddOn {
   /**
    * Constructs a new AddOn objects with the given name, price,
    * and description.
-   * @param name
-   * @param price
-   * @param description
+   * @param name The addon name
+   * @param price The addon price
+   * @param description The addon description
    */
   constructor(name: string, price: number, description: string) {
     this.name = name;
@@ -21,6 +21,10 @@ export class AddOn {
     this.description = description;
   }
 
+  /**
+   * Creates an instance of an addOn from the corresponding Json
+   * @param json The Json from which the addOn is created
+   */
   static from(json: AddOnJSON) {
     return new AddOn(json.name, json.price, json.description);
   }
