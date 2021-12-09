@@ -22,6 +22,10 @@ export class CarBuyer {
     this.downpayment = downpayment;
   }
 
+  /**
+   * Creates an instance of a CarBuyer from the corresponding Json
+   * @param json The corresponding Json
+   */
   static from(json: CarBuyerJSON) {
     return new CarBuyer(json.budget, json.creditScore, json.downpayment);
   }
