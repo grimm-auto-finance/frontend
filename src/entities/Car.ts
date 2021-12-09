@@ -41,7 +41,7 @@ export class Car {
     this.price = price;
     this.year = year;
     this.model = model;
-    this.image =image;
+    this.image = image;
     this.id = id;
     this.addOns = addOns;
   }
