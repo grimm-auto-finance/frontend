@@ -2,12 +2,19 @@ import React from "react";
 import { Car } from "../entities";
 import fetchSearchResults from "../use-cases/fetchSearchResults";
 
+/**
+ * Selects list of cars that corresponds to the users search input, and then stores the specific car that the user
+ * selected fro the list of cars
+ */
 interface calls {
   onCarChange(op: Car): any;
   onCarListChange(op: Car[]): any;
   searchResults: Car[];
 }
 
+/**
+ * Constructs the properties needed to be stored from the Car search call
+ */
 class CarSearch extends React.Component<calls, {}> {
   constructor(props: any) {
     super(props);
@@ -22,11 +29,14 @@ class CarSearch extends React.Component<calls, {}> {
             id="Budget"
             type="search"
             placeholder="Search"
-            onChange={async (input) =>
-              this.props.onCarListChange(
-                await fetchSearchResults(input.target.value)
-              )
-            }
+            onChange={async (input) => {
+              try {
+                let res = await fetchSearchResults(input.target.value);
+                this.props.onCarListChange(res);
+              } catch (error) {
+                window.alert("There was a problem with the database: " + error);
+              }
+            }}
             required
           />
         </div>

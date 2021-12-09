@@ -2,6 +2,11 @@ import { useState } from "react";
 import { AddOn } from "../entities";
 import { mdiChevronRight, mdiMinusCircle, mdiPlusCircle } from "@mdi/js";
 
+/**
+ * Generates the info used in the addon box which displays the addons
+ * @param props the buttons that are toggled to modify addons selected as well as the addons present
+ * @constructor
+ */
 function AddOnBox(props: {
   addOn: AddOn;
   onAdd: (addOn: AddOn) => void;

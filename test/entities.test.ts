@@ -105,7 +105,7 @@ describe("Loan Data", () => {
   let loanData: LoanData;
 
   beforeEach(() => {
-    loanData = new LoanData(1.25, 500, "Very Low", 10000, 36, 2000);
+    loanData = new LoanData(1.25, 500, "Very Low", 10000, 36, 2000, 5000);
   });
 
   it("can be created from the constructor", () => {
@@ -115,6 +115,7 @@ describe("Loan Data", () => {
     expect(loanData.amount).toBe(10000);
     expect(loanData.term).toBe(36);
     expect(loanData.interestSum).toBe(2000);
+    expect(loanData.addOnBudget).toBe(5000);
   });
 
   it("can be created from and stringified to JSON", () => {

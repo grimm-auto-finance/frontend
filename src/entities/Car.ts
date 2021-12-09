@@ -46,6 +46,10 @@ export class Car {
     this.addOns = addOns;
   }
 
+  /**
+   * Creates an instance of a car from the corresponding Json
+   * @param json The Json from which the car is to be obtained
+   */
   static from(json: CarJSON) {
     return new Car(
       json.kilometres,
@@ -65,6 +69,9 @@ export class Car {
     );
   }
 
+  /**
+   * Converts a map of addons into a Json array
+   */
   toJSON() {
     let addOnObject: { [key: string]: AddOn } = {};
     return {
@@ -76,6 +83,9 @@ export class Car {
     };
   }
 
+  /**
+   * Calculates the full price of the car including the price of the addons
+   */
   getFullPrice() {
     return [...this.addOns.values()].reduce((s, a) => s + a.price, this.price);
   }

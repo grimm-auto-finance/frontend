@@ -5,6 +5,9 @@ import App from "./App";
 import "@fontsource/roboto";
 import "@fontsource/quicksand";
 
+/**
+ * Renders the program an calls the app route
+ */
 ReactDOM.render(
   <React.StrictMode>
     <App />
