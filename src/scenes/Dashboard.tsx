@@ -6,7 +6,7 @@ import { mdiArrowLeft } from "@mdi/js";
 import { useEffect, useState } from "react";
 import fetchLoanData from "../use-cases/fetchLoanData";
 import fetchAddOns from "../use-cases/fetchAddOns";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 
 function Dashboard() {
   const [car, setCar] = useState<Car | null>(null);
@@ -38,8 +38,16 @@ function Dashboard() {
     const buyer = CarBuyer.from(location.state.carBuyer);
     setCar(car);
     setCarBuyer(buyer);
-    setAddOns(await fetchAddOns(location.state.car.id));
-    setLoanData(await fetchLoanData(buyer, car));
+    try {
+      let possibleAddons = await fetchAddOns(location.state.car.id);
+      setAddOns(possibleAddons);
+      let possibleLoan = await fetchLoanData(buyer, car);
+      setLoanData(possibleLoan);
+    }
+    catch (error) {
+      window.location.replace('/');
+      window.alert("There with the data entered. Please try again: " + error);
+    }
   }, []);
 
   return (
