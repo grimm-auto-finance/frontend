@@ -17,6 +17,6 @@ export default async (carBuyer: CarBuyer, car: Car): Promise<LoanData> => {
   if (res.ok) {
     return LoanData.from((await res.json()) as LoanDataJSON);
   } else {
-    throw new Error();
+    throw new Error(await res.text());
   }
 };

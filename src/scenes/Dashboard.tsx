@@ -33,15 +33,24 @@ function Dashboard() {
    * Performs the actions to obtain the data needed by the dashboard.
    */
   // @ts-ignore
-  useEffect(async () => {
-    // TODO: catch errors here
-    const car = Car.from(location.state.car);
-    const buyer = CarBuyer.from(location.state.carBuyer);
-    setCar(car);
-    setCarBuyer(buyer);
-    setAddOns(await fetchAddOns(location.state.car.id));
-    setLoanData(await fetchLoanData(buyer, car));
-  }, []);
+// @ts-ignore
+useEffect(async () => {
+  // TODO: catch errors here
+  const car = Car.from(location.state.car);
+  const buyer = CarBuyer.from(location.state.carBuyer);
+  setCar(car);
+  setCarBuyer(buyer);
+  try {
+    let possibleAddons = await fetchAddOns(location.state.car.id);
+    setAddOns(possibleAddons);
+    let possibleLoan = await fetchLoanData(buyer, car);
+    setLoanData(possibleLoan);
+  }
+  catch (error) {
+    window.location.replace('/');
+    window.alert("There with the data entered. Please try again: " + error);
+  }
+}, []);
 
   return (
     <div>

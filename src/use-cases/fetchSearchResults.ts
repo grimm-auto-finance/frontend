@@ -14,6 +14,6 @@ export default async (searchString: string): Promise<Car[]> => {
     const json = await res.json();
     return json.map((c: CarJSON) => Car.from(c));
   } else {
-    throw new Error();
+    throw new Error(await res.text());
   }
 };
