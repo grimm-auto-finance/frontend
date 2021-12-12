@@ -1,9 +1,9 @@
-import cars3 from "../car-images/cars3.png";
+import background from "../../static/background.png";
 
 const LandingPage = () => {
   return (
     <div className="h-64 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
-      <img src={cars3} />
+      <img src={background} />
     </div>
   );
 };
