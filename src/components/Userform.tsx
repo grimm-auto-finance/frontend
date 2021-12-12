@@ -7,11 +7,11 @@ import "tailwindcss/tailwind.css";
 
 import React from "react";
 import { Car } from "../entities";
+import ThemeButton from "./ThemeButton";
 
 class Userform extends React.Component<
   {},
   {
-    mode: boolean;
     car: Car | undefined;
     searchResults: Car[];
     creditScore: number;
@@ -27,28 +27,18 @@ class Userform extends React.Component<
    */
   constructor(props: any) {
     super(props);
-    this.setTheme = this.setTheme.bind(this);
     this.setCar = this.setCar.bind(this);
     this.setSearch = this.setSearch.bind(this);
     this.setCredit = this.setCredit.bind(this);
     this.setBudget = this.setBudget.bind(this);
     this.setDownpayment = this.setDownpayment.bind(this);
     this.state = {
-      mode: false,
       car: undefined,
       searchResults: [],
       creditScore: 0,
       pytBudget: 0,
       downpayment: 0,
     };
-  }
-
-  /**
-   * Sets the theme of the webpage between light and dark mode
-   * @param op The users choice for theme between true and false for dark mode
-   */
-  setTheme(op: boolean) {
-    this.setState({ mode: op });
   }
 
   /**
@@ -95,27 +85,11 @@ class Userform extends React.Component<
    * A function that renders the dashboard so its viewable by the users
    */
   render() {
-    const mode = this.state.mode;
-    const handleClick = () => {
-      this.setTheme(!this.state.mode);
-    };
-
     return (
       <div>
         <div className="text-center">
-          <div
-            className={
-              mode
-                ? "bg-gray-800 w-auto p-6 shadow-xl text-white transition duration-700"
-                : "bg-gray-100 shadow-xl  mb-5 w-auto  p-6 text-gray-600 transition duration-700"
-            }
-          >
-            <button
-              className="inline-block rounded-lg overflow-x-auto h-8"
-              onClick={handleClick}
-            >
-              {mode ? "🌙" : "☀️"}
-            </button>
+          <div className="bg-gray-100 dark:bg-gray-800 mb-5 w-auto p-6 shadow-xl text-gray-600 dark:text-white transition duration-700">
+            <ThemeButton />
             <Navbar />
             <CarBuyerInputs
               onCreditChange={this.setCredit}

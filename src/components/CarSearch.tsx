@@ -25,7 +25,7 @@ class CarSearch extends React.Component<calls, {}> {
       <div>
         <div>
           <input
-            className="rounded-3xl border-2 p-4 mb-8"
+            className="rounded-3xl border-2 p-4 mb-8 dark:text-gray-600 "
             id="Budget"
             type="search"
             placeholder="Search"
