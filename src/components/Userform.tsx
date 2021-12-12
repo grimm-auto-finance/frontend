@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Enterbutton from "./Enterbutton";
+import EnterButton from "./EnterButton";
 import CarBuyerInputs from "./CarBuyerInputs";
 import CarSearch from "./CarSearch";
 import "tailwindcss/tailwind.css";
@@ -101,12 +101,14 @@ class Userform extends React.Component<
               onCarListChange={this.setSearch}
               searchResults={this.state.searchResults}
             />
-            <Enterbutton
-              creditScore={this.state.creditScore}
-              downpayment={this.state.downpayment}
-              pytBudget={this.state.pytBudget}
-              car={this.state.car}
-            />
+            <div className="my-16">
+              <EnterButton
+                creditScore={this.state.creditScore}
+                downpayment={this.state.downpayment}
+                pytBudget={this.state.pytBudget}
+                car={this.state.car}
+              />
+            </div>
           </div>
         </div>
         <Footer />
