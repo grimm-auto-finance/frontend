@@ -1,5 +1,5 @@
-import AddOnContainer from "../components/AddOnContainer";
-import MainDisplay from "../components/MainDisplay";
+import AddOnContainer from "./AddOnContainer";
+import MainDisplay from "./MainDisplay";
 import { AddOn, Car, CarBuyer, LoanData } from "../entities";
 import { mdiArrowLeft } from "@mdi/js";
 import { useEffect, useState } from "react";

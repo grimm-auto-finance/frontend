@@ -1,8 +1,8 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Enterbutton from "../components/Enterbutton";
-import CarBuyerInputs from "../components/CarBuyerInputs";
-import CarSearch from "../components/CarSearch";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import Enterbutton from "./Enterbutton";
+import CarBuyerInputs from "./CarBuyerInputs";
+import CarSearch from "./CarSearch";
 import "tailwindcss/tailwind.css";
 
 import React from "react";
