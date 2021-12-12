@@ -5,8 +5,8 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Userform from "./scenes/Userform";
-import DashBoard from "./scenes/Dashboard";
+import Userform from "./components/Userform";
+import DashBoard from "./components/Dashboard";
 
 /**
  * Function that runs the application when called
