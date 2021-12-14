@@ -1,5 +1,4 @@
 import { Car, CarBuyer, LoanData } from "../entities";
-import Mercedes from "../car-images/Mercedes.png";
 
 /**
  *  Generates the main data needed for the display part of the dashboard

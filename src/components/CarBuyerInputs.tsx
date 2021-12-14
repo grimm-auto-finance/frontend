@@ -48,7 +48,7 @@ class CarBuyerInputs extends React.Component<calls, {}> {
             <div className="items-center inline bg-gray-200 py-2 px-4 text-gray-600 select-none">
               $
             </div>
-            <label className="flex items-center bg-transparent py-1  px-4 focus:outline-none p-30 m-4 p-6">
+            <label className="flex items-center bg-transparent py-1 px-4 focus:outline-none p-30 m-4 p-6">
               Down Payment:{" "}
             </label>
             <input

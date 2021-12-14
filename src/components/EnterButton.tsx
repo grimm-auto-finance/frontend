@@ -19,24 +19,20 @@ function Enterbutton(props: {
     typeof props.car !== "undefined"
   ) {
     return (
-      <button
-        type="submit"
-        className="bg-blue-400 text-3xl rounded-lg text-center m-6 py-6 px-20 transform hover:text-white hover:bg-blue-800 hover:scale-105 duration-300 ease-in-out"
+      <Link
+        className="bg-blue-400 text-3xl rounded-lg text-center py-6 px-20 transform hover:text-white hover:bg-blue-800 hover:scale-105 duration-300 ease-in-out"
+        to="/dashboard"
+        state={{
+          car: props.car,
+          carBuyer: new CarBuyer(
+            props.pytBudget,
+            props.creditScore,
+            props.downpayment
+          ),
+        }}
       >
-        <Link
-          to="/dashboard"
-          state={{
-            car: props.car,
-            carBuyer: new CarBuyer(
-              props.pytBudget,
-              props.creditScore,
-              props.downpayment
-            ),
-          }}
-        >
-          Enter
-        </Link>
-      </button>
+        Enter
+      </Link>
     );
   }
   return <h1></h1>;

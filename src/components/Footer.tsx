@@ -1,4 +1,4 @@
-import Github from "../car-images/Github.png";
+import github from "../../static/github.png";
 
 export default function Footer() {
   return (
@@ -35,7 +35,7 @@ export default function Footer() {
 
             <h5 className="flex justify-center text-sm img-center text-left mx-auto text-blue-900 font-semibold transform hover:scale-125 duration-300 ease-in-out ">
               <a href="https://github.com/tli-group-4-grimm">
-                <img src={Github} width="25" height="25" />
+                <img src={github} width="25" height="25" />
               </a>
             </h5>
             <h5 className="text-sm text-blue-900 font-semibold">
